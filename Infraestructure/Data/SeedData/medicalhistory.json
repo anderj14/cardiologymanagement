@@ -1,0 +1,47 @@
+[
+    {
+        "Id": 1,
+        "Date": "2023-07-10",
+        "PreviousHeartDisease": "None",
+        "HighBloodPressure": "Yes",
+        "Diabetes": "No",
+        "Hyperlipidemia": "Yes",
+        "Obesity": "No",
+        "Smoking": "Former smoker",
+        "CardiacProceduresSurgeries": "None",
+        "SystemicDiseases": "None",
+        "Medications": "Lisinopril, Atorvastatin",
+        "FamilyDiseases": "Hypertension",
+        "PatientId": 1
+    },
+    {
+        "Id": 2,
+        "Date": "2023-08-05",
+        "PreviousHeartDisease": "Myocardial Infarction",
+        "HighBloodPressure": "No",
+        "Diabetes": "Yes",
+        "Hyperlipidemia": "Yes",
+        "Obesity": "Yes",
+        "Smoking": "Current smoker",
+        "CardiacProceduresSurgeries": "Angioplasty",
+        "SystemicDiseases": "None",
+        "Medications": "Metformin, Atorvastatin",
+        "FamilyDiseases": "Diabetes",
+        "PatientId": 2
+    },
+    {
+        "Id": 3,
+        "Date": "2019-07-05",
+        "PreviousHeartDisease": "Myocardial infarction",
+        "HighBloodPressure": "Yes",
+        "Diabetes": "Yes",
+        "Hyperlipidemia": "Yes",
+        "Obesity": "Yes",
+        "Smoking": "No",
+        "CardiacProceduresSurgeries": "Coronary angioplasty",
+        "SystemicDiseases": "Hypothyroidism",
+        "Medications": "Insulin, Statins",
+        "FamilyDiseases": "Hypertension",
+        "PatientId": 2
+    }
+]

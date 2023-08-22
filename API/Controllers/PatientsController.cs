@@ -1,8 +1,7 @@
 using Core.Entities;
 using Core.Interfaces;
-using Infraestructure.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -18,10 +17,11 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Patient>>> GetPatients()
+        public async Task<ActionResult<IReadOnlyList<Patient>>> GetPatients()
         {
             var patients = await _repo.GetPatientsAsync();
             return Ok(patients);
+            
         }
 
         [HttpGet("{id}")]

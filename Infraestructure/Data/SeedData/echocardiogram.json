@@ -1,0 +1,38 @@
+[
+    {
+        "Id": 1,
+        "Date": "2023-08-25",
+        "CardiacDimensions": "Normal",
+        "EjectionFraction": "60%",
+        "ValveFunction": "Normal",
+        "VelocitiesBloodFlows": "Within normal limits",
+        "MovementCardiacWalls": "Good",
+        "PulmonaryArterialPressure": "25 mmHg",
+        "BloodFlow": "Normal",
+        "PatientId": 1
+    },
+    {
+        "Id": 2,
+        "Date": "2023-08-27",
+        "CardiacDimensions": "Mildly Enlarged",
+        "EjectionFraction": "50%",
+        "ValveFunction": "Mitral Valve Regurgitation",
+        "VelocitiesBloodFlows": "Reduced",
+        "MovementCardiacWalls": "Hypokinesis",
+        "PulmonaryArterialPressure": "30 mmHg",
+        "BloodFlow": "Stenosis",
+        "PatientId": 2
+    },
+    {
+        "Id": 3,
+        "Date": "2023-08-21",
+        "CardiacDimensions": "Mild dilation",
+        "EjectionFraction": "45%",
+        "ValveFunction": "Mild regurgitation",
+        "VelocitiesBloodFlows": "Reduced",
+        "MovementCardiacWalls": "Hypokinesia",
+        "PulmonaryArterialPressure": "30 mmHg",
+        "BloodFlow": "Impaired",
+        "PatientId": 2
+    }
+]

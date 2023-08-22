@@ -1,28 +1,30 @@
 namespace Core.Entities
 {
+    
     public class Patient : BaseEntity
     {
+        // public int Id { get; set; }
         public string PatientName { get; set; }
-        // public string CarnetIdentification { get; set; }
-        // public DateTime DOB { get; set; }
-        // public string Gender { get; set; }
-        // public string Address { get; set; }
-        // public long Phone { get; set; }
-        // public string Email { get; set; }
-        // public long NoMedicare { get; set; }
+        public string CarnetIdentification { get; set; }
+        public DateTime DOB { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+        public long Phone { get; set; }
+        public string Email { get; set; }
+        public long NoMedicare { get; set; }
 
-        // public List<Appointment> Appointments { get; set; } = new List<Appointment>();
-        // public List<DiseaseHistory> DiseaseHistories { get; set; } = new List<DiseaseHistory>();
-        // public List<MedicalHistory> MedicalHistories { get; set; } = new List<MedicalHistory>();
-        // public List<PhysicalExamination> PhysicalExaminations { get; set; } = new List<PhysicalExamination>();
-        // public List<Electrocardiogram> Electrocardiograms { get; set; } = new List<Electrocardiogram>();
-        // public List<Echocardiogram> Echocardiograms { get; set; } = new List<Echocardiogram>();
-        // public List<StressTest> StressTests { get; set; } = new List<StressTest>();
-        // public List<HolterStudy> HolterStudies { get; set; } = new List<HolterStudy>();
-        // public List<CardiacCatheterizationStudy> CardiacCatheterizationStudies { get; set; } = new List<CardiacCatheterizationStudy>();
-        // public List<BloodTest> BloodTests { get; set; } = new List<BloodTest>();
-        // public List<Diagnostic> Diagnostics { get; set; } = new List<Diagnostic>();
-        // public List<Treatment> Treatments { get; set; } = new List<Treatment>();
+        public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<DiseaseHistory> DiseaseHistories { get; set; }
+        public ICollection<MedicalHistory> MedicalHistories { get; set; }
+        public ICollection<PhysicalExamination> PhysicalExaminations { get; set; } 
+        public ICollection<Electrocardiogram> Electrocardiograms { get; set; }
+        public ICollection<Echocardiogram> Echocardiograms { get; set; }
+        public ICollection<StressTest> StressTests { get; set; } 
+        public ICollection<HolterStudy> HolterStudies { get; set; }
+        public ICollection<CardiacCatheterizationStudy> CardiacCatheterizationStudies { get; set; }
+        public ICollection<BloodTest> BloodTests { get; set; }         
+        public ICollection<Diagnostic> Diagnostics { get; set; }
+        public ICollection<Treatment> Treatments { get; set; }
     
     }
 }

@@ -1,0 +1,58 @@
+[
+    {
+        "Id": 1,
+        "Date": "2023-08-15",
+        "Time": "08:00:00",
+        "StudyDuration": "24 hours",
+        "AverageHeartRate": "80 bpm",
+        "MaximumHeartRate": "110 bpm",
+        "TypeHeartRhythm": "Normal sinus rhythm",
+        "ArrhythmiaEpisodes": "None",
+        "PhysicalActivity": "Moderate",
+        "PatientSymptoms": "Occasional palpitations",
+        "Conclusion": "Normal Holter monitoring",
+        "PatientId": 1
+    },
+    {
+        "Id": 2,
+        "Date": "2023-08-20",
+        "Time": "10:30:00",
+        "StudyDuration": "48 hours",
+        "AverageHeartRate": "75 bpm",
+        "MaximumHeartRate": "105 bpm",
+        "TypeHeartRhythm": "Sinus tachycardia",
+        "ArrhythmiaEpisodes": "Atrial fibrillation",
+        "PhysicalActivity": "Light",
+        "PatientSymptoms": "Fatigue",
+        "Conclusion": "Atrial fibrillation detected",
+        "PatientId": 2
+    },
+    {
+        "Id": 3,
+        "Date": "2023-08-20",
+        "Time": "10:30:00",
+        "StudyDuration": "48 hours",
+        "AverageHeartRate": "75 bpm",
+        "MaximumHeartRate": "105 bpm",
+        "TypeHeartRhythm": "Sinus tachycardia",
+        "ArrhythmiaEpisodes": "Atrial fibrillation",
+        "PhysicalActivity": "Light",
+        "PatientSymptoms": "Fatigue",
+        "Conclusion": "Atrial fibrillation detected",
+        "PatientId": 1
+    },
+    {
+        "Id": 4,
+        "Date": "2023-08-21",
+        "Time": "10:30:00",
+        "StudyDuration": "24 hours",
+        "AverageHeartRate": "80 bpm",
+        "MaximumHeartRate": "110 bpm",
+        "TypeHeartRhythm": "Normal sinus rhythm",
+        "ArrhythmiaEpisodes": "None",
+        "PhysicalActivity": "Moderate",
+        "PatientSymptoms": "Occasional palpitations",
+        "Conclusion": "Normal Holter monitoring",
+        "PatientId": 2
+    }
+]

@@ -1,0 +1,41 @@
+[
+    {
+        "Id": 1,
+        "Date": "2023-08-20",
+        "Hemoglobin": "14.5 g/dL",
+        "Hematocrit": "42%",
+        "WhiteBloodCell": "7500/mm3",
+        "Platelets": "250000/mm3",
+        "Glucose": "95 mg/dL",
+        "CholesterolHDL": "50 mg/dL",
+        "CholesterolLDL": "120 mg/dL",
+        "Triglycerides": "150 mg/dL",
+        "PatientId": 1
+    },
+    {
+        "Id": 2,
+        "Date": "2023-08-10",
+        "Hemoglobin": "13.2",
+        "Hematocrit": "40.0",
+        "WhiteBloodCell": "8000",
+        "Platelets": "260000",
+        "Glucose": "110",
+        "CholesterolHDL": "45",
+        "CholesterolLDL": "160",
+        "Triglycerides": "180",
+        "PatientId": 2
+    },
+    {
+        "Id": 3,
+        "Date": "2023-08-22",
+        "Hemoglobin": "12.0 g/dL",
+        "Hematocrit": "38%",
+        "WhiteBloodCell": "8200/mm3",
+        "Platelets": "220000/mm3",
+        "Glucose": "110 mg/dL",
+        "CholesterolHDL": "55 mg/dL",
+        "CholesterolLDL": "130 mg/dL",
+        "Triglycerides": "170 mg/dL",
+        "PatientId": 2
+    }
+]
