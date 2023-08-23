@@ -1,7 +1,8 @@
-namespace Core.Entities
+namespace Core.Dtos
 {
-    public class Diagnostic : BaseEntity
+    public class DiagnosticDto
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public string ConditionName { get; set; }
         public string Description { get; set; }
@@ -9,8 +10,5 @@ namespace Core.Entities
         public string Severity { get; set; }
         public string RiskAssessment { get; set; }
         public string Conclusions { get; set; }
-
-        public int PatientId { get; set; }
-        public Patient Patient { get; set; }
     }
 }

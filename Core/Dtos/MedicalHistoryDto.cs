@@ -1,7 +1,8 @@
-namespace Core.Entities
+namespace Core.Dtos
 {
-    public class MedicalHistory : BaseEntity
+    public class MedicalHistoryDto
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public string PreviousHeartDisease { get; set; }
         public string HighBloodPressure { get; set; }
@@ -13,8 +14,5 @@ namespace Core.Entities
         public string SystemicDiseases { get; set; }
         public string Medications { get; set; }
         public string FamilyDiseases { get; set; }
-
-        public int PatientId { get; set; }
-        public Patient Patient { get; set; }
     }
 }

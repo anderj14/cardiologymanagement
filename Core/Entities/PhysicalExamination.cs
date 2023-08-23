@@ -1,9 +1,8 @@
 
 namespace Core.Entities
 {
-    public class PhysicalExamination
+    public class PhysicalExamination : BaseEntity
     {
-        public int Id { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
         public string Duration { get; set; }

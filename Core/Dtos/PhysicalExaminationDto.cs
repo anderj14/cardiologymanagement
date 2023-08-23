@@ -1,7 +1,8 @@
-namespace Core.Entities
+namespace Core.Dtos
 {
-    public class StressTest : BaseEntity
+    public class PhysicalExaminationDto
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
         public string Duration { get; set; }
@@ -12,8 +13,5 @@ namespace Core.Entities
         public string ImageEco { get; set; }
         public string ImageStress { get; set; }
         public string Conclusion { get; set; }
-
-        public int PatientId { get; set; }
-        public Patient Patient { get; set; }
     }
 }

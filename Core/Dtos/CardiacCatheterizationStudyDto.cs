@@ -1,7 +1,8 @@
-namespace Core.Entities
+namespace Core.Dtos
 {
-    public class CardiacCatheterizationStudy : BaseEntity
+    public class CardiacCatheterizationStudyDto
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
         public string NumLocationMainCoronary { get; set; }
@@ -25,8 +26,5 @@ namespace Core.Entities
         public string FunctionsCardiacChambers { get; set; }
         public string DescriptionComplication { get; set; }
         public string Conclusion { get; set; }
-
-        public int PatientId { get; set; }
-        public Patient Patient { get; set; }
     }
 }

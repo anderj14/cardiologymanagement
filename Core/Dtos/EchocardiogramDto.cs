@@ -1,7 +1,8 @@
-namespace Core.Entities
+namespace Core.Dtos
 {
-    public class Echocardiogram : BaseEntity
+    public class EchocardiogramDto
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public string CardiacDimensions { get; set; }
         public string EjectionFraction { get; set; }
@@ -10,8 +11,5 @@ namespace Core.Entities
         public string MovementCardiacWalls { get; set; }
         public string PulmonaryArterialPressure { get; set; }
         public string BloodFlow { get; set; }
-
-        public int PatientId { get; set; }
-        public Patient Patient { get; set; }
     }
 }

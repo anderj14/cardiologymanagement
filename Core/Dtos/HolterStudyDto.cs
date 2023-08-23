@@ -1,6 +1,8 @@
-namespace Core.Entities
+using Core.Entities;
+
+namespace Core.Dtos
 {
-    public class HolterStudy : BaseEntity
+    public class HolterStudyDto : BaseEntity
     {
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
@@ -12,8 +14,5 @@ namespace Core.Entities
         public string PhysicalActivity { get; set; }
         public string PatientSymptoms { get; set; }
         public string Conclusion { get; set; }
-
-        public int PatientId { get; set; }
-        public Patient Patient { get; set; }
     }
 }

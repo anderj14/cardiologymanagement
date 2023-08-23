@@ -1,5 +1,4 @@
 
-using System.Text.Json.Serialization;
 using Core.Interfaces;
 using Infraestructure.Data;
 using Infraestructure.Data.Repository;
@@ -14,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddDbContext<ManagementContext>(opt =>
 {
@@ -27,6 +27,7 @@ builder.Services.AddDbContext<ManagementContext>(opt =>
 
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddScoped<IBloodTestRepository, BloodTestRepository>();
 ////////
 
 //////////

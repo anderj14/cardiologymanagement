@@ -1,8 +1,7 @@
 namespace Core.Entities
 {
-    public class DiseaseHistory
+    public class DiseaseHistory : BaseEntity
     {
-        public int Id { get; set; }
         public DateTime StartDate { get; set; }
         public string Description { get; set; }
         public string Treatment { get; set; }

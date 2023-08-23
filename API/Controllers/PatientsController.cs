@@ -1,3 +1,5 @@
+using AutoMapper;
+using Core.Dtos;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -10,24 +12,30 @@ namespace API.Controllers
     public class PatientsController : ControllerBase
     {
         private readonly IPatientRepository _repo;
+        private readonly IMapper _mapper;
 
-        public PatientsController(IPatientRepository repo)
+        public PatientsController(IPatientRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Patient>>> GetPatients()
+        public async Task<ActionResult<IReadOnlyList<PatientDto>>> GetPatients()
         {
             var patients = await _repo.GetPatientsAsync();
-            return Ok(patients);
-            
+
+            var patientDtos = _mapper.Map<List<PatientDto>>(patients);
+
+            return Ok(patientDtos);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Patient>> GetPatient(int id)
         {
-            return await _repo.GetPatientByIdAsync(id);
+            var patient = await _repo.GetPatientByIdAsync(id);
+
+            return Ok(patient);
         }
     }
 }
