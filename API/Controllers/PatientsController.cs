@@ -31,11 +31,13 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Patient>> GetPatient(int id)
+        public async Task<ActionResult<PatientDto>> GetPatient(int id)
         {
             var patient = await _repo.GetPatientByIdAsync(id);
 
-            return Ok(patient);
+            var patientDto = _mapper.Map<PatientDto>(patient);
+
+            return Ok(patientDto);
         }
     }
 }

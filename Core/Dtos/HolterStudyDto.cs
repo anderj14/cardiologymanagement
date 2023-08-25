@@ -2,8 +2,9 @@ using Core.Entities;
 
 namespace Core.Dtos
 {
-    public class HolterStudyDto : BaseEntity
+    public class HolterStudyDto
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
         public string StudyDuration { get; set; }

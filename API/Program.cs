@@ -1,7 +1,9 @@
 
+using Core.Entities;
 using Core.Interfaces;
 using Infraestructure.Data;
 using Infraestructure.Data.Repository;
+using Infraestructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +30,16 @@ builder.Services.AddDbContext<ManagementContext>(opt =>
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IBloodTestRepository, BloodTestRepository>();
+builder.Services.AddScoped<ICardiacCatheterizationStudyRepository, CardiacCatheterizationStudyRepository>();
+builder.Services.AddScoped<IDiagnosticRepository, DiagnosticRepository>();
+builder.Services.AddScoped<IDiseaseHistoryRepository, DiseaseHistoryRepository>();
+builder.Services.AddScoped<IEchocardiogramRepository, EchocardiogramRepository>();
+builder.Services.AddScoped<IElectrocardiogramRepository, ElectrocardiogramRepository>();
+builder.Services.AddScoped<IHolterStudyRepository, HolterStudyRepository>();
+builder.Services.AddScoped<IMedicalHistoryRepository, MedicalHistoryRepository>();
+builder.Services.AddScoped<IPhysicalExaminationRepository, PhysicalExaminationRepository>();
+builder.Services.AddScoped<IStressTestRepository, StressTestRepository>();
+builder.Services.AddScoped<ITreatmentRepository, TreatmentRepository>();
 ////////
 
 //////////

@@ -19,8 +19,7 @@ namespace Infraestructure.Data.Repository
 
         public async Task<IReadOnlyList<BloodTest>> GetBloodTestsAsync()
         {
-            return await _context.BloodTests
-            .ToListAsync();
+            return await _context.BloodTests.ToListAsync();
         }
     }
 }
