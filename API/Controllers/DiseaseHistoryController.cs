@@ -1,5 +1,6 @@
 using AutoMapper;
 using Core.Dtos;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,20 +10,20 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class DiseaseHistoryController : ControllerBase
     {
-        private readonly IDiseaseHistoryRepository _repo;
+        private readonly IGenericRepository<DiseaseHistory> _diseaseHistRepo;
         private readonly IMapper _mapper;
 
-        public DiseaseHistoryController(IDiseaseHistoryRepository repo, IMapper mapper)
+        public DiseaseHistoryController(IGenericRepository<DiseaseHistory> diseaseHistRepo, IMapper mapper)
         {
-            _repo = repo;
+            _diseaseHistRepo = diseaseHistRepo;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<DiseaseHistoryDto>>> GetDiseaseHistories()
         {
-            var diseaseHistories = await _repo.GetDiseaseHistoriesAsync();
-            var diseaseHistoriesDtos = _mapper.Map<List<DiseaseHistoryDto>>(diseaseHistories);
+            var diseaseHistories = await _diseaseHistRepo.ListAllAsync();
+            var diseaseHistoriesDtos = _mapper.Map<IReadOnlyList<DiseaseHistoryDto>>(diseaseHistories);
 
             return Ok(diseaseHistoriesDtos);
         }
@@ -30,7 +31,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<DiseaseHistoryDto>> GetDiseaseHistory(int id)
         {
-            var diseaseHistory = await _repo.GetDiseaseHistoryAsync(id);
+            var diseaseHistory = await _diseaseHistRepo.GetByIdAsync(id);
             var diseaseHistoryDto = _mapper.Map<DiseaseHistoryDto>(diseaseHistory);
 
             return Ok(diseaseHistoryDto);

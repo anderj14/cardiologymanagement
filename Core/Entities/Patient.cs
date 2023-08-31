@@ -3,7 +3,6 @@ namespace Core.Entities
     
     public class Patient : BaseEntity
     {
-        // public int Id { get; set; }
         public string PatientName { get; set; }
         public string CarnetIdentification { get; set; }
         public DateTime DOB { get; set; }

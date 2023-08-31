@@ -40,6 +40,10 @@ builder.Services.AddScoped<IMedicalHistoryRepository, MedicalHistoryRepository>(
 builder.Services.AddScoped<IPhysicalExaminationRepository, PhysicalExaminationRepository>();
 builder.Services.AddScoped<IStressTestRepository, StressTestRepository>();
 builder.Services.AddScoped<ITreatmentRepository, TreatmentRepository>();
+////
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+////
+///
 ////////
 
 //////////

@@ -1,5 +1,6 @@
 using AutoMapper;
 using Core.Dtos;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,26 +10,26 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class HolterStudyController : ControllerBase
     {
-        private readonly IHolterStudyRepository _repo;
+        private readonly IGenericRepository<HolterStudy> _holterStudyRepo;
         private readonly IMapper _mapper;
 
-        public HolterStudyController(IHolterStudyRepository repo, IMapper mapper)
+        public HolterStudyController(IGenericRepository<HolterStudy> holterStudyRepo, IMapper mapper)
         {
-            _repo = repo;
+            _holterStudyRepo = holterStudyRepo;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<HolterStudyDto>>> GetHolterStudies(){
-            var holterStudies = await _repo.GetHolterStudiesAsync();
-            var holterStudiesDtos = _mapper.Map<List<HolterStudyDto>>(holterStudies);
+            var holterStudies = await _holterStudyRepo.ListAllAsync();
+            var holterStudiesDtos = _mapper.Map<IReadOnlyList<HolterStudyDto>>(holterStudies);
 
             return Ok(holterStudiesDtos);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<HolterStudyDto>> GetHolterStudy(int id){
-            var holterStudy = await _repo.GetHolterStudyAsync(id);
+            var holterStudy = await _holterStudyRepo.GetByIdAsync(id);
             var holterStudyDto = _mapper.Map<HolterStudyDto>(holterStudy);
 
             return Ok(holterStudyDto);

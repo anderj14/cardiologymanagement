@@ -2,6 +2,7 @@ using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Specification;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -11,21 +12,23 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class PatientsController : ControllerBase
     {
-        private readonly IPatientRepository _repo;
+        private readonly IGenericRepository<Patient> _patientRepo;
         private readonly IMapper _mapper;
 
-        public PatientsController(IPatientRepository repo, IMapper mapper)
+        public PatientsController(IGenericRepository<Patient> patientRepo, IMapper mapper)
         {
-            _repo = repo;
+            _patientRepo = patientRepo;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<PatientDto>>> GetPatients()
         {
-            var patients = await _repo.GetPatientsAsync();
+            var spec = new PatientWithAllSpecification();
 
-            var patientDtos = _mapper.Map<List<PatientDto>>(patients);
+            var patients = await _patientRepo.ListAsync(spec);
+
+            var patientDtos = _mapper.Map<IReadOnlyList<PatientDto>>(patients);
 
             return Ok(patientDtos);
         }
@@ -33,7 +36,9 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PatientDto>> GetPatient(int id)
         {
-            var patient = await _repo.GetPatientByIdAsync(id);
+            var spec = new PatientWithAllSpecification(id);
+
+            var patient = await _patientRepo.GetEntityWithSpec(spec);
 
             var patientDto = _mapper.Map<PatientDto>(patient);
 

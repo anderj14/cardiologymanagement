@@ -1,5 +1,6 @@
 using AutoMapper;
 using Core.Dtos;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,20 +10,20 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class ElectrocardiogramController : ControllerBase
     {
-        private readonly IElectrocardiogramRepository _repo;
+        private readonly IGenericRepository<Electrocardiogram> _electroRepo;
         private readonly IMapper _mapper;
 
-        public ElectrocardiogramController(IElectrocardiogramRepository repo, IMapper mapper)
+        public ElectrocardiogramController(IGenericRepository<Electrocardiogram> electroRepo, IMapper mapper)
         {
-            _repo = repo;
+            _electroRepo = electroRepo;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<ElectrocardiogramDto>>> GetElectrocardiograms()
         {
-            var electrocardiograms = await _repo.GetElectrocardiogramsAsync();
-            var electrocardiogramsDtos = _mapper.Map<List<ElectrocardiogramDto>>(electrocardiograms);
+            var electrocardiograms = await _electroRepo.ListAllAsync();
+            var electrocardiogramsDtos = _mapper.Map<IReadOnlyList<ElectrocardiogramDto>>(electrocardiograms);
 
             return Ok(electrocardiogramsDtos);
         }
@@ -30,7 +31,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ElectrocardiogramDto>> GetElectrocardiogram(int id)
         {
-            var electrocardiogram = await _repo.GetElectrocardiogramAsync(id);
+            var electrocardiogram = await _electroRepo.GetByIdAsync(id);
             var electrocardiogramDto = _mapper.Map<ElectrocardiogramDto>(electrocardiogram);
 
             return Ok(electrocardiogramDto);

@@ -12,18 +12,18 @@ namespace Core.Dtos
         public string Email { get; set; }
         public long NoMedicare { get; set; }
 
-        public ICollection<AppointmentDto> Appointments { get; set; }
-        public ICollection<DiseaseHistoryDto> DiseaseHistories { get; set; }
-        public ICollection<MedicalHistoryDto> MedicalHistories { get; set; }
-        public ICollection<PhysicalExaminationDto> PhysicalExaminations { get; set; } 
-        public ICollection<ElectrocardiogramDto> Electrocardiograms { get; set; }
-        public ICollection<EchocardiogramDto> Echocardiograms { get; set; }
-        public ICollection<StressTestDto> StressTests { get; set; } 
-        public ICollection<HolterStudyDto> HolterStudies { get; set; }
-        public ICollection<CardiacCatheterizationStudyDto> CardiacCatheterizationStudies { get; set; }
-        public ICollection<BloodTestDto> BloodTests { get; set; }         
-        public ICollection<DiagnosticDto> Diagnostics { get; set; }
-        public ICollection<TreatmentDto> Treatments { get; set; }
+        public IReadOnlyList<AppointmentDto> Appointments { get; set; }
+        public IReadOnlyList<DiseaseHistoryDto> DiseaseHistories { get; set; }
+        public IReadOnlyList<MedicalHistoryDto> MedicalHistories { get; set; }
+        public IReadOnlyList<PhysicalExaminationDto> PhysicalExaminations { get; set; } 
+        public IReadOnlyList<ElectrocardiogramDto> Electrocardiograms { get; set; }
+        public IReadOnlyList<EchocardiogramDto> Echocardiograms { get; set; }
+        public IReadOnlyList<StressTestDto> StressTests { get; set; } 
+        public IReadOnlyList<HolterStudyDto> HolterStudies { get; set; }
+        public IReadOnlyList<CardiacCatheterizationStudyDto> CardiacCatheterizationStudies { get; set; }
+        public IReadOnlyList<BloodTestDto> BloodTests { get; set; }         
+        public IReadOnlyList<DiagnosticDto> Diagnostics { get; set; }
+        public IReadOnlyList<TreatmentDto> Treatments { get; set; }
 
     }
 }

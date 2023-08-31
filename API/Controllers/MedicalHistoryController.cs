@@ -1,5 +1,6 @@
 using AutoMapper;
 using Core.Dtos;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,20 +10,20 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class MedicalHistoryController : ControllerBase
     {
-        private readonly IMedicalHistoryRepository _repo;
+        private readonly IGenericRepository<MedicalHistory> _medHistoryRepo;
         private readonly IMapper _mapper;
 
-        public MedicalHistoryController(IMedicalHistoryRepository repo, IMapper mapper)
+        public MedicalHistoryController(IGenericRepository<MedicalHistory> medHistoryRepo, IMapper mapper)
         {
-            _repo = repo;
+            _medHistoryRepo = medHistoryRepo;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<MedicalHistoryDto>>> GetMedicalHistories()
         {
-            var medicalHistories = await _repo.GetMedicalHistoriesAsync();
-            var medicalHistoriesDtos = _mapper.Map<List<MedicalHistoryDto>>(medicalHistories);
+            var medicalHistories = await _medHistoryRepo.ListAllAsync();
+            var medicalHistoriesDtos = _mapper.Map<IReadOnlyList<MedicalHistoryDto>>(medicalHistories);
 
             return Ok(medicalHistoriesDtos);
         }
@@ -30,7 +31,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MedicalHistoryDto>> GetMedicalHistory(int id)
         {
-            var medicalHistory = await _repo.GetMedicalHistoryAsync(id);
+            var medicalHistory = await _medHistoryRepo.GetByIdAsync(id);
             var medicalHistoryDto = _mapper.Map<MedicalHistoryDto>(medicalHistory);
 
             return Ok(medicalHistoryDto);
