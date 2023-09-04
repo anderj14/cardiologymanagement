@@ -1,4 +1,5 @@
 
+using API.Errors;
 using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
@@ -36,6 +37,8 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<AppointmentDto>> GetAppointment(int id)
         {
             var appointment = await _appointmentRepo.GetByIdAsync(id);
@@ -45,6 +48,8 @@ namespace API.Controllers
         }
 
         [HttpGet("patient/{patientId}/appointments")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IReadOnlyList<AppointmentDto>>> GetPatientAppointments(int patientId)
         {
             var spec = new AppointmentSpecification(patientId);
@@ -55,21 +60,15 @@ namespace API.Controllers
         }
 
         [HttpGet("{patientId}/appointments/{appointmentId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<AppointmentDto>> GetPatientAppointment(int patientId, int appointmentId)
         {
-            var patient = await _patientRepo.GetByIdAsync(patientId);
-
-            if (patient == null)
-            {
-                return NotFound("Patient not found");
-            }
+            // var patient = await _patientRepo.GetByIdAsync(patientId);
 
             var appointmentSpec = new AppointmentSpecification(patientId, appointmentId);
             var appointment = await _appointmentRepo.GetEntityWithSpec(appointmentSpec);
-            if (appointment == null)
-            {
-                return NotFound("Appointment not found");
-            }
+ 
             var appointmentDto = _mapper.Map<AppointmentDto>(appointment);
             return Ok(appointmentDto);
         }

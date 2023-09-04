@@ -1,3 +1,4 @@
+using API.Errors;
 using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
@@ -36,6 +37,8 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<BloodTestDto>> GetBloodTest(int id)
         {
             var bloodTest = await _bloodTestRepo.GetByIdAsync(id);
@@ -45,6 +48,8 @@ namespace API.Controllers
         }
 
         [HttpGet("patient/{patientId}/BloodTests")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IReadOnlyList<BloodTestDto>>> GetPatientBloodTest(int patientId)
         {
             var spec = new BloodTestSpecification(patientId);
@@ -55,20 +60,14 @@ namespace API.Controllers
         }
 
         [HttpGet("{patientId}/appointment/{appointmentId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<BloodTestDto>> GetPatientBloodTest(int patientId, int bloodTestId)
         {
-            var patient = await _patientRepo.GetByIdAsync(patientId);
-            if (patient == null)
-            {
-                return NotFound("Patient not found");
-            }
+            // var patient = await _patientRepo.GetByIdAsync(patientId);
 
             var spec = new BloodTestSpecification(patientId, bloodTestId);
             var bloodTest = await _bloodTestRepo.GetEntityWithSpec(spec);
-            if (bloodTest == null)
-            {
-                return NotFound("Blood test not found");
-            }
 
             var bloodTestDto = _mapper.Map<BloodTestDto>(bloodTest);
             return Ok(bloodTestDto);

@@ -1,4 +1,5 @@
 
+using API.Errors;
 using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
@@ -30,6 +31,8 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CardiacCatheterizationStudyDto>> GetCardiacCatheterizationStudy(int id)
         {
             var cardiacCatheterizationStudy = await _carCathStudyRepo.GetByIdAsync(id);

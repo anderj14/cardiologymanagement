@@ -1,3 +1,4 @@
+using API.Errors;
 using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
@@ -30,6 +31,8 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<StressTestDto>> GetStressTest(int id)
         {
             var stressTest = await _stressTestrepo.GetByIdAsync(id);

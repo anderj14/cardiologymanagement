@@ -1,3 +1,4 @@
+using API.Errors;
 using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
@@ -29,6 +30,8 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ElectrocardiogramDto>> GetElectrocardiogram(int id)
         {
             var electrocardiogram = await _electroRepo.GetByIdAsync(id);

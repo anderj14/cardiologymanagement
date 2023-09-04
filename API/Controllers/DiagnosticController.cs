@@ -1,3 +1,4 @@
+using API.Errors;
 using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
@@ -20,7 +21,8 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<DiagnosticDto>>> GetDiagnostics(){
+        public async Task<ActionResult<IReadOnlyList<DiagnosticDto>>> GetDiagnostics()
+        {
             var diagnostics = await _diagnosticRepo.ListAllAsync();
             var DiagnosticsDto = _mapper.Map<IReadOnlyList<DiagnosticDto>>(diagnostics);
 
@@ -28,7 +30,10 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<DiagnosticDto>> GetDiagnostic(int id){
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<DiagnosticDto>> GetDiagnostic(int id)
+        {
             var diagnostic = await _diagnosticRepo.GetByIdAsync(id);
             var diagnosticDto = _mapper.Map<DiagnosticDto>(diagnostic);
 
