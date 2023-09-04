@@ -1,60 +1,39 @@
 
+using API.Errors;
+using API.Extensions;
+using API.Middleware;
 using Core.Entities;
 using Core.Interfaces;
 using Infraestructure.Data;
 using Infraestructure.Data.Repository;
 using Infraestructure.Repository;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddApplicationServices(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-builder.Services.AddDbContext<ManagementContext>(opt =>
-{
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
-// builder.Services.AddControllers().AddJsonOptions(options =>
-// {
-//     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-// });
-
-builder.Services.AddScoped<IPatientRepository, PatientRepository>();
-builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
-builder.Services.AddScoped<IBloodTestRepository, BloodTestRepository>();
-builder.Services.AddScoped<ICardiacCatheterizationStudyRepository, CardiacCatheterizationStudyRepository>();
-builder.Services.AddScoped<IDiagnosticRepository, DiagnosticRepository>();
-builder.Services.AddScoped<IDiseaseHistoryRepository, DiseaseHistoryRepository>();
-builder.Services.AddScoped<IEchocardiogramRepository, EchocardiogramRepository>();
-builder.Services.AddScoped<IElectrocardiogramRepository, ElectrocardiogramRepository>();
-builder.Services.AddScoped<IHolterStudyRepository, HolterStudyRepository>();
-builder.Services.AddScoped<IMedicalHistoryRepository, MedicalHistoryRepository>();
-builder.Services.AddScoped<IPhysicalExaminationRepository, PhysicalExaminationRepository>();
-builder.Services.AddScoped<IStressTestRepository, StressTestRepository>();
-builder.Services.AddScoped<ITreatmentRepository, TreatmentRepository>();
-////
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-////
-///
-////////
 
 //////////
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+
+// add the custom exception handling middleware ExceptionMiddleware
+app.UseMiddleware<ExceptionMiddleware>();
+
+// Configure the error handling middleware to redirect 
+// all HTTP error responses to the path /errors/{0}.
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
 app.UseHttpsRedirection();
 

@@ -1,16 +1,14 @@
+using API.Errors;
 using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specification;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class PatientsController : ControllerBase
+    public class PatientsController : BaseApiController
     {
         private readonly IGenericRepository<Patient> _patientRepo;
         private readonly IMapper _mapper;
@@ -34,6 +32,8 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<PatientDto>> GetPatient(int id)
         {
             var spec = new PatientWithAllSpecification(id);
