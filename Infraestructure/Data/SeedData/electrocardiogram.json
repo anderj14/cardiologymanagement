@@ -8,7 +8,7 @@
         "HeartRate": "75 bpm",
         "Abnormalities": "No significant abnormalities",
         "Artifacts": "Minimal artifacts",
-        "PatientId": 1
+        "PatientId": 3
     },
     {
         "Id": 2,
@@ -42,5 +42,51 @@
         "Abnormalities": "T-wave inversion",
         "Artifacts": "Moderate",
         "PatientId": 2
+    },
+    {
+        "Id": 5,
+        "Date": "2023-09-05",
+        "HeartRhythm": "Normal",
+        "IntervalsSegments": "Normal intervals and segments",
+        "CharacteristicWaves": "Regular characteristic waves",
+        "HeartRate": "72 bpm",
+        "Abnormalities": "No significant abnormalities",
+        "Artifacts": "Minimal artifacts",
+        "PatientId": 4
+    },
+    {
+        "Id": 6,
+        "Date": "2023-09-10",
+        "HeartRhythm": "Normal",
+        "IntervalsSegments": "Normal intervals and segments",
+        "CharacteristicWaves": "Regular characteristic waves",
+        "HeartRate": "70 bpm",
+        "Abnormalities": "No significant abnormalities",
+        "Artifacts": "Minimal artifacts",
+        "PatientId": 5
+    },
+    {
+        "Id": 7,
+        "Date": "2023-09-15",
+        "HeartRhythm": "Normal",
+        "IntervalsSegments": "Normal intervals and segments",
+        "CharacteristicWaves": "Regular characteristic waves",
+        "HeartRate": "68 bpm",
+        "Abnormalities": "No significant abnormalities",
+        "Artifacts": "Minimal artifacts",
+        "PatientId": 6
+    },
+    {
+        "Id": 8,
+        "Date": "2023-09-20",
+        "HeartRhythm": "Normal",
+        "IntervalsSegments": "Normal intervals and segments",
+        "CharacteristicWaves": "Regular characteristic waves",
+        "HeartRate": "73 bpm",
+        "Abnormalities": "No significant abnormalities",
+        "Artifacts": "Minimal artifacts",
+        "PatientId": 5
     }
+    
+    
 ]

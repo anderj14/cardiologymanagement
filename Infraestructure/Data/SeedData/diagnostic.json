@@ -19,7 +19,7 @@
     "Severity": "Mild",
     "RiskAssessment": "Increased risk of complications",
     "Conclusions": "Medication and lifestyle changes recommended",
-    "PatientId": 2
+    "PatientId": 4
   },
   {
     "Id": 3,
@@ -30,7 +30,7 @@
     "Severity": "Moderate",
     "RiskAssessment": "Increased risk of heart disease",
     "Conclusions": "Recommend lifestyle changes and medication",
-    "PatientId": 1
+    "PatientId": 3
   },
   {
     "Id": 4,
@@ -42,5 +42,38 @@
     "RiskAssessment": "Increased risk of cardiovascular complications",
     "Conclusions": "Start insulin therapy and monitor regularly",
     "PatientId": 2
+  },
+  {
+    "Id": 5,
+    "Date": "2023-08-18",
+    "ConditionName": "Asthma",
+    "Description": "Chronic respiratory condition",
+    "ClassificationCondition": "Mild persistent",
+    "Severity": "Mild",
+    "RiskAssessment": "Increased risk of respiratory infections",
+    "Conclusions": "Prescription for inhaler provided",
+    "PatientId": 2
+  },
+  {
+    "Id": 6,
+    "Date": "2023-08-20",
+    "ConditionName": "High Cholesterol",
+    "Description": "Elevated cholesterol levels",
+    "ClassificationCondition": "Hypercholesterolemia",
+    "Severity": "Moderate",
+    "RiskAssessment": "Increased risk of heart disease",
+    "Conclusions": "Prescription for cholesterol-lowering medication given",
+    "PatientId": 5
+  },
+  {
+    "Id": 7,
+    "Date": "2023-08-20",
+    "ConditionName": "High Cholesterol",
+    "Description": "Elevated cholesterol levels",
+    "ClassificationCondition": "Hypercholesterolemia",
+    "Severity": "Moderate",
+    "RiskAssessment": "Increased risk of heart disease",
+    "Conclusions": "Prescription for cholesterol-lowering medication given",
+    "PatientId": 6
   }
 ]

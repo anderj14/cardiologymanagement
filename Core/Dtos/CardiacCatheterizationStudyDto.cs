@@ -26,5 +26,6 @@ namespace Core.Dtos
         public string FunctionsCardiacChambers { get; set; }
         public string DescriptionComplication { get; set; }
         public string Conclusion { get; set; }
+        public int PatientId { get; set; }
     }
 }

@@ -12,5 +12,6 @@ namespace Core.Dtos
         public string CholesterolHDL { get; set; }
         public string CholesterolLDL { get; set; }
         public string Triglycerides { get; set; }
+        public int PatientId { get; set; }
     }
 }

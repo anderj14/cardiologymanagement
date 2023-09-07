@@ -24,7 +24,7 @@ namespace Infraestructure.Data.Migrations
                     Address = table.Column<string>(type: "TEXT", nullable: true),
                     Phone = table.Column<long>(type: "INTEGER", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: true),
-                    NoMedicare = table.Column<long>(type: "INTEGER", nullable: false)
+                    SocialSecurity = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -19,5 +19,26 @@
         "Description": "Chronic obstructive pulmonary disease",
         "Treatment": "Bronchodilators and inhalers",
         "PatientId": 1
+    },
+    {
+        "Id": 4,
+        "StartDate": "2022-06-15",
+        "Description": "Type 2 Diabetes",
+        "Treatment": "Insulin therapy",
+        "PatientId": 3
+    },
+    {
+        "Id": 5,
+        "StartDate": "2022-08-05",
+        "Description": "High Cholesterol",
+        "Treatment": "Statins medication",
+        "PatientId": 6
+    },
+    {
+        "Id": 6,
+        "StartDate": "2022-07-20",
+        "Description": "Asthma",
+        "Treatment": "Bronchodilator inhaler",
+        "PatientId": 5
     }
 ]

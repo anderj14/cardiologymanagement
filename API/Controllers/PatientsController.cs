@@ -1,4 +1,5 @@
 using API.Errors;
+using API.Helper;
 using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
@@ -20,15 +21,21 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<PatientDto>>> GetPatients()
+        public async Task<ActionResult<Pagination<PatientDto>>> GetPatients(
+            [FromQuery] PatientSpecParams patientParams)
         {
-            var spec = new PatientWithAllSpecification();
+            var spec = new PatientWithAllSpecification(patientParams);
+
+            var countSpec = new PatientWithFiltersForCountSpecification(patientParams);
+
+            var totalItems = await _patientRepo.CountAsync(countSpec);
 
             var patients = await _patientRepo.ListAsync(spec);
 
-            var patientDtos = _mapper.Map<IReadOnlyList<PatientDto>>(patients);
+            var data = _mapper.Map<IReadOnlyList<PatientDto>>(patients);
 
-            return Ok(patientDtos);
+            return Ok(new Pagination<PatientDto>(patientParams.PageIndex,
+            patientParams.PageSize, totalItems, data));
         }
 
         [HttpGet("{id}")]

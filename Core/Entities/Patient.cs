@@ -10,7 +10,7 @@ namespace Core.Entities
         public string Address { get; set; }
         public long Phone { get; set; }
         public string Email { get; set; }
-        public long NoMedicare { get; set; }
+        public string SocialSecurity { get; set; }
 
         public ICollection<Appointment> Appointments { get; set; }
         public ICollection<DiseaseHistory> DiseaseHistories { get; set; }

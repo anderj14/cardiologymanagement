@@ -427,9 +427,6 @@ namespace Infraestructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("NoMedicare")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("PatientName")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -437,6 +434,10 @@ namespace Infraestructure.Data.Migrations
 
                     b.Property<long>("Phone")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("SocialSecurity")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

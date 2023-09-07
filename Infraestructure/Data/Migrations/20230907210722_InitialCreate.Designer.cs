@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Data.Migrations
 {
     [DbContext(typeof(ManagementContext))]
-    [Migration("20230821194317_InitialCreate")]
+    [Migration("20230907210722_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -430,9 +430,6 @@ namespace Infraestructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("NoMedicare")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("PatientName")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -440,6 +437,10 @@ namespace Infraestructure.Data.Migrations
 
                     b.Property<long>("Phone")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("SocialSecurity")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

@@ -9,37 +9,64 @@ namespace Core.Specification
 {
     public class PatientWithAllSpecification : BaseSpecification<Patient>
     {
-        public PatientWithAllSpecification()
+        public PatientWithAllSpecification(PatientSpecParams patientParams)
+            : base(x =>
+            (string.IsNullOrEmpty(patientParams.Search) || x.PatientName.ToLower()
+            .Contains(patientParams.Search))
+            )
         {
-            AddInclude(x => x.Appointments);
-            AddInclude(x => x.BloodTests);
-            AddInclude(x => x.CardiacCatheterizationStudies);
-            AddInclude(x => x.Diagnostics);
-            AddInclude(x => x.DiseaseHistories);
-            AddInclude(x => x.Echocardiograms);
-            AddInclude(x => x.Electrocardiograms);
-            AddInclude(x => x.HolterStudies);
-            AddInclude(x => x.MedicalHistories);
-            AddInclude(x => x.PhysicalExaminations);
-            AddInclude(x => x.StressTests);
-            AddInclude(x => x.Treatments);
+            AddInclude(p => p.Appointments);
+            AddInclude(p => p.BloodTests);
+            AddInclude(p => p.CardiacCatheterizationStudies);
+            AddInclude(p => p.Diagnostics);
+            AddInclude(p => p.DiseaseHistories);
+            AddInclude(p => p.Echocardiograms);
+            AddInclude(p => p.Electrocardiograms);
+            AddInclude(p => p.HolterStudies);
+            AddInclude(p => p.MedicalHistories);
+            AddInclude(p => p.PhysicalExaminations);
+            AddInclude(p => p.StressTests);
+            AddInclude(p => p.Treatments);
+
+            AddOrderBy(p => p.PatientName);
+
+            // You are configuring the pagination to show a specific results page
+            ApplyPaging(patientParams.PageSize * (patientParams.PageIndex - 1),
+            patientParams.PageSize);
+
+            if (!string.IsNullOrEmpty(patientParams.Sort))
+            {
+                switch (patientParams.Sort)
+                {
+                    case "dobAsc":
+                        AddOrderBy(p => p.DOB);
+                        break;
+
+                    case "dobDesc":
+                        AddOrderByDescending(p => p.DOB);
+                        break;
+                    default:
+                        AddOrderBy(n => n.PatientName);
+                        break;
+                }
+            }
         }
 
         public PatientWithAllSpecification(int id)
             : base(x => x.Id == id)
         {
-            AddInclude(x => x.Appointments);
-            AddInclude(x => x.BloodTests);
-            AddInclude(x => x.CardiacCatheterizationStudies);
-            AddInclude(x => x.Diagnostics);
-            AddInclude(x => x.DiseaseHistories);
-            AddInclude(x => x.Echocardiograms);
-            AddInclude(x => x.Electrocardiograms);
-            AddInclude(x => x.HolterStudies);
-            AddInclude(x => x.MedicalHistories);
-            AddInclude(x => x.PhysicalExaminations);
-            AddInclude(x => x.StressTests);
-            AddInclude(x => x.Treatments);
+            AddInclude(p => p.Appointments);
+            AddInclude(p => p.BloodTests);
+            AddInclude(p => p.CardiacCatheterizationStudies);
+            AddInclude(p => p.Diagnostics);
+            AddInclude(p => p.DiseaseHistories);
+            AddInclude(p => p.Echocardiograms);
+            AddInclude(p => p.Electrocardiograms);
+            AddInclude(p => p.HolterStudies);
+            AddInclude(p => p.MedicalHistories);
+            AddInclude(p => p.PhysicalExaminations);
+            AddInclude(p => p.StressTests);
+            AddInclude(p => p.Treatments);
         }
     }
 }

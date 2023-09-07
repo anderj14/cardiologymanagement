@@ -16,7 +16,7 @@ namespace Infraestructure.config
             builder.Property(p => p.Address);
             builder.Property(p => p.Phone).IsRequired();
             builder.Property(p => p.Email);
-            builder.Property(p => p.NoMedicare).IsRequired();
+            builder.Property(p => p.SocialSecurity).IsRequired();
 
             // Relationship appointment
             builder.HasMany(p => p.Appointments).WithOne(a => a.Patient)

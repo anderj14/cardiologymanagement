@@ -10,7 +10,7 @@ namespace Core.Dtos
         public string Address { get; set; }
         public long Phone { get; set; }
         public string Email { get; set; }
-        public long NoMedicare { get; set; }
+        public string SocialSecurity { get; set; }
 
         public IReadOnlyList<AppointmentDto> Appointments { get; set; }
         public IReadOnlyList<DiseaseHistoryDto> DiseaseHistories { get; set; }
