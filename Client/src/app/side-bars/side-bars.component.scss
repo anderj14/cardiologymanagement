@@ -1,0 +1,42 @@
+.content {
+    background-color: #fff;
+    border-right: 1.5px solid #a6a6a6;
+
+    .logo {
+        width: 60px;
+        transition: width 0.3s ease;
+
+        &:hover {
+            width: 63px;
+        }
+    }
+
+    .box {
+
+        &:hover {
+            background-color: #b5bcff;
+            border-radius: 20px;
+        }
+    }
+
+
+    .user {
+        transition: width 0.3s ease;
+        transition: height 0.3s ease;
+
+        &:hover {
+            width: 55px;
+            height: 55px;
+        }
+    }
+}
+
+.bi {
+    color: #000;
+    font-size: 30px;
+    transition: font-size 0.3s ease;
+
+    &:hover {
+        font-size: 33px;
+    }
+}
