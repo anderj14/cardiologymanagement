@@ -7,3 +7,12 @@
 
 
 // @import "bootstrap-icons/font/bootstrap-icons.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// font-family: 'montserrat', sans-serif;
+
+h1,h2,h3,h4, p, a, span, select, option, button, div{
+    font-family: 'montserrat', sans-serif;
+}

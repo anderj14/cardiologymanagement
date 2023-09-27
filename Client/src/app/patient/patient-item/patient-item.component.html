@@ -1,0 +1,12 @@
+<div class="cards" *ngIf="patient">
+    <div class="header">
+        <h2>{{patient.patientName}}</h2>
+    </div>
+    <div class="body">
+        <p>Identification carnet: {{patient.carnetIdentification}}</p> 
+        <p>Social security: {{patient.socialSecurity}}</p> 
+        <p>Phone: {{patient.phone}}</p> 
+        <p>Date of birth: {{patient.dob | date}}</p> 
+        <p>Age: {{calculateAge(patient.dob)}}</p> 
+    </div>
+</div>
