@@ -1,0 +1,49 @@
+<div class="title d-flex justify-content-end align-items-center">
+    <p>Welcome Dr. Anderson Frias</p>
+    <div class="user-avatar">
+        <a href="#">
+            <img src="https://github.com/mdo.png" alt="mdo" width="50" height="50" class="rounded-circle user mx-2">
+        </a>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients" class="bi bi-arrow-left"></i>
+        </div>
+        <div class="delete">
+            <button class="">Delete</button>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="patient" *ngIf="patient">
+            <div class="card">
+                <div class="header">
+                    <p>{{patient.patientName}}</p>
+                    <button class="">Update</button>
+                </div>
+                <div class="body">
+                    <div class="identity">
+                        <p>Carnet Identification: {{patient.carnetIdentification}}</p>
+                        <p>Social Security: {{patient.socialSecurity}}</p>
+                        <p>Date Of Birth: {{patient.dob | date}}</p>
+                        <p>Age: {{calculateAge(patient.dob)}} years</p>
+                        <p>Gender: {{patient.gender}}</p>
+                    </div>
+                    <div class="contact">
+                        <p>Address: {{patient.address}}</p>
+                        <p>Email: {{patient.email}}</p>
+                        <p>Phone: {{patient.phone}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="steps">
+            
+        </div>
+    </div>
+</div>

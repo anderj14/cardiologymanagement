@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { PatientModule } from './patient/patient.module';
+import { HomePageModule } from './home-page/home-page.module';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { PatientModule } from './patient/patient.module';
     HttpClientModule,
     CoreModule,
     PatientModule,
-
+    HomePageModule
 
   ],
   providers: [],

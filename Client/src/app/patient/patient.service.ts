@@ -22,4 +22,8 @@ export class PatientService {
 
     return this.http.get<Pagination<Patient[]>>(this.baseUrl + 'patients?pageSize=3', { params });
   }
+
+  getPatient(id: number){
+    return this.http.get<Patient>(this.baseUrl + 'patients/' + id);
+  }
 }

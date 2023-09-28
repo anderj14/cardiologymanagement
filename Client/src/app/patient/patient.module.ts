@@ -4,18 +4,22 @@ import { PatientComponent } from './patient.component';
 import { CoreModule } from '../core/core.module';
 import { PatientItemComponent } from './patient-item/patient-item.component';
 import { SharedModule } from '../shared/shared.module';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
     PatientComponent,
-    PatientItemComponent
+    PatientItemComponent,
+    PatientDetailsComponent
   ],
   imports: [
     CommonModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     PatientComponent
