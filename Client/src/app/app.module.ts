@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
-import { PatientModule } from './patient/patient.module';
 import { HomePageModule } from './home-page/home-page.module';
 
 
@@ -20,9 +19,7 @@ import { HomePageModule } from './home-page/home-page.module';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    PatientModule,
     HomePageModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@ import { CoreModule } from '../core/core.module';
 import { PatientItemComponent } from './patient-item/patient-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
-import { RouterModule } from '@angular/router';
+import { PatientRoutingModule } from './patient-routing.module';
 
 
 
@@ -19,10 +19,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     CoreModule,
     SharedModule,
-    RouterModule
-  ],
-  exports: [
-    PatientComponent
+    PatientRoutingModule
   ]
 })
 export class PatientModule { }
