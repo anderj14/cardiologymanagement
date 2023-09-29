@@ -43,7 +43,14 @@
             </div>
         </div>
         <div class="steps">
-            
+            <h3>Historial de Enfermedades</h3>
+            <ul *ngIf="diseaseHistories">
+                <li *ngFor="let history of diseaseHistories">
+                    <strong>Fecha de Inicio:</strong> {{ history.startDate | date }}<br>
+                    <strong>Descripción:</strong> {{ history.description }}<br>
+                    <strong>Tratamiento:</strong> {{ history.treatment }}
+                </li>
+            </ul>
         </div>
     </div>
 </div>

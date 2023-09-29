@@ -6,6 +6,7 @@ import { PatientItemComponent } from './patient-item/patient-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { PatientRoutingModule } from './patient-routing.module';
+import { SectionsModule } from '../sections/sections.module';
 
 
 
@@ -19,7 +20,8 @@ import { PatientRoutingModule } from './patient-routing.module';
     CommonModule,
     CoreModule,
     SharedModule,
-    PatientRoutingModule
+    PatientRoutingModule,
+    SectionsModule
   ]
 })
 export class PatientModule { }
