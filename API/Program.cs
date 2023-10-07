@@ -1,15 +1,8 @@
-
-using API.Errors;
 using API.Extensions;
 using API.Middleware;
-using Core.Entities;
-using Core.Interfaces;
 using Infraestructure.Data;
-using Infraestructure.Data.Repository;
-using Infraestructure.Repository;
-using Microsoft.AspNetCore.Mvc;
+// using Infraestructure.Repository;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 

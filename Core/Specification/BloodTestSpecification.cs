@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Core.Entities;
 
 namespace Core.Specification
@@ -11,12 +8,13 @@ namespace Core.Specification
         public BloodTestSpecification(int patientId, int bloodTestId)
             : base(bt => bt.PatientId == patientId && bt.Id == bloodTestId)
         {
-            AddInclude(bt => bt.PatientId);
+            AddInclude(bt => bt.Patient);
         }
 
-        public BloodTestSpecification(int patientId) : base(bt => bt.PatientId == patientId)
+        public BloodTestSpecification(int patientId) 
+        : base(bt => bt.PatientId == patientId)
         {
-            AddInclude(bt => bt.PatientId);
+            AddInclude(bt => bt.Patient);
         }
 
 

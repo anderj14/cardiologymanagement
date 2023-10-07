@@ -3,6 +3,7 @@ using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Specification;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -38,6 +39,30 @@ namespace API.Controllers
             var electrocardiogramDto = _mapper.Map<ElectrocardiogramDto>(electrocardiogram);
 
             return Ok(electrocardiogramDto);
+        }
+
+        [HttpGet("patient/{patientId}/electrocardiograms")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IReadOnlyList<Electrocardiogram>>> GetElectrocardiogramsByPatientId(int patientId)
+        {
+            var spec = new ElectrocardiogramSpecification(patientId);
+            var electrocardiograms = await _electroRepo.ListAsync(spec);
+            var electrocardiogramsDtos = _mapper.Map<IReadOnlyList<ElectrocardiogramDto>>(electrocardiograms);
+
+            return Ok(electrocardiogramsDtos);
+        }
+
+        [HttpGet("patient/{patientId}/electrocardiograms/{electrocardiogramId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Electrocardiogram>> GetElectrocardiogramByPatientId(int patientId, int electrocardiogramId)
+        {
+            var spec = new ElectrocardiogramSpecification(patientId, electrocardiogramId);
+            var electrocardiogram = await _electroRepo.GetEntityWithSpec(spec);
+            var electrocardiogramDto = _mapper.Map<ElectrocardiogramDto>(electrocardiogram);
+
+            return Ok(electrocardiogramDto); 
         }
     }
 }

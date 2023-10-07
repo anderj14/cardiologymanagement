@@ -3,6 +3,7 @@ using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Specification;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -39,5 +40,30 @@ namespace API.Controllers
 
             return Ok(diseaseHistoryDto);
         }
+
+        [HttpGet("patient/{patientId}/diseasesHistories")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IReadOnlyList<DiseaseHistoryDto>>> GetTreatmentsByPatientId(int patientId)
+        {
+            var spec = new DiseaseHistorySpecification(patientId);
+            var diseasesHistories = await _diseaseHistRepo.ListAsync(spec);
+            var diseasesHistoriesDtos = _mapper.Map<IReadOnlyList<DiseaseHistoryDto>>(diseasesHistories);
+
+            return Ok(diseasesHistoriesDtos);
+        }
+
+        [HttpGet("patient/{patientId}/diseasesHistories/{diseaseHistoryId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<DiseaseHistoryDto>> GetTreatmentByPatientId(int patientId, int diseaseHistoryId)
+        {
+            var spec = new DiseaseHistorySpecification(patientId, diseaseHistoryId);
+            var diseaseHistory = await _diseaseHistRepo.GetEntityWithSpec(spec);
+            var diseaseHistoryDto = _mapper.Map<DiseaseHistoryDto>(diseaseHistory);
+
+            return Ok(diseaseHistoryDto);
+        }
     }
 }
+

@@ -47,7 +47,7 @@ namespace API.Controllers
             return Ok(bloodTestDtos);
         }
 
-        [HttpGet("patient/{patientId}/BloodTests")]
+        [HttpGet("patient/{patientId}/bloodTests")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IReadOnlyList<BloodTestDto>>> GetPatientBloodTest(int patientId)
@@ -59,12 +59,11 @@ namespace API.Controllers
             return Ok(bloodTestsDtos);
         }
 
-        [HttpGet("{patientId}/appointment/{appointmentId}")]
+        [HttpGet("patient/{patientId}/bloodTests/{bloodTestId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<BloodTestDto>> GetPatientBloodTest(int patientId, int bloodTestId)
         {
-            // var patient = await _patientRepo.GetByIdAsync(patientId);
 
             var spec = new BloodTestSpecification(patientId, bloodTestId);
             var bloodTest = await _bloodTestRepo.GetEntityWithSpec(spec);

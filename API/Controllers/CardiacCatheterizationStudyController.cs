@@ -4,6 +4,7 @@ using AutoMapper;
 using Core.Dtos;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Specification;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -40,5 +41,32 @@ namespace API.Controllers
 
             return Ok(cardiacCatheterizationStudyDto);
         }
+
+        [HttpGet("patient/{patientId}/cardiacCathStudies")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IReadOnlyList<CardiacCatheterizationStudyDto>>> GetCardiacCathStudiesByPatientId(int patientId)
+        {
+            var spec = new CardiacCatheterizationStudySpecification(patientId);
+            var cardiacCatheterizationStudies = await _carCathStudyRepo.ListAsync(spec);
+            var cardiacCatheterizationStudyDtos = _mapper.Map<IReadOnlyList<CardiacCatheterizationStudyDto>>(cardiacCatheterizationStudies);
+
+            return Ok(cardiacCatheterizationStudyDtos);
+        }
+
+        [HttpGet("patient/{patientId}/cardiacCathStudy/{cardiacCathStudyId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<CardiacCatheterizationStudyDto>> GetCardiacCathStudyIdByPatientId(
+            int patientId, int cardiacCathStudyId)
+        {
+            var spec = new CardiacCatheterizationStudySpecification(patientId, cardiacCathStudyId);
+            var cardiacCathStudy = await _carCathStudyRepo.GetEntityWithSpec(spec);
+            var cardiacCathStudyDto = _mapper.Map<CardiacCatheterizationStudyDto>(cardiacCathStudy);
+
+            return Ok(cardiacCathStudyDto);
+        }
+
     }
+
 }

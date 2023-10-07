@@ -13,3 +13,4 @@ namespace Core.Interfaces
         Task<int> CountAsync(ISpecification<T> spec);
     }
 }
+
