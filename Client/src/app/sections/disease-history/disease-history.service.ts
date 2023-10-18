@@ -8,11 +8,8 @@ import { DiseaseHistory } from 'src/app/shared/Models/diseaseHistory';
 })
 export class DiseaseHistoryService {
 
-  private baseUrl = 'https://localhost:5001/api/';
+  private baseUrl = 'https://localhost:5001/api/diseasehistory';
 
   constructor(private http: HttpClient) { }
 
-  getDiseaseHistories(patientId: number): Observable<DiseaseHistory[]>{
-    return this.http.get<DiseaseHistory[]>(this.baseUrl + 'patients/patientId/diseaseHistory');
-  }
 }

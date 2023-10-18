@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { DiseaseHistoryComponent } from './disease-history.component';
 
 
-
 @NgModule({
   declarations: [
-    DiseaseHistoryComponent
+    DiseaseHistoryComponent,
   ],
   imports: [
     CommonModule

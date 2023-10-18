@@ -1,10 +1,8 @@
+
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Patient } from '../shared/Models/patient';
 import { PatientService } from './patient.service';
 import { PatientParams } from '../shared/Models/patientParams';
-import { ActivatedRoute } from '@angular/router';
-import { DiseaseHistoryService } from '../sections/disease-history/disease-history.service';
-import { DiseaseHistory } from '../shared/Models/diseaseHistory';
 
 @Component({
   selector: 'app-patient',
@@ -15,9 +13,7 @@ import { DiseaseHistory } from '../shared/Models/diseaseHistory';
 export class PatientComponent implements OnInit {
   @ViewChild('search') searchTerm?: ElementRef;
   patients!: Patient[];
-  patient: Patient | null = null;
 
-  diseaseHistories !: DiseaseHistory[];
   patientParams = new PatientParams();
   sortOptions = [
     { name: 'Alphabetical', value: 'name' },
@@ -29,8 +25,6 @@ export class PatientComponent implements OnInit {
 
   constructor(
     private patientService: PatientService,
-    private route: ActivatedRoute,
-    private diseaseHistoryService: DiseaseHistoryService
     ) { }
 
   ngOnInit(): void {
@@ -73,21 +67,5 @@ export class PatientComponent implements OnInit {
     this.getPatients();
   }
 
-  getDiseaseHistories(){
-    this.route.paramMap.subscribe((params) => {
-      const patientId = parseInt(params.get('id') || '0', 10);
-
-      if (patientId) {
-        // Obtener datos del paciente
-        this.patientService.getPatient(patientId).subscribe((patient) => {
-          this.patient =patient
-        });
-
-        this.diseaseHistoryService.getDiseaseHistories(patientId).subscribe((histories) => {
-          this.diseaseHistories = histories;
-        })
-      }
-    })
-  }
-
 }
+

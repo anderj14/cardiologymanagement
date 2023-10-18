@@ -24,7 +24,9 @@
             <div class="card">
                 <div class="header">
                     <p>{{patient.patientName}}</p>
-                    <button class="">Update</button>
+                    <div class="update">
+                        <button class="">Update</button>
+                    </div>
                 </div>
                 <div class="body">
                     <div class="identity">
@@ -42,15 +44,329 @@
                 </div>
             </div>
         </div>
-        <div class="steps">
-            <h3>Historial de Enfermedades</h3>
-            <ul *ngIf="diseaseHistories">
-                <li *ngFor="let history of diseaseHistories">
-                    <strong>Fecha de Inicio:</strong> {{ history.startDate | date }}<br>
-                    <strong>Descripción:</strong> {{ history.description }}<br>
-                    <strong>Tratamiento:</strong> {{ history.treatment }}
-                </li>
-            </ul>
+        <div class="modules">
+            <div class="module appointment">
+                <div class="card">
+                    <div class="header">
+                        <p>Appointments</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let appointment of appointment; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Appointment date: {{ appointment.date | date }}</p>
+                                <p>Appointment time: {{ appointment.time }}</p>
+                                <p>Description: {{ appointment.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module bloodTest">
+                <div class="card">
+                    <div class="header">
+                        <p>Blood Tests</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let bloodTest of bloodTest; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Appointment date : {{ bloodTest.date | date }}</p>
+                                <p>Hemoblobin: {{bloodTest.hemoglobin}}</p>
+                                <p>hematocrit: {{bloodTest.hematocrit}}</p>
+                                <p>White Blood Cell: {{bloodTest.whiteBloodCell}}</p>
+                                <p>Platelets: {{bloodTest.platelets}}</p>
+                                <p>Glucose: {{bloodTest.glucose}}</p>
+                                <p>Cholesterol HDL: {{bloodTest.cholesterolHDL}}</p>
+                                <p>Cholesterol LDL: {{bloodTest.cholesterolLDL}}</p>
+                                <p>Tryglycerides: {{bloodTest.triglycerides}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module cardiacCathStudy">
+                <div class="card">
+                    <div class="header">
+                        <p>Cardiac Catheterization Studies</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let cardiacCathStudy of cardiacCathStudy; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Appointment date: {{ cardiacCathStudy.date | date }}</p>
+                                <p>Appointment time: {{ cardiacCathStudy.time }}</p>
+                                <p>Num Location Main Coronary: {{ cardiacCathStudy.numLocationMainCoronary }}</p>
+                                <p>Blockage Each Coronary Artery: {{ cardiacCathStudy.blockageEachCoronaryArtery }}</p>
+                                <p>Description Abnormality: {{ cardiacCathStudy.descriptionAbnormality }}</p>
+                                <p>Blood Pressure Aorta: {{ cardiacCathStudy.bloodPressureAorta }}</p>
+                                <p>Chambers Left Atrium: {{ cardiacCathStudy.chambersLeftAtrium }}</p>
+                                <p>Chambers Left Ventricle: {{ cardiacCathStudy.chambersLeftVentricle }}</p>
+                                <p>Chambers Right Atrium: {{ cardiacCathStudy.chambersRightAtrium }}</p>
+                                <p>Chambers Right Ventricle: {{ cardiacCathStudy.chambersRightVentricle }}</p>
+                                <p>Velocity Blood Flow: {{ cardiacCathStudy.velocityBloodFlow }}</p>
+                                <p>Left Ventricular Ejection Fraction: {{
+                                    cardiacCathStudy.leftVentricularEjectionFraction }}</p>
+                                <p>Blood Pressure Pulmonary Arteries: {{ cardiacCathStudy.bloodPressurePulmonaryArteries
+                                    }}</p>
+                                <p>Valvular Insufficiency Aortic: {{ cardiacCathStudy.valvularInsufficiencyAortic }}</p>
+                                <p>Valvular Insufficiency Mitral: {{ cardiacCathStudy.valvularInsufficiencyMitral }}</p>
+                                <p>Valvular Insufficiency Pulmonary: {{ cardiacCathStudy.valvularInsufficiencyPulmonary
+                                    }}</p>
+                                <p>Valvular Insufficiency Tricuspid: {{ cardiacCathStudy.valvularInsufficiencyTricuspid
+                                    }}</p>
+                                <p>Pressure Gradient Valves: {{ cardiacCathStudy.pressureGradientValves }}</p>
+                                <p>Structural Abnormalities: {{ cardiacCathStudy.structuralAbnormalities }}</p>
+                                <p>Functions Cardiac Chambers: {{ cardiacCathStudy.functionsCardiacChambers }}</p>
+                                <p>Description Complication: {{ cardiacCathStudy.descriptionComplication }}</p>
+                                <p>Conclusion: {{ cardiacCathStudy.conclusion }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module Diagnostic">
+                <div class="card">
+                    <div class="header">
+                        <p>Diagnostics</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let diagnostic of diagnostic; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Appointment date: {{ diagnostic.date | date }}</p>
+                                <p>Condicion Name: {{ diagnostic.conditionName }}</p>
+                                <p>Description: {{ diagnostic.description }}</p>
+                                <p>Classification Condition: {{ diagnostic.classificationCondition }}</p>
+                                <p>Severity: {{ diagnostic.severity }}</p>
+                                <p>Risk Assessment: {{ diagnostic.riskAssessment }}</p>
+                                <p>Conclusions: {{ diagnostic.conclusions }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module diseaseHistory">
+                <div class="card">
+                    <div class="header">
+                        <p>Diagnostics</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let diseaseHistory of diseaseHistory; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Start date: {{ diseaseHistory.startDate | date }}</p>
+                                <p>Description: {{ diseaseHistory.description }}</p>
+                                <p>Treatment: {{ diseaseHistory.treatment }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module echocardiogram">
+                <div class="card">
+                    <div class="header">
+                        <p>Echocardiogram</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let echocardiogram of echocardiogram; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Date: {{ echocardiogram.date | date }}</p>
+                                <p>Cardiac Dimensions: {{ echocardiogram.cardiacDimensions }}</p>
+                                <p>Ejection Fraction: {{ echocardiogram.ejectionFraction }}</p>
+                                <p>Valve Function: {{ echocardiogram.valveFunction }}</p>
+                                <p>Velocities Blood Flows: {{ echocardiogram.velocitiesBloodFlows }}</p>
+                                <p>Movement Cardiac Walls: {{ echocardiogram.movementCardiacWalls }}</p>
+                                <p>Pulmonary Arterial Pressure: {{ echocardiogram.pulmonaryArterialPressure }}</p>
+                                <p>Blood Flow: {{ echocardiogram.bloodFlow }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module electrocardiogram">
+                <div class="card">
+                    <div class="header">
+                        <p>Electrocardiogram</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let electrocardiogram of electrocardiogram; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Date: {{ electrocardiogram.date | date}}</p>
+                                <p>Heart Rhythm: {{ electrocardiogram.heartRhythm }}</p>
+                                <p>Intervals Segments: {{ electrocardiogram.intervalsSegments }}</p>
+                                <p>Characteristic Waves: {{ electrocardiogram.characteristicWaves }}</p>
+                                <p>Heart Rate: {{ electrocardiogram.heartRate }}</p>
+                                <p>Abnormalities: {{ electrocardiogram.abnormalities }}</p>
+                                <p>Artifacts: {{ electrocardiogram.artifacts }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module electrocardiogram">
+                <div class="card">
+                    <div class="header">
+                        <p>Electrocardiogram</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let electrocardiogram of electrocardiogram; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Date: {{ electrocardiogram.date | date}}</p>
+                                <p>Heart Rhythm: {{ electrocardiogram.heartRhythm }}</p>
+                                <p>Intervals Segments: {{ electrocardiogram.intervalsSegments }}</p>
+                                <p>Characteristic Waves: {{ electrocardiogram.characteristicWaves }}</p>
+                                <p>Heart Rate: {{ electrocardiogram.heartRate }}</p>
+                                <p>Abnormalities: {{ electrocardiogram.abnormalities }}</p>
+                                <p>Artifacts: {{ electrocardiogram.artifacts }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module holterStudy">
+                <div class="card">
+                    <div class="header">
+                        <p>Holter Study</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let holterStudy of holterStudy; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Date: {{ holterStudy.date | date}}</p>
+                                <p>Time: {{ holterStudy.time }}</p>
+                                <p>Study Duration: {{ holterStudy.studyDuration }}</p>
+                                <p>Average Heart Rate: {{ holterStudy.averageHeartRate }}</p>
+                                <p>Maximum Heart Rate: {{ holterStudy.maximumHeartRate }}</p>
+                                <p>Type Heart Rhythm: {{ holterStudy.typeHeartRhythm }}</p>
+                                <p>Arrhythmia Episodes: {{ holterStudy.arrhythmiaEpisodes }}</p>
+                                <p>Physical Activity: {{ holterStudy.physicalActivity }}</p>
+                                <p>Patient Symptoms: {{ holterStudy.patientSymptoms }}</p>
+                                <p>Conclusion: {{ holterStudy.conclusion }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module medicalHistory">
+                <div class="card">
+                    <div class="header">
+                        <p>Medical History</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let medicalHistory of medicalHistory; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Date: {{ medicalHistory.date | date}}</p>
+                                <p>Previous Heart Disease: {{ medicalHistory.previousHeartDisease }}</p>
+                                <p>High Blood Pressure: {{ medicalHistory.highBloodPressure }}</p>
+                                <p>Diabetes: {{ medicalHistory.diabetes }}</p>
+                                <p>Hyperlipidemia: {{ medicalHistory.hyperlipidemia }}</p>
+                                <p>Obesity: {{ medicalHistory.obesity }}</p>
+                                <p>Smoking: {{ medicalHistory.smoking }}</p>
+                                <p>Cardiac Procedures Surgeries: {{ medicalHistory.cardiacProceduresSurgeries }}</p>
+                                <p>Systemic Diseases: {{ medicalHistory.systemicDiseases }}</p>
+                                <p>Medications: {{ medicalHistory.medications }}</p>
+                                <p>Family Diseases: {{ medicalHistory.familyDiseases }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module physicalExamination">
+                <div class="card">
+                    <div class="header">
+                        <p>Physical Examination </p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let physicalExamination of physicalExamination; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Date: {{ physicalExamination.date | date}}</p>
+                                <p>Time: {{ physicalExamination.time }}</p>
+                                <p>Duration: {{ physicalExamination.duration }}</p>
+                                <p>Max Heart Rate: {{ physicalExamination.maxHeartRate }}</p>
+                                <p>Peak Pressure: {{ physicalExamination.peakPressure }}</p>
+                                <p>Exercise Induced Symptoms: {{ physicalExamination.exerciseInducedSymptoms }}</p>
+                                <p>Abnormal Ecg Findings: {{ physicalExamination.abnormalEcgFindings }}</p>
+                                <p>Conclusion: {{ physicalExamination.conclusion }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module stressTest">
+                <div class="card">
+                    <div class="header">
+                        <p>Stress Test </p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let stressTest of stressTest; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Date: {{ stressTest.date | date}}</p>
+                                <p>Time: {{ stressTest.time }}</p>
+                                <p>Duration: {{ stressTest.duration }}</p>
+                                <p>Max Heart Rate: {{ stressTest.maxHeartRate }}</p>
+                                <p>Peak Pressure: {{ stressTest.peakPressure }}</p>
+                                <p>Exercise Induced Symptoms: {{ stressTest.exerciseInducedSymptoms }}</p>
+                                <p>Abnormal Ecg Findings: {{ stressTest.abnormalEcgFindings }}</p>
+                                <p>Conclusion: {{ stressTest.conclusion }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="module treatment">
+                <div class="card">
+                    <div class="header">
+                        <p>Treatment</p>
+                        <div class="view">
+                            <button class="">View All</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div *ngFor="let treatment of treatment; index as i">
+                            <div class="" *ngIf="i === 0">
+                                <p>Date: {{ treatment.date | date}}</p>
+                                <p>Medication: {{ treatment.medication }}</p>
+                                <p>Dosage: {{ treatment.dosage }}</p>
+                                <p>Instructions: {{ treatment.instructions }}</p>
+                                <p>Other Treatments: {{ treatment.otherTreatments }}</p>
+                                <p>Side Effects: {{ treatment.sideEffects }}</p>
+                                <p>Treatment Monitoring: {{ treatment.treatmentMonitoring }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

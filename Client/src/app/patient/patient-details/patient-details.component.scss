@@ -11,8 +11,6 @@
 .container-fluid {
     background-color: #E9EEFC;
 
-
-
     .action {
         display: flex;
         justify-content: space-between;
@@ -21,9 +19,7 @@
 
         .back {
 
-            // background-color: red;
             i {
-                // background-color: blue;
                 font-size: 35px;
                 color: #303D50;
                 cursor: pointer;
@@ -55,6 +51,11 @@
             .card {
                 border: none;
                 padding: 10px;
+                transition: 0.2s;
+
+                &:hover {
+                    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.180);
+                }
 
                 .header {
                     display: flex;
@@ -71,7 +72,6 @@
                         color: #fff;
                         padding: 5px 20px;
                         border-radius: 8px;
-
                     }
                 }
 
@@ -85,6 +85,65 @@
                     p {
                         font-size: 18px;
                         font-weight: 300;
+                    }
+                }
+            }
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            background-color: red;
+
+            @media (max-width: 1700px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media (max-width: 1150px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .appointment {
+                display: grid;
+                grid-row: 1/1;
+            }
+
+            .module {
+                padding: 20px;
+                transition: 0.2s;
+
+                .card {
+                    border: none;
+                    padding: 10px;
+                    transition: 0.2s;
+
+                    &:hover {
+                        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.180);
+                    }
+
+                    .header {
+                        display: flex;
+                        justify-content: space-between;
+
+                        p {
+                            font-size: 25px;
+                        }
+
+                        .view {
+                            button {
+                                border: none;
+                                background-color: #ACE40B;
+                                color: #fff;
+                                padding: 5px 20px;
+                                border-radius: 8px;
+
+                                &:hover {
+                                    background-color: #a5d31b;
+                                    color: #fff;
+                                }
+                            }
+                        }
                     }
                 }
             }
