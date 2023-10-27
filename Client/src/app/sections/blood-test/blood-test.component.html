@@ -1,0 +1,45 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="bloodTests">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
+            </div>
+        </div>
+        <h2>Blood Tests of {{patientName}}</h2>
+        <div class="table-wrapper">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Hemoglobin</th>
+                        <th>Hematocrit</th>
+                        <th>White Blood Cell</th>
+                        <th>Platelets</th>
+                        <th>Glucose</th>
+                        <th>Cholesterol HDL</th>
+                        <th>Cholesterol LDL</th>
+                        <th>Triglycerides</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bloodTest of bloodTest"
+                    [routerLink]="['/patients', patientId, 'bloodTests', bloodTest.id]"
+                    >
+                        <td>{{ bloodTest.date | date }}</td>
+                        <td>{{ bloodTest.hemoglobin }}</td>
+                        <td>{{ bloodTest.hematocrit }}</td>
+                        <td>{{ bloodTest.whiteBloodCell }}</td>
+                        <td>{{ bloodTest.platelets }}</td>
+                        <td>{{ bloodTest.glucose }}</td>
+                        <td>{{ bloodTest.cholesterolHDL }}</td>
+                        <td>{{ bloodTest.cholesterolLDL }}</td>
+                        <td>{{ bloodTest.triglycerides }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -53,7 +53,7 @@ namespace API.Controllers
             return Ok(diagnosticDtos);
         }
 
-        [HttpGet("patient/{patientId}/diagnostic/{diagnosticId}")]
+        [HttpGet("patient/{patientId}/diagnostics/{diagnosticId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<DiagnosticDto>> GetDiagnosticIdByPatientId(

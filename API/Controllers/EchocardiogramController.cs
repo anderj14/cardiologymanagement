@@ -53,7 +53,7 @@ namespace API.Controllers
             return Ok(echocardiogramDtos);
         }
 
-        [HttpGet("patient/{patientId}/echocardiogram/{echocardiogramId}")]
+        [HttpGet("patient/{patientId}/echocardiograms/{echocardiogramId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<EchocardiogramDto>> GetEchocardiogramByPatientId(

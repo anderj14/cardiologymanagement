@@ -56,7 +56,7 @@ namespace API.Controllers
         [HttpGet("patient/{patientId}/holterStudies/{holterStudyId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IReadOnlyList<HolterStudyDto>>> GetHolterStudyByPatientId(int patientId, int holterStudyId)
+        public async Task<ActionResult<HolterStudyDto>> GetHolterStudyByPatientId(int patientId, int holterStudyId)
         {
             var spec = new HolterStudySpecification(patientId, holterStudyId);
             var holterStudy = await _holterStudyRepo.GetEntityWithSpec(spec);

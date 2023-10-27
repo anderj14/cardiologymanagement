@@ -1,0 +1,28 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+  <div class="bloodTests">
+    <div class="action">
+      <div class="back">
+        <i routerLink="/patients/{{patientId}}/bloodTests" class="bi bi-arrow-left"></i>
+      </div>
+      <div class="options">
+        <button class="delete">Delete</button>
+        <button class="update">Update</button>
+      </div>
+    </div>
+    <div *ngIf="bloodTest">
+      <h2>Blood Test Details</h2>
+      <p><strong>Patient Name:</strong> {{ patientName }}</p>
+      <p><strong>Fecha:</strong> {{ bloodTest.date | date }}</p>
+      <p><strong>Hemoglobin:</strong> {{bloodTest.hemoglobin}}</p>
+      <p><strong>Hematocrit:</strong> {{bloodTest.hematocrit}}</p>
+      <p><strong>White Blood Cell:</strong> {{bloodTest.whiteBloodCell}}</p>
+      <p><strong>Glucose:</strong> {{bloodTest.glucose}}</p>
+      <p><strong>Cholesterol HDL:</strong> {{bloodTest.cholesterolHDL}}</p>
+      <p><strong>Cholesterol LDL:</strong> {{bloodTest.cholesterolLDL}}</p>
+      <p><strong>Triglycerides:</strong> {{bloodTest.triglycerides}}</p>
+    </div>
+  </div>
+</div>

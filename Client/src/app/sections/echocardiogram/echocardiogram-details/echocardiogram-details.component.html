@@ -1,0 +1,28 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="echocardiogram">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
+            </div>
+            <div class="options">
+                <button class="delete">Delete</button>
+                <button class="update">Update</button>
+            </div>
+        </div>
+        <div *ngIf="echocardiogram">
+            <h2>Echocardiograms details</h2>
+            <p><strong>Patient Name:</strong> {{patientName}}</p>
+            <p><strong>Date :</strong> {{echocardiogram.date | date}}</p>
+            <p><strong>Cardiac Dimensions :</strong> {{echocardiogram.cardiacDimensions}}</p>
+            <p><strong>Ejection Fraction :</strong> {{echocardiogram.ejectionFraction}}</p>
+            <p><strong>Valve Function :</strong> {{echocardiogram.valveFunction}}</p>
+            <p><strong>Velocities Blood Flows :</strong> {{echocardiogram.velocitiesBloodFlows}}</p>
+            <p><strong>Movement Cardiac Walls :</strong> {{echocardiogram.movementCardiacWalls}}</p>
+            <p><strong>Pulmonary Arterial Pressure :</strong> {{echocardiogram.pulmonaryArterialPressure}}</p>
+            <p><strong>Blood Flow :</strong> {{echocardiogram.bloodFlow}}</p>
+        </div>
+    </div>
+</div>

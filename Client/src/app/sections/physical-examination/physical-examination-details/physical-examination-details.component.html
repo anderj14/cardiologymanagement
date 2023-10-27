@@ -1,0 +1,31 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="physical-examination">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}/physicalexaminations" class="bi bi-arrow-left"></i>
+            </div>
+            <div class="options">
+                <button class="delete">Delete</button>
+                <button class="update">Update</button>
+            </div>
+        </div>
+
+        <div *ngIf="physicalExamination">
+            <h2>Physical examination details</h2>
+            <p><strong>Date: </strong>{{physicalExamination.date | date}}</p>
+            <p><strong>Time: </strong>{{physicalExamination.time}}</p>
+            <p><strong>Duration: </strong>{{physicalExamination.duration}}</p>
+            <p><strong>Max Heart Rate: </strong>{{physicalExamination.maxHeartRate}}</p>
+            <p><strong>Peak Pressure: </strong>{{physicalExamination.peakPressure}}</p>
+            <p><strong>Exercise Induced Symptoms: </strong>{{physicalExamination.exerciseInducedSymptoms}}</p>
+            <p><strong>Abnormal Ecg Findings: </strong>{{physicalExamination.abnormalEcgFindings}}</p>
+            <!-- <p><strong></strong>{{physicalExamination.</p>
+            <p><strong></strong>{{physicalExamination.}} </p> -->
+            <p><strong>Conclusion: </strong>{{physicalExamination.conclusion}}</p>
+        </div>
+
+    </div>
+</div>

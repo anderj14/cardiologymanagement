@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppointmentComponent } from './appointment.component';
 import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
+import { AppointmentRoutingModule } from './appointment-routing.module';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 
@@ -11,7 +13,9 @@ import { AppointmentDetailsComponent } from './appointment-details/appointment-d
     AppointmentDetailsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppointmentRoutingModule,
+    CoreModule
   ]
 })
 export class AppointmentModule { }

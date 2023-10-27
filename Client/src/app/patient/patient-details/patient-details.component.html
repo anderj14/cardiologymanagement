@@ -1,12 +1,4 @@
-<div class="title d-flex justify-content-end align-items-center">
-    <p>Welcome Dr. Anderson Frias</p>
-    <div class="user-avatar">
-        <a href="#">
-            <img src="https://github.com/mdo.png" alt="mdo" width="50" height="50" class="rounded-circle user mx-2">
-        </a>
-    </div>
-</div>
-
+<app-nav-bar-docheader></app-nav-bar-docheader>
 <div class="container-fluid">
 
     <div class="action">
@@ -46,12 +38,10 @@
         </div>
         <div class="modules">
             <div class="module appointment">
-                <div class="card">
+                <div class="card" (click)="viewAllAppointments()">
                     <div class="header">
                         <p>Appointments</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
+
                     </div>
                     <div class="body">
                         <div *ngFor="let appointment of appointment; index as i">
@@ -65,12 +55,10 @@
                 </div>
             </div>
             <div class="module bloodTest">
-                <div class="card">
+                <div class="card" (click)="viewAllBloodTests()">
                     <div class="header">
                         <p>Blood Tests</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
+                        
                     </div>
                     <div class="body">
                         <div *ngFor="let bloodTest of bloodTest; index as i">
@@ -90,12 +78,10 @@
                 </div>
             </div>
             <div class="module cardiacCathStudy">
-                <div class="card">
+                <div class="card" (click)="viewAllCardiacCathStudies()">
                     <div class="header">
                         <p>Cardiac Catheterization Studies</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
+                        
                     </div>
                     <div class="body">
                         <div *ngFor="let cardiacCathStudy of cardiacCathStudy; index as i">
@@ -131,13 +117,11 @@
                     </div>
                 </div>
             </div>
-            <div class="module Diagnostic">
-                <div class="card">
+            <div class="module diagnostic">
+                <div class="card" (click)="viewAllDiagnostics()">
                     <div class="header">
                         <p>Diagnostics</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
+                        
                     </div>
                     <div class="body">
                         <div *ngFor="let diagnostic of diagnostic; index as i">
@@ -154,13 +138,10 @@
                     </div>
                 </div>
             </div>
-            <div class="module diseaseHistory">
-                <div class="card">
+            <div class="module diseaseHistory"> 
+                <div class="card" (click)="viewAllDiseaseHistories()">
                     <div class="header">
-                        <p>Diagnostics</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
+                        <p>Disease History</p>
                     </div>
                     <div class="body">
                         <div *ngFor="let diseaseHistory of diseaseHistory; index as i">
@@ -174,12 +155,9 @@
                 </div>
             </div>
             <div class="module echocardiogram">
-                <div class="card">
+                <div class="card" (click)="viewAllEchocardiograms()">
                     <div class="header">
                         <p>Echocardiogram</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
                     </div>
                     <div class="body">
                         <div *ngFor="let echocardiogram of echocardiogram; index as i">
@@ -198,35 +176,9 @@
                 </div>
             </div>
             <div class="module electrocardiogram">
-                <div class="card">
+                <div class="card" (click)="viewAllElectrocardiograms()">
                     <div class="header">
                         <p>Electrocardiogram</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <div *ngFor="let electrocardiogram of electrocardiogram; index as i">
-                            <div class="" *ngIf="i === 0">
-                                <p>Date: {{ electrocardiogram.date | date}}</p>
-                                <p>Heart Rhythm: {{ electrocardiogram.heartRhythm }}</p>
-                                <p>Intervals Segments: {{ electrocardiogram.intervalsSegments }}</p>
-                                <p>Characteristic Waves: {{ electrocardiogram.characteristicWaves }}</p>
-                                <p>Heart Rate: {{ electrocardiogram.heartRate }}</p>
-                                <p>Abnormalities: {{ electrocardiogram.abnormalities }}</p>
-                                <p>Artifacts: {{ electrocardiogram.artifacts }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="module electrocardiogram">
-                <div class="card">
-                    <div class="header">
-                        <p>Electrocardiogram</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
                     </div>
                     <div class="body">
                         <div *ngFor="let electrocardiogram of electrocardiogram; index as i">
@@ -244,12 +196,9 @@
                 </div>
             </div>
             <div class="module holterStudy">
-                <div class="card">
+                <div class="card" (click)="viewAllHolterStudy()">
                     <div class="header">
                         <p>Holter Study</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
                     </div>
                     <div class="body">
                         <div *ngFor="let holterStudy of holterStudy; index as i">
@@ -270,12 +219,9 @@
                 </div>
             </div>
             <div class="module medicalHistory">
-                <div class="card">
+                <div class="card" (click)="viewAllMedicalHistories()">
                     <div class="header">
                         <p>Medical History</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
                     </div>
                     <div class="body">
                         <div *ngFor="let medicalHistory of medicalHistory; index as i">
@@ -297,12 +243,9 @@
                 </div>
             </div>
             <div class="module physicalExamination">
-                <div class="card">
+                <div class="card" (click)="viewAllPhysicalExaminations()">
                     <div class="header">
                         <p>Physical Examination </p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
                     </div>
                     <div class="body">
                         <div *ngFor="let physicalExamination of physicalExamination; index as i">
@@ -321,12 +264,9 @@
                 </div>
             </div>
             <div class="module stressTest">
-                <div class="card">
+                <div class="card" (click)="viewAllStressTests()">
                     <div class="header">
                         <p>Stress Test </p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
                     </div>
                     <div class="body">
                         <div *ngFor="let stressTest of stressTest; index as i">
@@ -345,12 +285,9 @@
                 </div>
             </div>
             <div class="module treatment">
-                <div class="card">
+                <div class="card" (click)="viewAllTreatments()">
                     <div class="header">
                         <p>Treatment</p>
-                        <div class="view">
-                            <button class="">View All</button>
-                        </div>
                     </div>
                     <div class="body">
                         <div *ngFor="let treatment of treatment; index as i">

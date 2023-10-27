@@ -1,0 +1,44 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="echocardiograms">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
+            </div>
+        </div>
+        <h2>Echocardiograms of {{patientName}}</h2>
+
+        <div class="table-wrapper">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Cardiac Dimensions</th>
+                        <th>Ejection Fraction</th>
+                        <th>Valve Function</th>
+                        <th>Velocities Blood Flows</th>
+                        <th>Movement Cardiac Walls</th>
+                        <th>Pulmonary Arterial Pressure</th>
+                        <th>Blood Flow</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let echocardiogram of echocardiogram"
+                        [routerLink]="['/patients', patientId, 'echocardiograms', echocardiogram.id]">
+                        <td>{{echocardiogram.date | date}}</td>
+                        <td>{{echocardiogram.cardiacDimensions}}</td>
+                        <td>{{echocardiogram.ejectionFraction}}</td>
+                        <td>{{echocardiogram.valveFunction}}</td>
+                        <td>{{echocardiogram.velocitiesBloodFlows}}</td>
+                        <td>{{echocardiogram.movementCardiacWalls}}</td>
+                        <td>{{echocardiogram.pulmonaryArterialPressure}}</td>
+                        <td>{{echocardiogram.bloodFlow}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

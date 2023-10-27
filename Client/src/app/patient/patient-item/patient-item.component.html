@@ -1,6 +1,6 @@
-<div class="cards" *ngIf="patient">
+<div class="cards" *ngIf="patient" routerLink="/patients/{{patient.id}}">
     <div class="header">
-        <h2 routerLink="/patient/{{patient.id}}">{{patient.patientName}}</h2>
+        <h2>{{patient.patientName}}</h2>
     </div>
     <div class="body">
         <p>Identification carnet: {{patient.carnetIdentification}}</p> 
@@ -8,6 +8,5 @@
         <p>Phone: {{patient.phone}}</p> 
         <p>Date of birth: {{patient.dob | date}}</p> 
         <p>Age: {{calculateAge(patient.dob)}}</p> 
-        <button routerLink="/patients/{{patient.id}}">view</button>
     </div>
 </div>

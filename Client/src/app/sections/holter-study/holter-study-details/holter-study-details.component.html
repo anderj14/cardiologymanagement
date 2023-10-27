@@ -1,0 +1,32 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="holter-study">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}/holterstudies" class="bi bi-arrow-left"></i>
+            </div>
+            <div class="options">
+                <button class="delete">Delete</button>
+                <button class="update">Update</button>
+            </div>
+        </div>
+
+        <div *ngIf="holterStudy">
+            <h2>Holter study details</h2>
+            <p><strong>Patient Name: </strong>{{patientName}}</p>
+            <p><strong>Date: </strong>{{holterStudy.date | date}}</p>
+            <p><strong>Time: </strong>{{holterStudy.time}}</p>
+            <p><strong>Study Diration: </strong>{{holterStudy.studyDuration}}</p>
+            <p><strong>Average Heart Rate: </strong>{{holterStudy.averageHeartRate}}</p>
+            <p> <strong>Maximum Heart Rate:</strong>{{holterStudy.maximumHeartRate}}</p>
+            <p><strong>Type Heart Rhythm: </strong>{{holterStudy.typeHeartRhythm}}</p>
+            <p><strong>Arrhythmia Episodes: </strong>{{holterStudy.arrhythmiaEpisodes}}</p>
+            <p><strong>Physical Activity: </strong>{{holterStudy.physicalActivity}}</p>
+            <p><strong>Patient Symptoms: </strong>{{holterStudy.patientSymptoms}}</p>
+            <p><strong>Conclusion: </strong>{{holterStudy.conclusion}}</p>
+        </div>
+
+    </div>
+</div>

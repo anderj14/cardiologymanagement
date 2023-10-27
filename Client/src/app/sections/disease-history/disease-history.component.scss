@@ -1,0 +1,50 @@
+.content {
+    padding: 25px;
+    margin-top: -40px;
+
+    .diseases-history {
+        .action {
+            margin-bottom: 10px;
+
+            .back {
+                i {
+                    font-size: 35px;
+                    color: #303D50;
+                    cursor: pointer;
+                    transition: 0.5s;
+
+                    &:hover {
+                        color: #6985af;
+                        padding: 5px;
+                    }
+                }
+            }
+        }
+
+        h2 {
+            margin-bottom: 25px;
+        }
+
+        .table-wrapper {
+            overflow-X: scroll;
+
+            table {
+                border-collapse: separate;
+                border-spacing: 0px;
+                min-width: max-content;
+            }
+
+            table.table-hover {
+                thead th {
+                    position: sticky;
+                }
+
+                tbody tr:hover {
+                    background-color: #f3f3f3;
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+}

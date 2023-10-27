@@ -1,0 +1,31 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="stress-test">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}/stresstests" class="bi bi-arrow-left"></i>
+            </div>
+            <div class="options">
+                <button class="delete">Delete</button>
+                <button class="update">Update</button>
+            </div>
+        </div>
+
+        <div *ngIf="stressTest">
+            <h2>Stress test details</h2>
+            <p><strong>Patient Name: </strong>{{patientName}}</p>
+            <p><strong>Date: </strong>{{stressTest.date}}</p>
+            <p><strong>Time: </strong>{{stressTest.time}}</p>
+            <p><strong>Duration: </strong>{{stressTest.duration}}</p>
+            <p><strong>Max Heart Rate: </strong>{{stressTest.maxHeartRate}}</p>
+            <p><strong>Peak Pressure: </strong>{{stressTest.peakPressure}}</p>
+            <p><strong>Exercise Induced Symptoms: </strong>{{stressTest.exerciseInducedSymptoms}}</p>
+            <p><strong>Abnormal Ecg Findings: </strong>{{stressTest.abnormalEcgFindings}}</p>
+            <!-- <p><strong>ImageEco</strong>{{stressTest.imageEco}}</p>
+            <p><strong>Image Stress</strong>{{stressTest.imageStress}}</p> -->
+            <p><strong>Conclusion: </strong>{{stressTest.conclusion}}</p>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,52 @@
-<p>medical-history works!</p>
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="medical-histories">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
+            </div>
+        </div>
+
+        <h2>Medical histories of {{patientName}}</h2>
+
+        <div class="table-wrapper">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Previous Heart Disease</th>
+                        <th>High Blood Pressure</th>
+                        <th>Diabetes</th>
+                        <th>Hyperlipidemia</th>
+                        <th>Obesity</th>
+                        <th>Smoking</th>
+                        <th>Cardiac Procedures Surgeries</th>
+                        <th>Systemic Diseases</th>
+                        <th>Medications</th>
+                        <th>Family Diseases</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let medicalHistory of medicalhistory"
+                    [routerLink]="['/patients',patientId,'medicalhistories', medicalHistory.id]"
+                    >
+                        <td>{{ medicalHistory.date | date}}</td>
+                        <td>{{ medicalHistory.previousHeartDisease }}</td>
+                        <td>{{ medicalHistory.highBloodPressure }}</td>
+                        <td>{{ medicalHistory.diabetes }}</td>
+                        <td>{{ medicalHistory.hyperlipidemia }}</td>
+                        <td>{{ medicalHistory.obesity }}</td>
+                        <td>{{ medicalHistory.smoking }}</td>
+                        <td>{{ medicalHistory.cardiacProceduresSurgeries }}</td>
+                        <td>{{ medicalHistory.systemicDiseases }}</td>
+                        <td>{{ medicalHistory.medications }}</td>
+                        <td>{{ medicalHistory.familyDiseases }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

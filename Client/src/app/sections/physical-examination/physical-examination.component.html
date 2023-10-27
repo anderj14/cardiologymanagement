@@ -1,0 +1,49 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="physical-examination">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
+            </div>
+        </div>
+
+        <h2>Physical examinations of {{patientName}}</h2>
+
+        <div class="table-wrapper">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Duration</th>
+                        <th>Max Heart Rate</th>
+                        <th>Peak Pressure</th>
+                        <th>Exercise Induced Symptoms</th>
+                        <th>Abnormal Ecg Findings</th>
+                        <!-- <th></th> -->
+                        <!-- <th></th> -->
+                        <th>conclusion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let physicalExamination of physicalExamination"
+                    [routerLink]="['/patients', patientId, 'physicalexaminations', physicalExamination.id]"
+                    >
+                        <td>{{physicalExamination.date | date}}</td>
+                        <td>{{physicalExamination.time}}</td>
+                        <td>{{physicalExamination.duration}}</td>
+                        <td>{{physicalExamination.maxHeartRate}}</td>
+                        <td>{{physicalExamination.peakPressure}}</td>
+                        <td>{{physicalExamination.exerciseInducedSymptoms}}</td>
+                        <td>{{physicalExamination.abnormalEcgFindings}}</td>
+                        <!-- <td>{{physicalExamination.}}</td>
+                        <td>{{physicalExamination.}}</td> -->
+                        <td>{{physicalExamination.conclusion}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

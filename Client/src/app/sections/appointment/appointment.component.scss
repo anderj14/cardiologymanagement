@@ -1,0 +1,35 @@
+.content {
+    padding: 25px;
+    margin-top: -40px;
+
+    .appointments {
+        .action {
+            margin-bottom: 10px;
+
+            .back {
+                i {
+                    font-size: 35px;
+                    color: #303D50;
+                    cursor: pointer;
+                    transition: 0.5s;
+
+                    &:hover {
+                        color: #6985af;
+                        padding: 5px;
+                    }
+                }
+            }
+        }
+
+        h2 {
+            margin-bottom: 25px;
+        }
+
+        table.table-hover {
+            tbody tr:hover {
+                background-color: #f3f3f3;
+                cursor: pointer;
+            }
+        }
+    }
+}

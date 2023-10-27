@@ -8,16 +8,6 @@
   overflow-y: auto;
   background-color: #E9EEFC;
 
-  .title {
-    background-color: #fff;
-    padding: 10px;
-
-    p {
-      margin-top: 10px;
-      font-size: 20px;
-    }
-  }
-
   .container-fluid {
     background-color: #E9EEFC;
     padding: 20px;
@@ -79,12 +69,20 @@
       justify-content: space-between;
       margin-top: 10px;
 
+
       .card {
         width: calc(33.33% - 20px);
         margin-bottom: 30px;
         padding: 20px;
         border: 1px solid #ddd;
         border-radius: 5px;
+
+        cursor: pointer;
+        transition: 0.2s;
+    
+        &:hover {
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.180);
+        }
 
         .card-header {
           font-weight: bold;

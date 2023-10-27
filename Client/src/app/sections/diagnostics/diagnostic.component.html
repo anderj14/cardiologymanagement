@@ -1,0 +1,41 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="diagnostics">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
+            </div>
+        </div>
+        <h2>Blood Tests of {{patientName}}</h2>
+        <div class="table-wrapper">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Condition Name</th>
+                        <th>Description</th>
+                        <th>Classification Condition</th>
+                        <th>Severity</th>
+                        <th>Risk Assessment</th>
+                        <th>Conclusions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let diagnostic of diagnostic"
+                    [routerLink]="['/patients', patientId, 'diagnostics', diagnostic.id]"
+                    >
+                        <td>{{ diagnostic.date | date }}</td>
+                        <td>{{ diagnostic.conditionName }}</td>
+                        <td>{{ diagnostic.description }}</td>
+                        <td>{{ diagnostic.classificationCondition }}</td>
+                        <td>{{ diagnostic.severity }}</td>
+                        <td>{{ diagnostic.riskAssessment }}</td>
+                        <td>{{ diagnostic.conclusions }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

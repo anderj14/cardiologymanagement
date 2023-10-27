@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/shared/Models/patient';
 import { PatientService } from '../patient.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DiseaseHistory } from 'src/app/shared/Models/diseaseHistory';
 import { Appointment } from 'src/app/shared/Models/appointment';
 import { BloodTest } from 'src/app/shared/Models/bloodTest';
@@ -37,37 +37,12 @@ export class PatientDetailsComponent implements OnInit {
   constructor(
     private patientService: PatientService,
     private route: ActivatedRoute,
-
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.loadPatient();
   }
-
-  // loadPatient() {
-  //   const id = this.route.snapshot.paramMap.get('id');
-  //   if (id) this.patientService.getPatient(+id).subscribe({
-  //     next: patient => this.patient = patient,
-  //     error: error => console.log(error)
-  //   })
-  // }
-
-
-  // loadPatient() {
-  //   this.route.params.subscribe((params) => {
-  //     const patientId = +params['id'];
-
-  //     //details patient by id
-  //     this.patientService.getPatient(patientId).subscribe((patient) => {
-  //       this.patient = patient;
-  //     });
-
-  //     // appointment of patient by id
-  //     this.patientService.getAppointmentByPatientId(patientId).subscribe((appointments) => {
-  //       this.appointments = appointments
-  //     });
-  //   });
-  // }
 
   loadPatient() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -124,6 +99,90 @@ export class PatientDetailsComponent implements OnInit {
       this.patientService.getTreatmentByPatientId(+id).subscribe(treatment => {
         this.treatment = treatment;
       });
+    }
+  }
+
+  viewAllAppointments() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/appointments`]);
+    }
+  }
+
+  viewAllBloodTests() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/bloodTests`]);
+    }
+  }
+
+  viewAllCardiacCathStudies() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/cardiacCathStudies`]);
+    }
+  }
+
+  viewAllDiagnostics() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/diagnostics`]);
+    }
+  }
+
+  viewAllEchocardiograms() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/echocardiograms`]);
+    }
+  }
+
+  viewAllDiseaseHistories() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/diseaseshistory`]);
+    }
+  }
+
+  viewAllElectrocardiograms() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/electrocardiograms`]);
+    }
+  }
+
+  viewAllHolterStudy() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/holterstudies`]);
+    }
+  }
+
+  viewAllMedicalHistories() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/medicalhistories`]);
+    }
+  }
+
+  viewAllPhysicalExaminations() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/physicalexaminations`]);
+    }
+  }
+
+  viewAllStressTests() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/stresstests`]);
+    }
+  }
+
+  viewAllTreatments() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.router.navigate([`/patients/${id}/treatments`]);
     }
   }
 

@@ -1,0 +1,27 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="diagnostics">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}/diagnostics" class="bi bi-arrow-left"></i>
+            </div>
+            <div class="options">
+                <button class="delete">Delete</button>
+                <button class="update">Update</button>
+            </div>
+        </div>
+        <div *ngIf="diagnostic">
+            <h2>Blood Test Details</h2>
+            <p><strong>Patient Name:</strong> {{ patientName }}</p>
+            <p><strong>Date:</strong> {{ diagnostic.date | date }}</p>
+            <p><strong>Condition Name:</strong> {{ diagnostic.conditionName }}</p>
+            <p><strong>Description:</strong> {{ diagnostic.description }}</p>
+            <p><strong>Classification Condition:</strong> {{ diagnostic.classificationCondition }}</p>
+            <p><strong>Severity:</strong> {{ diagnostic.severity }}</p>
+            <p><strong>Risk Assessment:</strong> {{ diagnostic.riskAssessment }}</p>
+            <p><strong>Conclusions:</strong> {{ diagnostic.conclusions }}</p>
+        </div>
+    </div>
+</div>

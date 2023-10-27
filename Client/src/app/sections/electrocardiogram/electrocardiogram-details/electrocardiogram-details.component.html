@@ -1,0 +1,27 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="electrocardiogram">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
+            </div>
+            <div class="options">
+                <button class="delete">Delete</button>
+                <button class="update">Update</button>
+            </div>
+        </div>
+        <div *ngIf="electrocardiogram">
+            <h2>Electrocardiograms details</h2>
+            <p><strong>Patient Name: </strong>{{patientName}}</p>
+            <p><strong>Date: </strong>{{electrocardiogram.date | date}}</p>
+            <p><strong>Heart Rhythm: </strong>{{electrocardiogram.heartRhythm}}</p>
+            <p><strong>Intervals Segments: </strong>{{electrocardiogram.intervalsSegments}}</p>
+            <p><strong>Characteristic Waves: </strong>{{electrocardiogram.characteristicWaves}}</p>
+            <p><strong>Heart Rate: </strong>{{electrocardiogram.heartRate}}</p>
+            <p><strong>Abnormalities: </strong>{{electrocardiogram.abnormalities}}</p>
+            <p><strong>Artifacts: </strong>{{electrocardiogram.artifacts}}</p>
+        </div>
+    </div>
+</div>

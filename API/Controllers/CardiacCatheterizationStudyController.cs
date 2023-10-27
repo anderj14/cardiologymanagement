@@ -54,7 +54,7 @@ namespace API.Controllers
             return Ok(cardiacCatheterizationStudyDtos);
         }
 
-        [HttpGet("patient/{patientId}/cardiacCathStudy/{cardiacCathStudyId}")]
+        [HttpGet("patient/{patientId}/cardiacCathStudies/{cardiacCathStudyId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CardiacCatheterizationStudyDto>> GetCardiacCathStudyIdByPatientId(

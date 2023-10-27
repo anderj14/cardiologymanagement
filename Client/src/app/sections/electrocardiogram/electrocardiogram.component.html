@@ -1,0 +1,42 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="electrocardiograms">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
+            </div>
+        </div>
+        <h2>Electrocardiograms of {{patientName}}</h2>
+
+        <div class="table-wrapper">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Heart Rhythm</th>
+                        <th>Intervals Segments</th>
+                        <th>Characteristic Waves</th>
+                        <th>Heart Rate</th>
+                        <th>Abnormalities</th>
+                        <th>Artifacts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let electrocardiogram of electrocardiogram"
+                    [routerLink]="['/patients', patientId, 'electrocardiograms', electrocardiogram.id]"
+                    >
+                        <td>{{electrocardiogram.date | date}}</td>
+                        <td>{{electrocardiogram.heartRhythm}}</td>
+                        <td>{{electrocardiogram.intervalsSegments}}</td>
+                        <td>{{electrocardiogram.characteristicWaves}}</td>
+                        <td>{{electrocardiogram.heartRate}}</td>
+                        <td>{{electrocardiogram.abnormalities}}</td>
+                        <td>{{electrocardiogram.artifacts}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

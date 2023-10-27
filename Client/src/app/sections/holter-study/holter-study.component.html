@@ -1,0 +1,48 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+    <div class="holter-studies">
+        <div class="action">
+            <div class="back">
+                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
+            </div>
+        </div>
+        <h2>Holter studies of {{patientName}}</h2>
+
+        <div class="table-wrapper">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Study Diration</th>
+                        <th>Average Heart Rate</th>
+                        <th>Maximum Heart Rate</th>
+                        <th>Type Heart Rhythm</th>
+                        <th>Arrhythmia Episodes</th>
+                        <th>Physical Activity</th>
+                        <th>Patient Symptoms</th>
+                        <th>Conclusion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let holterStudy of holterStudy"
+                    [routerLink]="['/patients', patientId, 'holterstudies', holterStudy.id]"
+                    >
+                        <td>{{holterStudy.date | date}}</td>
+                        <td>{{holterStudy.time}}</td>
+                        <td>{{holterStudy.studyDuration}}</td>
+                        <td>{{holterStudy.averageHeartRate}}</td>
+                        <td>{{holterStudy.maximumHeartRate}}</td>
+                        <td>{{holterStudy.typeHeartRhythm}}</td>
+                        <td>{{holterStudy.arrhythmiaEpisodes}}</td>
+                        <td>{{holterStudy.physicalActivity}}</td>
+                        <td>{{holterStudy.patientSymptoms}}</td>
+                        <td>{{holterStudy.conclusion}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<app-nav-bar-docheader></app-nav-bar-docheader>
+<hr style="margin-top: -3px;">
+
+<div class="content">
+  <div class="cardiacCathStudies">
+    <div class="action">
+      <div class="back">
+        <i routerLink="/patients/{{patientId}}/cardiacCathStudies" class="bi bi-arrow-left"></i>
+      </div>
+      <div class="options">
+        <button class="delete">Delete</button>
+        <button class="update">Update</button>
+      </div>
+    </div>
+    <div *ngIf="cardiacCathStudy">
+      <h2>Cardiac Catheterization Studies Details</h2>
+      <p><strong>Patient Name:</strong> {{ patientName }}</p>
+      <p><strong>Date:</strong> {{cardiacCathStudy.date | date}}</p>
+      <p><strong>Time:</strong> {{cardiacCathStudy.time}}</p>
+      <p><strong>Number Location Main Coronary:</strong> {{cardiacCathStudy.numLocationMainCoronary}}</p>
+      <p><strong>Blockage Each Coronary Artery:</strong> {{cardiacCathStudy.blockageEachCoronaryArtery}}</p>
+      <p><strong>Description Abnormality:</strong> {{cardiacCathStudy.descriptionAbnormality}}</p>
+      <p><strong>Blood Pressure Aorta:</strong> {{cardiacCathStudy.bloodPressureAorta}}</p>
+      <p><strong>Chambers Left Atrium:</strong> {{cardiacCathStudy.chambersLeftAtrium}}</p>
+      <p><strong>Chambers Left Ventricle:</strong> {{cardiacCathStudy.chambersLeftVentricle}}</p>
+      <p><strong>Chambers Right Atrium:</strong> {{cardiacCathStudy.chambersRightAtrium}}</p>
+      <p><strong>Chambers Right Ventricle:</strong> {{cardiacCathStudy.chambersRightVentricle}}</p>
+      <p><strong>Blood Flow Coronary Arteries:</strong> {{cardiacCathStudy.bloodFlowCoronaryArteries}}</p>
+      <p><strong>Velocity Blood Flow:</strong> {{cardiacCathStudy.velocityBloodFlow}}</p>
+      <p><strong>Left Ventricular Ejection Fraction:</strong> {{cardiacCathStudy.leftVentricularEjectionFraction}}</p>
+      <p><strong>Blood Pressure Pulmonary Arteries:</strong> {{cardiacCathStudy.bloodPressurePulmonaryArteries}}</p>
+      <p><strong>Valvular Insufficiency Aortic:</strong> {{cardiacCathStudy.valvularInsufficiencyAortic}}</p>
+      <p><strong>Valvular Insufficiency Mitral:</strong> {{cardiacCathStudy.valvularInsufficiencyMitral}}</p>
+      <p><strong>Valvular Insufficiency Pulmonary:</strong> {{cardiacCathStudy.valvularInsufficiencyPulmonary}}</p>
+      <p><strong>Valvular Insufficiency Tricuspid:</strong> {{cardiacCathStudy.valvularInsufficiencyTricuspid}}</p>
+      <p><strong>Pressure Gradient Valves:</strong> {{cardiacCathStudy.pressureGradientValves}}</p>
+      <p><strong>Structural Abnormalities:</strong> {{cardiacCathStudy.structuralAbnormalities}}</p>
+      <p><strong>Functions Cardiac Chambers:</strong> {{cardiacCathStudy.functionsCardiacChambers}}</p>
+      <p><strong>Description Complication:</strong> {{cardiacCathStudy.descriptionComplication}}</p>
+      <p><strong>Conclusion:</strong> {{cardiacCathStudy.conclusion}}</p>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+.content {
+    padding: 25px;
+    margin-top: -40px;
+
+    .medical-history {
+        .action {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .options {
+                button {
+                    margin-right: 10px;
+                    border: none;
+                    color: #fff;
+                    border-radius: 8px;
+                    padding: 7px 12px;
+
+                }
+
+                .delete {
+                    background-color: #E40B0B;
+                    transition: 0.5s;
+
+                    &:hover {
+                        background-color: #c20909;
+                    }
+                }
+
+                .update {
+                    background-color: #0be448;
+                    transition: 0.5s;
+
+                    &:hover {
+                        background-color: #0bc43f;
+                    }
+                }
+            }
+
+            .back {
+                i {
+                    font-size: 35px;
+                    color: #303D50;
+                    cursor: pointer;
+                    transition: 0.5s;
+
+                    &:hover {
+                        color: #6985af;
+                        padding: 5px;
+                    }
+                }
+            }
+        }
+
+        h2 {
+            margin-bottom: 25px;
+        }
+    }
+}
