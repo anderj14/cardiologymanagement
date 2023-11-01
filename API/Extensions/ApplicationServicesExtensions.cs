@@ -25,23 +25,10 @@ namespace API.Extensions
                 opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
 
-            // services.AddScoped<IPatientRepository, PatientRepository>();
-            // services.AddScoped<IAppointmentRepository, AppointmentRepository>();
-            // services.AddScoped<IBloodTestRepository, BloodTestRepository>();
-            // services.AddScoped<ICardiacCatheterizationStudyRepository, CardiacCatheterizationStudyRepository>();
-            // services.AddScoped<IDiagnosticRepository, DiagnosticRepository>();
-            // services.AddScoped<IDiseaseHistoryRepository, DiseaseHistoryRepository>();
-            // services.AddScoped<IEchocardiogramRepository, EchocardiogramRepository>();
-            // services.AddScoped<IElectrocardiogramRepository, ElectrocardiogramRepository>();
-            // services.AddScoped<IHolterStudyRepository, HolterStudyRepository>();
-            // services.AddScoped<IMedicalHistoryRepository, MedicalHistoryRepository>();
-            // services.AddScoped<IPhysicalExaminationRepository, PhysicalExaminationRepository>();
-            // services.AddScoped<IStressTestRepository, StressTestRepository>();
-            // services.AddScoped<ITreatmentRepository, TreatmentRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             ////
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            // services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             ////
             // Configure the behavior of the API by configuring 'ApiBehaviorOptions'
             services.Configure<ApiBehaviorOptions>(options =>

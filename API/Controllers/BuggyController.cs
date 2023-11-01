@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.Errors;
 using Infraestructure.Data;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -20,8 +15,10 @@ namespace API.Controllers
         [HttpGet("notfound")]
         public ActionResult GetNotFoundRequest()
         {
-            var thing = _context.Patients.Find(3);
-            if(thing == null){
+            var thing = _context.Patients.Find(43);
+
+            if (thing == null)
+            {
                 return NotFound(new ApiResponse(404));
             }
 
@@ -31,7 +28,7 @@ namespace API.Controllers
         [HttpGet("servererror")]
         public ActionResult GetServerError()
         {
-            var thing = _context.Patients.Find(3);
+            var thing = _context.Patients.Find(43);
 
             var thingToReturn = thing.ToString();
 

@@ -28,6 +28,25 @@ namespace Infraestructure.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            // configures the conversion of properties from type decimal to double.
+            if (Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
+            {
+                // This loop iterates through all entities.
+                foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+                {
+                    // All decimal type properties are obtained for the current entity.
+                    var properties = entityType.ClrType.GetProperties()
+                    .Where(p => p.PropertyType == typeof(decimal));
+                    // This loop iterates through the decimal type properties found in the entity.
+                    foreach (var property in properties)
+                    {
+                        // Configure the conversion of the identified decimal property to double
+                        modelBuilder.Entity(entityType.Name).Property(property.Name)
+                        .HasConversion<double>();
+                    }
+                }
+            }
         }
     }
 }
