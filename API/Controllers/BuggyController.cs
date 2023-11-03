@@ -17,10 +17,7 @@ namespace API.Controllers
         {
             var thing = _context.Patients.Find(43);
 
-            if (thing == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
+            if (thing == null) return NotFound(new ApiResponse(404));
 
             return Ok();
         }
@@ -28,7 +25,7 @@ namespace API.Controllers
         [HttpGet("servererror")]
         public ActionResult GetServerError()
         {
-            var thing = _context.Patients.Find(43);
+            var thing = _context.Patients.Find(42);
 
             var thingToReturn = thing.ToString();
 

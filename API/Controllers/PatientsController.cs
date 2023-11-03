@@ -47,9 +47,11 @@ namespace API.Controllers
 
             var patient = await _patientRepo.GetEntityWithSpec(spec);
 
-            var patientDto = _mapper.Map<PatientDto>(patient);
+            if (patient == null) return NotFound(new ApiResponse(404));
 
-            return Ok(patientDto);
+            // var patientDto = _mapper.Map<Patient, PatientDto>(patient)
+
+            return _mapper.Map<Patient, PatientDto>(patient);
         }
     }
 }

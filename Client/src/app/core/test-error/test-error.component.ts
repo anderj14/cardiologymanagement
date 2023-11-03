@@ -9,11 +9,12 @@ import { environment } from 'src/app/environments/environment';
 })
 export class TestErrorComponent {
   baseUrl = environment.apiUrl;
+  validationErrors: string[] = [];
 
   constructor(private http: HttpClient) { }
 
   get404Error() {
-    this.http.get(this.baseUrl + 'patient/45').subscribe({
+    this.http.get(this.baseUrl + 'patients/45').subscribe({
       next: response => console.log(response),
       error: error => console.log(error)
     });
@@ -36,9 +37,10 @@ export class TestErrorComponent {
   get400ValidationError() {
     this.http.get(this.baseUrl + 'patients/fifty').subscribe({
       next: response => console.log(response),
-      error: error =>
+      error: error => {
         console.log(error)
-
+        this.validationErrors = error.errors;
+      }
     });
   }
 }
