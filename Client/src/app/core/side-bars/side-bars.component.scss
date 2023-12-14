@@ -1,74 +1,46 @@
-.sidebar {
-    color: #fff;
-    width: 190px;
-    height: 100vh;
 
-    flex-shrink: 0;
-    overflow-y: auto;
 
+:host * {
+    transition: all 500ms ease-in-out;
 }
 
-.logo {
-    padding: 10px;
+.sidenav-header {
+    padding-top: 24px;
+    text-align: center;
 
+    >img {
+        border-radius: 100%;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    .header-text {
+        height: 3rem;
+
+        >h2 {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        >p {
+            margin: 0;
+            font-size: 0.8rem;
+        }
+    }
 }
 
-.nav-link {
-    color: #787878;
-    text-decoration: none;
-    transition: background-color 0.2s ease-in-out;
-    border: 10px;
-    border-radius: 10px;
+.hide-header-text {
+    opacity: 0;
+    height: 0px !important;
+}
 
+.menu-item {
+    border-left: 5px solid;
+    border-left-color: rgba(0, 0, 0, 0);
+}
 
-    .box {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        i {
-            font-size: 25px;
-            color: #8F93AB;
-            display: flex;
-            align-items: center;
-            padding: 5px;
-            margin-top: 5px;
-            width: 100%;
-            border-radius: 10px;
-
-            &:hover {
-                background-color: #60D7E8;
-                color: #fff;
-            }
-
-            span {
-                // font-family: 'montserrat', sans-serif;
-                font-weight: 400;
-                font-size: 15px;
-                margin-left: 10px;
-            }
-        }
-    }
-
-    .logout {
-        i {
-            font-size: 25px;
-            color: #8F93AB;
-            display: flex;
-            align-items: center;
-
-            &:hover {
-                color: #bdbdbd;
-            }
-
-            span {
-                font-family: 'montserrat', sans-serif;
-                font-weight: 400;
-                font-size: 15px;
-                margin-left: 10px;
-            }
-        }
-    }
-
-
+.selected-menu-item {
+    border-left-color: #303BA6;
+    background: rgba(0, 0, 0, 0.05);
 }

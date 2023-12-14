@@ -1,24 +1,16 @@
-.cards {
-    border: none;
-    padding: 10px;
 
-    .header {
-        h2 {
-            font-weight: 400;
-        }
 
-        p {
-            font-size: 25px;
-            font-weight: 400;
-        }
+mat-card {
+    // border: none;
 
+    &:hover {
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.180);
     }
 
-    .body {
-        // display: flex;
-        p {
-            font-size: 18px;
-            font-weight: 300;
-        }
+    mat-card-subtitle {
+        margin-left: 8px;
+    }
+    h2 {
+        font-weight: 400;
     }
 }

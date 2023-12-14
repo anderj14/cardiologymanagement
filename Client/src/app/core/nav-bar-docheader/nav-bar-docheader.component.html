@@ -1,8 +1,37 @@
-<div class="title d-flex justify-content-end align-items-center">
-    <p>Welcome Dr. Anderson Frias</p>
-    <div class="user-avatar">
-        <a href="#">
-            <img src="https://github.com/mdo.png" alt="mdo" width="50" height="50" class="rounded-circle user mx-2">
+<mat-toolbar class="mat-elevation-z3">
+    <button mat-icon-button (click)="collapsed.set(!collapsed())">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <div class="d-flex navbar">
+        <a class="navbar-logo" href="#">
+            <img src="/assets/images/Logo.png" alt="logo" style="max-height: 50px;">
         </a>
+        <ul class=" nav-list d-flex me-auto m-2">
+            <li class="nav-item m-2">
+                <a class="nav-link" routerLink="/" href="#">Home</a>
+            </li>
+            <li class="nav-item m-2">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item m-2">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item m-2">
+                <a class="nav-link" routerLink="/test-error" href="#">Error</a>
+            </li>
+        </ul>
     </div>
-</div>
+    <div class="users">
+        <a href="#" class="m-2 text-dark" routerLink="/patients">Login</a>
+        <a href="#" class="m-2 text-dark">Sign in</a>
+    </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+        <app-side-bars [collapsed]="collapsed()" />
+    </mat-sidenav>
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

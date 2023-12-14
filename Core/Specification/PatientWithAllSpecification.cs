@@ -11,8 +11,8 @@ namespace Core.Specification
     {
         public PatientWithAllSpecification(PatientSpecParams patientParams)
             : base(x =>
-            (string.IsNullOrEmpty(patientParams.Search) || x.PatientName.ToLower()
-            .Contains(patientParams.Search))
+            string.IsNullOrEmpty(patientParams.Search) || x.PatientName.ToLower()
+            .Contains(patientParams.Search)
             )
         {
             AddInclude(p => p.Appointments);

@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { PatientRoutingModule } from './patient-routing.module';
 import { SectionsModule } from '../sections/sections.module';
-
+import { MaterialModule } from '../material/material/material.module';
 
 
 @NgModule({
@@ -21,7 +21,8 @@ import { SectionsModule } from '../sections/sections.module';
     CoreModule,
     SharedModule,
     PatientRoutingModule,
-    SectionsModule
+    SectionsModule,
+    MaterialModule
   ]
 })
 export class PatientModule { }

@@ -1,12 +1,15 @@
-<div class="cards" *ngIf="patient" routerLink="/patients/{{patient.id}}">
-    <div class="header">
-        <h2>{{patient.patientName}}</h2>
-    </div>
-    <div class="body">
-        <p>Identification carnet: {{patient.carnetIdentification}}</p> 
-        <p>Social security: {{patient.socialSecurity}}</p> 
-        <p>Phone: {{patient.phone}}</p> 
-        <p>Date of birth: {{patient.dob | date}}</p> 
-        <p>Age: {{calculateAge(patient.dob)}}</p> 
-    </div>
-</div>
+<mat-card class="card" *ngIf="patient" routerLink="/patients/{{patient.id}}">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>{{patient.patientName}}</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Identification carnet: {{patient.carnetIdentification}}</p>
+        <p>Social security: {{patient.socialSecurity}}</p>
+        <p>Phone: {{patient.phone}}</p>
+        <p>Date of birth: {{patient.dob | date}}</p>
+        <p>Age: {{calculateAge(patient.dob)}}</p>
+        <mat-divider />
+    </mat-card-content>
+</mat-card>

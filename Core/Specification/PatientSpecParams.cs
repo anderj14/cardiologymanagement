@@ -16,7 +16,7 @@ namespace Core.Specification
 
         public string Sort { get; set; }
 
-        private string _search { get; set; }
+        private string _search;
         public string Search
         {
             get => _search;
