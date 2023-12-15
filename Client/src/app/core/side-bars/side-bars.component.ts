@@ -31,17 +31,17 @@ export class SideBarsComponent {
     {
       icon: 'calendar_month',
       label: 'Appointments',
-      route: 'analytics',
+      route: 'appointments',
     },
     {
       icon: 'cut',
       label: 'Surjery',
-      route: 'comments',
+      route: 'surjery',
     },
     {
-      icon: 'note',
+      icon: 'description',
       label: 'Notes',
-      route: 'comments',
+      route: 'notes',
     },
   ]);
 

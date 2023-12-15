@@ -3,8 +3,7 @@ $breakpoint-tablet: 970px;
 $breakpoint-mobile: 480px;
 
 .content-main {
-  height: 100vh;
-  // padding: 20px;
+  // height: 100vh;
 
   .header {
     background-color: #FFFFFF;
@@ -20,12 +19,11 @@ $breakpoint-mobile: 480px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      columns: 2;
 
-      @media (max-width: 1100px) {
+      @media screen and (max-width: 1030px) {
         display: flex;
         flex-direction: column;
-        columns: 1;
+        align-items: flex-start;
       }
 
       .box-search {
@@ -33,9 +31,10 @@ $breakpoint-mobile: 480px;
         gap: 10px;
         columns: 2;
 
-        @media (max-width: 890px) {
+        @media screen and (max-width: 830px) {
           display: flex;
           flex-direction: column;
+          align-items: flex-start;
         }
 
         .select {
@@ -43,9 +42,8 @@ $breakpoint-mobile: 480px;
             padding: 8px 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #fff;
+            background-color: #ffffff;
             appearance: none;
-            width: 200px;
             cursor: pointer;
           }
         }
@@ -54,7 +52,7 @@ $breakpoint-mobile: 480px;
           display: flex;
           gap: 10px;
 
-          @media (max-width: 690px) {
+          @media (max-width: 620px) {
             display: flex;
             flex-direction: column;
           }
@@ -73,7 +71,7 @@ $breakpoint-mobile: 480px;
             padding: 8px 20px;
 
             &:hover {
-              background-color: #3f92c6;
+              background-color: #3846c8;
             }
           }
         }
@@ -86,7 +84,6 @@ $breakpoint-mobile: 480px;
     grid-template-columns: repeat(3, 1fr);
 
     margin-top: 60px;
-    gap: 20px;
 
     .card-box {
       padding: 20px;
@@ -112,7 +109,6 @@ $breakpoint-mobile: 480px;
 
   .pagination {
     margin-top: 30px;
-    display: flex;
-    justify-content: end;
+    padding: 20px;
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Appointment } from 'src/app/shared/Models/appointment';
 import { AppointmentService } from './appointment.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,10 +9,12 @@ import { PatientService } from 'src/app/patient/patient.service';
   templateUrl: './appointment.component.html',
   styleUrls: ['./appointment.component.scss']
 })
-export class AppointmentComponent {
+
+export class AppointmentComponent implements OnInit {
   appointments: Appointment[] = [];
   patientId: number | undefined;
   patientName: string | undefined;
+  dataSource: any = [];
 
   constructor(
     private appointmentService: AppointmentService,
@@ -40,7 +42,4 @@ export class AppointmentComponent {
       });
     }
   }
-
-
-
 }

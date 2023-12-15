@@ -25,7 +25,7 @@ export class PatientComponent implements OnInit {
 
   constructor(
     private patientService: PatientService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.getPatients();
@@ -68,4 +68,3 @@ export class PatientComponent implements OnInit {
   }
 
 }
-

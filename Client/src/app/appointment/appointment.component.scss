@@ -1,0 +1,14 @@
+$breakpoint-desktop: 1300px;
+$breakpoint-tablet: 970px;
+$breakpoint-mobile: 480px;
+
+.content-main {
+    // height: 100vh;
+
+    .header {
+        background-color: #FFFFFF;
+        padding: 20px;
+        box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
+    }
+}
