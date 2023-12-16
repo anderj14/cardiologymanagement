@@ -11,13 +11,13 @@ namespace API.Controllers
 {
     public class PatientsController : BaseApiController
     {
-        private readonly IGenericRepository<Patient> _patientRepo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public PatientsController(IGenericRepository<Patient> patientRepo, IMapper mapper)
+        public PatientsController(IUnitOfWork unitOfwork, IMapper mapper)
         {
-            _patientRepo = patientRepo;
             _mapper = mapper;
+            _unitOfWork = unitOfwork;
         }
 
         [HttpGet]
@@ -28,9 +28,9 @@ namespace API.Controllers
 
             var countSpec = new PatientWithFiltersForCountSpecification(patientParams);
 
-            var totalItems = await _patientRepo.CountAsync(countSpec);
+            var totalItems = await _unitOfWork.Repository<Patient>().CountAsync(countSpec);
 
-            var patients = await _patientRepo.ListAsync(spec);
+            var patients = await _unitOfWork.Repository<Patient>().ListAsync(spec);
 
             var data = _mapper.Map<IReadOnlyList<PatientDto>>(patients);
 
@@ -45,11 +45,9 @@ namespace API.Controllers
         {
             var spec = new PatientWithAllSpecification(id);
 
-            var patient = await _patientRepo.GetEntityWithSpec(spec);
+            var patient = await _unitOfWork.Repository<Patient>().GetEntityWithSpec(spec);
 
             if (patient == null) return NotFound(new ApiResponse(404));
-
-            // var patientDto = _mapper.Map<Patient, PatientDto>(patient)
 
             return _mapper.Map<Patient, PatientDto>(patient);
         }

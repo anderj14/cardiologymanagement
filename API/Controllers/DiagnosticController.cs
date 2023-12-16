@@ -12,19 +12,19 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class DiagnosticController : ControllerBase
     {
-        private readonly IGenericRepository<Diagnostic> _diagnosticRepo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DiagnosticController(IGenericRepository<Diagnostic> diagnosticRepo, IMapper mapper)
+        public DiagnosticController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _diagnosticRepo = diagnosticRepo;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<DiagnosticDto>>> GetDiagnostics()
         {
-            var diagnostics = await _diagnosticRepo.ListAllAsync();
+            var diagnostics = await _unitOfWork.Repository<Diagnostic>().ListAllAsync();
             var DiagnosticsDto = _mapper.Map<IReadOnlyList<DiagnosticDto>>(diagnostics);
 
             return Ok(DiagnosticsDto);
@@ -35,7 +35,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<DiagnosticDto>> GetDiagnostic(int id)
         {
-            var diagnostic = await _diagnosticRepo.GetByIdAsync(id);
+            var diagnostic = await _unitOfWork.Repository<Diagnostic>().GetByIdAsync(id);
             var diagnosticDto = _mapper.Map<DiagnosticDto>(diagnostic);
 
             return Ok(diagnosticDto);
@@ -47,7 +47,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<DiagnosticDto>>> GetDiagnosticsByPatientId(int patientId)
         {
             var spec = new DiagnosticSpecification(patientId);
-            var diagnostics = await _diagnosticRepo.ListAsync(spec);
+            var diagnostics = await _unitOfWork.Repository<Diagnostic>().ListAsync(spec);
             var diagnosticDtos = _mapper.Map<IReadOnlyList<DiagnosticDto>>(diagnostics);
 
             return Ok(diagnosticDtos);
@@ -60,7 +60,7 @@ namespace API.Controllers
             int patientId, int diagnosticId)
         {
             var spec = new DiagnosticSpecification(patientId, diagnosticId);
-            var diagnostic = await _diagnosticRepo.GetEntityWithSpec(spec);
+            var diagnostic = await _unitOfWork.Repository<Diagnostic>().GetEntityWithSpec(spec);
             var diagnosticDto = _mapper.Map<DiagnosticDto>(diagnostic);
 
             return Ok(diagnosticDto);

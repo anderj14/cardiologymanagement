@@ -18,15 +18,13 @@ namespace API.Extensions
             services.AddSwaggerGen();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
             // Conection string
             services.AddDbContext<ManagementContext>(opt =>
             {
                 opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
-
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             ////
             // services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             ////

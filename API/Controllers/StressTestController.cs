@@ -12,19 +12,19 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class StressTestController : ControllerBase
     {
-        private readonly IGenericRepository<StressTest> _stressTestRepo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public StressTestController(IGenericRepository<StressTest> stressTestRepo, IMapper mapper)
+        public StressTestController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _stressTestRepo = stressTestRepo;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<StressTestDto>>> GetStressTests()
         {
-            var stressTests = await _stressTestRepo.ListAllAsync();
+            var stressTests = await _unitOfWork.Repository<StressTest>().ListAllAsync();
 
             var stressTestsDtos = _mapper.Map<IReadOnlyList<StressTestDto>>(stressTests);
 
@@ -36,7 +36,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<StressTestDto>> GetStressTest(int id)
         {
-            var stressTest = await _stressTestRepo.GetByIdAsync(id);
+            var stressTest = await _unitOfWork.Repository<StressTest>().GetByIdAsync(id);
 
             var stressTestDto = _mapper.Map<StressTestDto>(stressTest);
 
@@ -49,7 +49,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<StressTestDto>>> GetStressTestsByPatientId(int patientId)
         {
             var spec = new StressTestSpecification(patientId);
-            var stressTests = await _stressTestRepo.ListAsync(spec);
+            var stressTests = await _unitOfWork.Repository<StressTest>().ListAsync(spec);
             var stressTestsDtos = _mapper.Map<IReadOnlyList<StressTestDto>>(stressTests);
 
             return Ok(stressTestsDtos);
@@ -61,7 +61,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<StressTestDto>>> GetStressTestByPatientId(int patientId, int stressTestId)
         {
             var spec = new StressTestSpecification(patientId, stressTestId);
-            var stressTests = await _stressTestRepo.GetEntityWithSpec(spec);
+            var stressTests = await _unitOfWork.Repository<StressTest>().GetEntityWithSpec(spec);
             var stressTestsDtos = _mapper.Map<StressTestDto>(stressTests);
 
             return Ok(stressTestsDtos);

@@ -12,19 +12,19 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class DiseaseHistoryController : ControllerBase
     {
-        private readonly IGenericRepository<DiseaseHistory> _diseaseHistRepo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DiseaseHistoryController(IGenericRepository<DiseaseHistory> diseaseHistRepo, IMapper mapper)
+        public DiseaseHistoryController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _diseaseHistRepo = diseaseHistRepo;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<DiseaseHistoryDto>>> GetDiseaseHistories()
         {
-            var diseaseHistories = await _diseaseHistRepo.ListAllAsync();
+            var diseaseHistories = await _unitOfWork.Repository<DiseaseHistory>().ListAllAsync();
             var diseaseHistoriesDtos = _mapper.Map<IReadOnlyList<DiseaseHistoryDto>>(diseaseHistories);
 
             return Ok(diseaseHistoriesDtos);
@@ -35,7 +35,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<DiseaseHistoryDto>> GetDiseaseHistory(int id)
         {
-            var diseaseHistory = await _diseaseHistRepo.GetByIdAsync(id);
+            var diseaseHistory = await _unitOfWork.Repository<DiseaseHistory>().GetByIdAsync(id);
             var diseaseHistoryDto = _mapper.Map<DiseaseHistoryDto>(diseaseHistory);
 
             return Ok(diseaseHistoryDto);
@@ -47,7 +47,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<DiseaseHistoryDto>>> GetTreatmentsByPatientId(int patientId)
         {
             var spec = new DiseaseHistorySpecification(patientId);
-            var diseasesHistories = await _diseaseHistRepo.ListAsync(spec);
+            var diseasesHistories = await _unitOfWork.Repository<DiseaseHistory>().ListAsync(spec);
             var diseasesHistoriesDtos = _mapper.Map<IReadOnlyList<DiseaseHistoryDto>>(diseasesHistories);
 
             return Ok(diseasesHistoriesDtos);
@@ -59,7 +59,7 @@ namespace API.Controllers
         public async Task<ActionResult<DiseaseHistoryDto>> GetTreatmentByPatientId(int patientId, int diseaseHistoryId)
         {
             var spec = new DiseaseHistorySpecification(patientId, diseaseHistoryId);
-            var diseaseHistory = await _diseaseHistRepo.GetEntityWithSpec(spec);
+            var diseaseHistory = await _unitOfWork.Repository<DiseaseHistory>().GetEntityWithSpec(spec);
             var diseaseHistoryDto = _mapper.Map<DiseaseHistoryDto>(diseaseHistory);
 
             return Ok(diseaseHistoryDto);

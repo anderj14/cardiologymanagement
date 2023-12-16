@@ -12,19 +12,19 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class TreatmentController : ControllerBase
     {
-        private readonly IGenericRepository<Treatment> _treatmentRepo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public TreatmentController(IGenericRepository<Treatment> treatmentRepo, IMapper mapper)
+        public TreatmentController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _treatmentRepo = treatmentRepo;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<TreatmentDto>>> GetTreatments()
         {
-            var treatments = await _treatmentRepo.ListAllAsync();
+            var treatments = await _unitOfWork.Repository<Treatment>().ListAllAsync();
 
             var treatmentsDtos = _mapper.Map<IReadOnlyList<TreatmentDto>>(treatments);
 
@@ -36,7 +36,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<TreatmentDto>> GetTreatment(int id)
         {
-            var stressTest = await _treatmentRepo.GetByIdAsync(id);
+            var stressTest = await _unitOfWork.Repository<Treatment>().GetByIdAsync(id);
 
             var stressTestDto = _mapper.Map<TreatmentDto>(stressTest);
 
@@ -49,7 +49,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<TreatmentDto>>> GetTreatmentsByPatientId(int patientId)
         {
             var spec = new TreatmentSpecification(patientId);
-            var treatments = await _treatmentRepo.ListAsync(spec);
+            var treatments = await _unitOfWork.Repository<Treatment>().ListAsync(spec);
             var treatmentsDtos = _mapper.Map<IReadOnlyList<TreatmentDto>>(treatments);
 
             return Ok(treatmentsDtos);
@@ -61,7 +61,7 @@ namespace API.Controllers
         public async Task<ActionResult<TreatmentDto>> GetTreatmentByPatientId(int patientId, int treatmentId)
         {
             var spec = new TreatmentSpecification(patientId, treatmentId);
-            var treatment = await _treatmentRepo.GetEntityWithSpec(spec);
+            var treatment = await _unitOfWork.Repository<Treatment>().GetEntityWithSpec(spec);
             var treatmentDto = _mapper.Map<TreatmentDto>(treatment);
 
             return Ok(treatmentDto);

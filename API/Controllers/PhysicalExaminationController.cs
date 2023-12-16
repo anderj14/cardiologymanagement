@@ -12,19 +12,19 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class PhysicalExaminationController : ControllerBase
     {
-        private readonly IGenericRepository<PhysicalExamination> _physicalExamRepo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public PhysicalExaminationController(IGenericRepository<PhysicalExamination> physicalExamRepo, IMapper mapper)
+        public PhysicalExaminationController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _physicalExamRepo = physicalExamRepo;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<PhysicalExaminationDto>>> GetPhysicalExaminations()
         {
-            var physicalExaminations = await _physicalExamRepo.ListAllAsync();
+            var physicalExaminations = await _unitOfWork.Repository<PhysicalExamination>().ListAllAsync();
 
             var physicalExaminationsDtos = _mapper.Map<IReadOnlyList<PhysicalExaminationDto>>(physicalExaminations);
 
@@ -36,7 +36,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<PhysicalExaminationDto>> GetPhysicalExamination(int id)
         {
-            var physicalExamination = await _physicalExamRepo.GetByIdAsync(id);
+            var physicalExamination = await _unitOfWork.Repository<PhysicalExamination>().GetByIdAsync(id);
 
             var physicalExaminationDto = _mapper.Map<PhysicalExaminationDto>(physicalExamination);
 
@@ -49,7 +49,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<PhysicalExaminationDto>>> GetPhysicalExaminationsByPatientId(int patientId)
         {
             var spec = new PhysicalExaminationSpecification(patientId);
-            var physicalExaminations = await _physicalExamRepo.ListAsync(spec);
+            var physicalExaminations = await _unitOfWork.Repository<PhysicalExamination>().ListAsync(spec);
             var physicalExaminationsDtos = _mapper.Map<IReadOnlyList<PhysicalExaminationDto>>(physicalExaminations);
 
             return Ok(physicalExaminationsDtos);
@@ -61,7 +61,7 @@ namespace API.Controllers
         public async Task<ActionResult<PhysicalExaminationDto>> GetPhysicalExaminationByPatientId(int patientId, int physicalExaminationId)
         {
             var spec = new PhysicalExaminationSpecification(patientId, physicalExaminationId);
-            var physicalExamination = await _physicalExamRepo.GetEntityWithSpec(spec);
+            var physicalExamination = await _unitOfWork.Repository<PhysicalExamination>().GetEntityWithSpec(spec);
             var physicalExaminationDto = _mapper.Map<PhysicalExaminationDto>(physicalExamination);
 
             return Ok(physicalExaminationDto);

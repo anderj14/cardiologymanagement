@@ -12,19 +12,19 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class EchocardiogramController : ControllerBase
     {
-        private readonly IGenericRepository<Echocardiogram> _echocardiogramRepo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public EchocardiogramController(IGenericRepository<Echocardiogram> echocardiogramRepo, IMapper mapper)
+        public EchocardiogramController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _echocardiogramRepo = echocardiogramRepo;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<EchocardiogramDto>>> GetEchocardiograms()
         {
-            var echocardiograms = await _echocardiogramRepo.ListAllAsync();
+            var echocardiograms = await _unitOfWork.Repository<Echocardiogram>().ListAllAsync();
             var echocardiogramsDtos = _mapper.Map<IReadOnlyList<EchocardiogramDto>>(echocardiograms);
 
             return Ok(echocardiogramsDtos);
@@ -35,7 +35,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<EchocardiogramDto>> GetEchocardiogram(int id)
         {
-            var echocardiogram = await _echocardiogramRepo.GetByIdAsync(id);
+            var echocardiogram = await _unitOfWork.Repository<Echocardiogram>().GetByIdAsync(id);
             var echocardiogramDto = _mapper.Map<EchocardiogramDto>(echocardiogram);
 
             return Ok(echocardiogramDto);
@@ -47,7 +47,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<DiagnosticDto>>> GetEchocardiogramByPatientId(int patientId)
         {
             var spec = new EchocardiogramSpecification(patientId);
-            var echocardiograms = await _echocardiogramRepo.ListAsync(spec);
+            var echocardiograms = await _unitOfWork.Repository<Echocardiogram>().ListAsync(spec);
             var echocardiogramDtos = _mapper.Map<IReadOnlyList<EchocardiogramDto>>(echocardiograms);
 
             return Ok(echocardiogramDtos);
@@ -60,7 +60,7 @@ namespace API.Controllers
             int patientId, int echocardiogramId)
         {
             var spec = new EchocardiogramSpecification(patientId, echocardiogramId);
-            var echocardiogram = await _echocardiogramRepo.GetEntityWithSpec(spec);
+            var echocardiogram = await _unitOfWork.Repository<Echocardiogram>().GetEntityWithSpec(spec);
             var echocardiogramDto = _mapper.Map<EchocardiogramDto>(echocardiogram);
 
             return Ok(echocardiogramDto);

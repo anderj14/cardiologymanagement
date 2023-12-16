@@ -13,19 +13,19 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class CardiacCatheterizationStudyController : ControllerBase
     {
-        private readonly IGenericRepository<CardiacCatheterizationStudy> _carCathStudyRepo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CardiacCatheterizationStudyController(IGenericRepository<CardiacCatheterizationStudy> carCathStudyRepo, IMapper mapper)
+        public CardiacCatheterizationStudyController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _carCathStudyRepo = carCathStudyRepo;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<CardiacCatheterizationStudyDto>>> GetCardiacCatheterizationStudies()
         {
-            var cardiacCatheterizationStudies = await _carCathStudyRepo.ListAllAsync();
+            var cardiacCatheterizationStudies = await _unitOfWork.Repository<CardiacCatheterizationStudy>().ListAllAsync();
             var cardiacCatheterizationStudiesDto = _mapper.Map<IReadOnlyList<CardiacCatheterizationStudyDto>>(cardiacCatheterizationStudies);
 
             return Ok(cardiacCatheterizationStudiesDto);
@@ -36,7 +36,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CardiacCatheterizationStudyDto>> GetCardiacCatheterizationStudy(int id)
         {
-            var cardiacCatheterizationStudy = await _carCathStudyRepo.GetByIdAsync(id);
+            var cardiacCatheterizationStudy = await _unitOfWork.Repository<CardiacCatheterizationStudy>().GetByIdAsync(id);
             var cardiacCatheterizationStudyDto = _mapper.Map<CardiacCatheterizationStudyDto>(cardiacCatheterizationStudy);
 
             return Ok(cardiacCatheterizationStudyDto);
@@ -48,7 +48,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<CardiacCatheterizationStudyDto>>> GetCardiacCathStudiesByPatientId(int patientId)
         {
             var spec = new CardiacCatheterizationStudySpecification(patientId);
-            var cardiacCatheterizationStudies = await _carCathStudyRepo.ListAsync(spec);
+            var cardiacCatheterizationStudies = await _unitOfWork.Repository<CardiacCatheterizationStudy>().ListAsync(spec);
             var cardiacCatheterizationStudyDtos = _mapper.Map<IReadOnlyList<CardiacCatheterizationStudyDto>>(cardiacCatheterizationStudies);
 
             return Ok(cardiacCatheterizationStudyDtos);
@@ -61,7 +61,7 @@ namespace API.Controllers
             int patientId, int cardiacCathStudyId)
         {
             var spec = new CardiacCatheterizationStudySpecification(patientId, cardiacCathStudyId);
-            var cardiacCathStudy = await _carCathStudyRepo.GetEntityWithSpec(spec);
+            var cardiacCathStudy = await _unitOfWork.Repository<CardiacCatheterizationStudy>().GetEntityWithSpec(spec);
             var cardiacCathStudyDto = _mapper.Map<CardiacCatheterizationStudyDto>(cardiacCathStudy);
 
             return Ok(cardiacCathStudyDto);

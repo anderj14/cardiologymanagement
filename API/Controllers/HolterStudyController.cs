@@ -12,19 +12,19 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class HolterStudyController : ControllerBase
     {
-        private readonly IGenericRepository<HolterStudy> _holterStudyRepo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HolterStudyController(IGenericRepository<HolterStudy> holterStudyRepo, IMapper mapper)
+        public HolterStudyController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _holterStudyRepo = holterStudyRepo;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<HolterStudyDto>>> GetHolterStudies()
         {
-            var holterStudies = await _holterStudyRepo.ListAllAsync();
+            var holterStudies = await _unitOfWork.Repository<HolterStudy>().ListAllAsync();
             var holterStudiesDtos = _mapper.Map<IReadOnlyList<HolterStudyDto>>(holterStudies);
 
             return Ok(holterStudiesDtos);
@@ -35,7 +35,7 @@ namespace API.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<HolterStudyDto>> GetHolterStudy(int id)
         {
-            var holterStudy = await _holterStudyRepo.GetByIdAsync(id);
+            var holterStudy = await _unitOfWork.Repository<HolterStudy>().GetByIdAsync(id);
             var holterStudyDto = _mapper.Map<HolterStudyDto>(holterStudy);
 
             return Ok(holterStudyDto);
@@ -47,7 +47,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<HolterStudyDto>>> GetHolterStudiesByPatientId(int patientId)
         {
             var spec = new HolterStudySpecification(patientId);
-            var holterStudies = await _holterStudyRepo.ListAsync(spec);
+            var holterStudies = await _unitOfWork.Repository<HolterStudy>().ListAsync(spec);
             var holterStudiesDtos = _mapper.Map<IReadOnlyList<HolterStudyDto>>(holterStudies);
 
             return Ok(holterStudiesDtos);
@@ -59,7 +59,7 @@ namespace API.Controllers
         public async Task<ActionResult<HolterStudyDto>> GetHolterStudyByPatientId(int patientId, int holterStudyId)
         {
             var spec = new HolterStudySpecification(patientId, holterStudyId);
-            var holterStudy = await _holterStudyRepo.GetEntityWithSpec(spec);
+            var holterStudy = await _unitOfWork.Repository<HolterStudy>().GetEntityWithSpec(spec);
             var holterStudyDto = _mapper.Map<HolterStudyDto>(holterStudy);
 
             return Ok(holterStudyDto);

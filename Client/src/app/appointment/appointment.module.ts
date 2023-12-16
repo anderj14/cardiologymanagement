@@ -15,7 +15,7 @@ import { AppointmentRoutingModule } from './appointment-routing.module';
   ],
   imports: [
     CommonModule,
-    AppointmentRoutingModule
+    AppointmentRoutingModule,
   ]
 })
 export class AppointmentModule { }

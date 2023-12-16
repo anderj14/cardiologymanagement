@@ -7,8 +7,8 @@ namespace Core.Specification
     {
         public PatientWithFiltersForCountSpecification(PatientSpecParams patientParams)
             : base(x =>
-                (string.IsNullOrEmpty(patientParams.Search) || x.PatientName.ToLower()
-                .Contains(patientParams.Search)))
+                string.IsNullOrEmpty(patientParams.Search) || x.PatientName.ToLower()
+                .Contains(patientParams.Search))
         {
 
         }
