@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/app/environments/environment';
 import { Electrocardiogram } from 'src/app/shared/Models/electrocardiogram';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Electrocardiogram } from 'src/app/shared/Models/electrocardiogram';
 })
 export class ElectrocardiogramService {
 
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

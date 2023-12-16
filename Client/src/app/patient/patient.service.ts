@@ -16,12 +16,13 @@ import { MedicalHistory } from '../shared/Models/medicalHistory';
 import { PhysicalExamination } from '../shared/Models/physicalExamination';
 import { StressTest } from '../shared/Models/stressTest';
 import { Treatment } from '../shared/Models/treatment';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
