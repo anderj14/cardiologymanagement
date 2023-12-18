@@ -6,7 +6,8 @@ namespace Core.Specification
     {
         public AppointmentSpecification(AppointmentSpecParams appointmentParams)
             : base(x =>
-            string.IsNullOrEmpty(appointmentParams.Search) || x.Patient.PatientName.ToLower().Contains(appointmentParams.Search))
+            string.IsNullOrEmpty(appointmentParams.Search) || x.Patient.PatientName.ToLower().Contains(appointmentParams.Search)
+            && (appointmentParams.Date == null || x.Date.Date == appointmentParams.Date.Value.Date))
         {
             AddInclude(a => a.Patient);
 
@@ -44,10 +45,18 @@ namespace Core.Specification
         }
 
 
-        public AppointmentSpecification(int patientId)
-            : base(a => a.PatientId == patientId)
+        public AppointmentSpecification(int id)
+            : base(a => a.Id == id)
         {
             AddInclude(a => a.Patient);
+        }
+
+        public AppointmentSpecification(DateTime date)
+            : base(a => a.Date.Date == date.Date)
+        {
+            AddInclude(a => a.Patient);
+            AddOrderBy(a => a.Date);
+
         }
     }
 }

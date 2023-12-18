@@ -4,6 +4,11 @@ import { AppointmentComponent } from './appointment.component';
 import { AppointmentItemComponent } from './appointment-item/appointment-item.component';
 import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
 import { AppointmentRoutingModule } from './appointment-routing.module';
+import { MaterialModule } from '../material/material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -11,11 +16,17 @@ import { AppointmentRoutingModule } from './appointment-routing.module';
   declarations: [
     AppointmentComponent,
     AppointmentItemComponent,
-    AppointmentDetailsComponent
+    AppointmentDetailsComponent,
+    DatePickerComponent
   ],
   imports: [
     CommonModule,
     AppointmentRoutingModule,
+    MaterialModule,
+    FormsModule,
+    CoreModule,
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class AppointmentModule { }

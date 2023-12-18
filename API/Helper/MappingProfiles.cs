@@ -22,7 +22,12 @@ namespace API.Helper
             .ForMember(p => p.StressTests, o => o.MapFrom(s => s.StressTests))
             .ForMember(p => p.Treatments, o => o.MapFrom(s => s.Treatments));
 
-            CreateMap<Appointment, AppointmentDto>();
+            // CreateMap<Model, ModelDto>()
+            // .ForMember(d => d.Brand, o => o.MapFrom(s => s.Brand.BrandName));
+
+
+            CreateMap<Appointment, AppointmentDto>()
+            .ForMember(d => d.Patient, o => o.MapFrom(s => s.Patient.PatientName));
             CreateMap<BloodTest, BloodTestDto>();
             CreateMap<CardiacCatheterizationStudy, CardiacCatheterizationStudyDto>();
             CreateMap<Diagnostic, DiagnosticDto>();

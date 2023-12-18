@@ -1,0 +1,37 @@
+mat-card {
+    // border: none;
+
+    &:hover {
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.180);
+    }
+
+    mat-card-subtitle {
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-weight: 400;
+    }
+}
+
+.status {
+    display: flex;
+    justify-content: end;
+
+    p {
+        .pending {
+            color: #FFD700;
+        }
+        &.realiced {
+            color: #008000;
+        }
+
+        &.canceled {
+            color: #FF0000;
+        }
+
+        &.pending {
+            color: #FFD700;
+        }
+    }
+}

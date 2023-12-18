@@ -14,7 +14,6 @@ export class AppointmentComponent implements OnInit {
   appointments: Appointment[] = [];
   patientId: number | undefined;
   patientName: string | undefined;
-  dataSource: any = [];
 
   constructor(
     private appointmentService: AppointmentService,

@@ -1,0 +1,19 @@
+button {
+    // margin: 5px;
+    font-size: 20px;
+    transition: 0.2s;
+    background-color: #fff;
+    color: #525252;
+    // border: 1px solid #525252;
+    border: none;
+    border-radius: 10px;
+
+    &:hover {
+        font-size: 23px;
+        color: #323232;
+    }
+}
+
+span {
+    font-size: 17px;
+}

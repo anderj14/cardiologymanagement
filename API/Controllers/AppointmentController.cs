@@ -24,21 +24,37 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Pagination<AppointmentDto>>> GetAppointments(
-            [FromQuery] AppointmentSpecParams appointmentParams
-        )
+                    [FromQuery] AppointmentSpecParams appointmentParams
+                )
         {
-            var spec = new AppointmentSpecification(appointmentParams);
-            var countSpec = new AppointmentFilterForCountSpecification(appointmentParams);
-            var totalItems = await _unitOfWork.Repository<Appointment>().CountAsync(countSpec);
+            // If a date is provided in the parameters, use a different specification
+            if (appointmentParams.Date.HasValue)
+            {
+                var spec = new AppointmentSpecification(appointmentParams.Date.Value);
+                var appointments = await _unitOfWork.Repository<Appointment>().ListAsync(spec);
+                var appointmentDtos = _mapper.Map<IReadOnlyList<AppointmentDto>>(appointments);
+                return Ok(new Pagination<AppointmentDto>(appointmentParams.PageIndex,
+                    appointmentParams.PageSize, appointmentDtos.Count, appointmentDtos));
+            }
+            else
+            {
+                // If a date is not provided, use the original specification
+                var spec = new AppointmentSpecification(appointmentParams);
+                var countSpec = new AppointmentFilterForCountSpecification(appointmentParams);
+                var totalItems = await _unitOfWork.Repository<Appointment>().CountAsync(countSpec);
 
-            var appointments = await _unitOfWork.Repository<Appointment>().ListAsync(spec);
+                var appointments = await _unitOfWork.Repository<Appointment>().ListAsync(spec);
 
-            var data = _mapper.Map<IReadOnlyList<AppointmentDto>>(appointments);
+                var data = _mapper.Map<IReadOnlyList<AppointmentDto>>(appointments);
 
-            return Ok(new Pagination<AppointmentDto>(appointmentParams.PageIndex,
-            appointmentParams.PageSize, totalItems, data));
+                return Ok(new Pagination<AppointmentDto>(appointmentParams.PageIndex,
+                    appointmentParams.PageSize, totalItems, data));
+            }
         }
+
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -48,10 +64,10 @@ namespace API.Controllers
             var spec = new AppointmentSpecification(id);
 
             var appointment = await _unitOfWork.Repository<Appointment>().GetEntityWithSpec(spec);
-            
+
             if (appointment == null) return NotFound(new ApiResponse(404));
-            
-            return Ok(_mapper.Map<AppointmentDto>(appointment));
+
+            return Ok(_mapper.Map<Appointment, AppointmentDto>(appointment));
         }
 
         [HttpGet("patient/{patientId}/appointments")]

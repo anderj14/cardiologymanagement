@@ -1,13 +1,49 @@
-<!-- <div class="content-main">
+
+<div class="content-main">
 
     <div class="header">
-  
-      
-  
+        <div class="title">
+            <h2>Appointments</h2>
+        </div>
+
+        <div class="box filtering">
+            <app-paging-header 
+            [totalCount]="totalCount"
+            [pageNumber]="appointmentParams.pageNumber"
+            [pageSize]="appointmentParams.pageSize"
+            ></app-paging-header>
+
+            <div class="box-search">
+                <div class="select">
+                    <select class="select" (change)="onSortSelected($event)">
+                        <option *ngFor="let sort of sortOptions" [value]="sort.value">
+                        {{sort.name}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="search">
+                    <input (keyup.enter)="onSearch()" type="text" class="" #search>
+                    <button class="" (click)="onSearch()">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="date-picker-container">
+            <app-date-picker (dateSelected)="onDateSelected($event)"></app-date-picker>
+        </div>
     </div>
-  
-    <div class="box">
-        <h1>Hola</h1>
+
+    <div class="cards-box">
+        <div class="card-box" *ngFor="let appointment of appointments">
+            <app-appointment-item [appointmet]="appointment"></app-appointment-item>
+        </div>
     </div>
-   
-  </div> -->
+    <div class="pagination" *ngIf="totalCount > 0">
+        <app-pagination
+        [totalCount]="totalCount" 
+        [pageSize]="appointmentParams.pageSize"
+        (pageChanged)="onPageChanged($event)"
+        ></app-pagination>
+    </div>
+
+</div>

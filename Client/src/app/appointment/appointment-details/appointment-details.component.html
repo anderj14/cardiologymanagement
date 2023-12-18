@@ -1,1 +1,37 @@
-<p>appointment-details works!</p>
+<div class="section">
+
+    <div class="action">
+        <div class="back">
+            <i routerLink="/appointments" class="bi bi-arrow-left"></i>
+        </div>
+        <div class="delete">
+            <button class="">Delete</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="patient" *ngIf="appointment">
+            <div class="card">
+                <div class="header">
+                    <p>{{appointment.patient}}</p>
+                    <div class="update">
+                        <button class="">Update</button>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="date">
+                        <p><strong>Date:</strong> {{appointment.date | date}}</p>
+                        <p><strong>Time:</strong> {{appointment.time}}</p>
+                        <p><strong>Description:</strong> {{appointment.description}}</p>
+                        <p><strong>Status:</strong>Pending</p>
+                        <!-- <select>
+                            <option value="" actived>Pending</option>
+                            <option value="">Canceled</option>
+                            <option value="">Realiced</option>
+                        </select> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

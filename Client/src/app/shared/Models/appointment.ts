@@ -3,5 +3,5 @@ export interface Appointment {
     date: string
     time: string
     description: string
-    patientId: number
+    patient: number
 }

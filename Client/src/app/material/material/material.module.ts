@@ -10,7 +10,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [],
@@ -27,6 +30,10 @@ import { MatTableModule } from '@angular/material/table';
     MatListModule,
     MatPaginatorModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
   ],
   exports: [
     MatCardModule,
@@ -40,6 +47,10 @@ import { MatTableModule } from '@angular/material/table';
     MatListModule,
     MatPaginatorModule, 
     MatTableModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule
   ]
 })
 export class MaterialModule { }

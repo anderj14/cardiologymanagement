@@ -1,16 +1,126 @@
-// $breakpoint-desktop: 1300px;
-// $breakpoint-tablet: 970px;
-// $breakpoint-mobile: 480px;
 
-// .content-main {
-//     // height: 100vh;
+$breakpoint-desktop: 1300px;
+$breakpoint-tablet: 1170px;
+$breakpoint-mobile: 480px;
 
-//     .header {
-//         background-color: #FFFFFF;
-//         padding: 20px;
-//         box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+.content-main {
 
-//     }
-// }
+  .header {
+    background-color: #FFFFFF;
+    padding: 20px;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 
-/* Añade estilos personalizados según tus preferencias */
+    h1 {
+      font-size: 30px;
+    }
+
+    .box {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @media screen and (max-width: 1030px) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .box-search {
+        display: flex;
+        gap: 10px;
+        columns: 2;
+
+        @media screen and (max-width: 830px) {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .select {
+          select {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+            appearance: none;
+            cursor: pointer;
+          }
+        }
+
+        .search {
+          display: flex;
+          gap: 10px;
+
+          @media (max-width: 620px) {
+            display: flex;
+            flex-direction: column;
+          }
+
+          input {
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.280);
+            padding: 8px 10px;
+          }
+
+          button {
+            border: none;
+            color: #FFFFFF;
+            border-radius: 5px;
+            background-color: #303BA6;
+            padding: 8px 20px;
+
+            &:hover {
+              background-color: #3846c8;
+            }
+          }
+        }
+      }
+    }
+
+    .date-picker-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+
+
+      button {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .cards-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    margin-top: 60px;
+
+    .card-box {
+      padding: 20px;
+      border-radius: 5px;
+
+      cursor: pointer;
+      transition: 0.2s;
+
+      .card-header {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
+
+    // @media screen and (max-width: $breakpoint-desktop) {
+    //   grid-template-columns: repeat(2, 1fr);
+    // }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pagination {
+    margin-top: 30px;
+    padding: 20px;
+  }
+}

@@ -57,9 +57,6 @@ export class PatientService {
     return this.http.get<Diagnostic[]>(this.baseUrl + 'diagnostic/patient/' + patientId + '/diagnostics');
   }
 
-  // [HttpGet("patient/{patientId}/diseasesHistories/{diseaseHistoryId}")]
-  // 'https://localhost:5001/api/DiseaseHistory/patient/1/diseasesHistories' \
-
   getDiseaseHistoryByPatientId(patientId: number): Observable<DiseaseHistory[]> {
     return this.http.get<DiseaseHistory[]>(this.baseUrl + 'DiseaseHistory/patient/' + patientId + '/diseasesHistories');
   }
