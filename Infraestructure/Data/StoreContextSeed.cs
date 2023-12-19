@@ -19,6 +19,12 @@ namespace Infraestructure.Data
                 var appointments = JsonSerializer.Deserialize<List<Appointment>>(appointmentsData);
                 context.Appointments.AddRange(appointments);
             }
+            if (!context.AppointmentStatuses.Any())
+            {
+                var appointmentStatusesData = File.ReadAllText("../Infraestructure/Data/SeedData/appointmentstatus.json");
+                var appointmentStatuses = JsonSerializer.Deserialize<List<AppointmentStatus>>(appointmentStatusesData);
+                context.AppointmentStatuses.AddRange(appointmentStatuses);
+            }
             if (!context.BloodTests.Any())
             {
                 var bloodTestData = File.ReadAllText("../Infraestructure/Data/SeedData/bloodtest.json");
@@ -85,6 +91,31 @@ namespace Infraestructure.Data
                 var treatments = JsonSerializer.Deserialize<List<Treatment>>(treatmentsData);
                 context.Treatments.AddRange(treatments);
             }
+            if (!context.CardiologySurgeries.Any())
+            {
+                var cardiologySurgeriesData = File.ReadAllText("../Infraestructure/Data/SeedData/cardiologysurgery.json");
+                var cardiologySurgeries = JsonSerializer.Deserialize<List<CardiologySurgery>>(cardiologySurgeriesData);
+                context.CardiologySurgeries.AddRange(cardiologySurgeries);
+            }
+            if (!context.SurgeryFollowUps.Any())
+            {
+                var surgeryFollowUpsData = File.ReadAllText("../Infraestructure/Data/SeedData/surgeryfollowup.json");
+                var surgeryFollowUps = JsonSerializer.Deserialize<List<SurgeryFollowUp>>(surgeryFollowUpsData);
+                context.SurgeryFollowUps.AddRange(surgeryFollowUps);
+            }
+            if (!context.Notes.Any())
+            {
+                var notesData = File.ReadAllText("../Infraestructure/Data/SeedData/notes.json");
+                var notes = JsonSerializer.Deserialize<List<Notes>>(notesData);
+                context.Notes.AddRange(notes);
+            }
+            if (!context.NoteStatuses.Any())
+            {
+                var noteStatusesData = File.ReadAllText("../Infraestructure/Data/SeedData/notestatus.json");
+                var noteStatuses = JsonSerializer.Deserialize<List<NoteStatus>>(noteStatusesData);
+                context.NoteStatuses.AddRange(noteStatuses);
+            }
+
 
             if (context.ChangeTracker.HasChanges()) await context.SaveChangesAsync();
         }

@@ -12,6 +12,32 @@ namespace Infraestructure.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AppointmentStatuses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AppointmentStatusName = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppointmentStatuses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NoteStatuses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NoteStatusName = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NoteStatuses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Patients",
                 columns: table => new
                 {
@@ -32,6 +58,28 @@ namespace Infraestructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Notes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", nullable: true),
+                    Content = table.Column<string>(type: "TEXT", nullable: true),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    NoteStatusId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notes_NoteStatuses_NoteStatusId",
+                        column: x => x.NoteStatusId,
+                        principalTable: "NoteStatuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Appointments",
                 columns: table => new
                 {
@@ -40,11 +88,18 @@ namespace Infraestructure.Data.Migrations
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Time = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
+                    AppointmentStatusId = table.Column<int>(type: "INTEGER", nullable: false),
                     PatientId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Appointments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Appointments_AppointmentStatuses_AppointmentStatusId",
+                        column: x => x.AppointmentStatusId,
+                        principalTable: "AppointmentStatuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Appointments_Patients_PatientId",
                         column: x => x.PatientId,
@@ -117,6 +172,38 @@ namespace Infraestructure.Data.Migrations
                     table.PrimaryKey("PK_CardiacCatheterizationStudies", x => x.Id);
                     table.ForeignKey(
                         name: "FK_CardiacCatheterizationStudies_Patients_PatientId",
+                        column: x => x.PatientId,
+                        principalTable: "Patients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CardiologySurgeries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    SurgeryName = table.Column<string>(type: "TEXT", nullable: true),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ProcedureDescription = table.Column<string>(type: "TEXT", nullable: true),
+                    Notes = table.Column<string>(type: "TEXT", nullable: true),
+                    IsEmergency = table.Column<string>(type: "TEXT", nullable: true),
+                    IsElective = table.Column<string>(type: "TEXT", nullable: true),
+                    OperationRoom = table.Column<string>(type: "TEXT", nullable: true),
+                    PreOpDiagnosis = table.Column<string>(type: "TEXT", nullable: true),
+                    PostOpDiagnosis = table.Column<string>(type: "TEXT", nullable: true),
+                    IsSuccessful = table.Column<string>(type: "TEXT", nullable: true),
+                    Duration = table.Column<int>(type: "INTEGER", nullable: false),
+                    CardiacCondition = table.Column<string>(type: "TEXT", nullable: true),
+                    IsMinimallyInvasive = table.Column<string>(type: "TEXT", nullable: true),
+                    PatientId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CardiologySurgeries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CardiologySurgeries_Patients_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patients",
                         principalColumn: "Id",
@@ -367,6 +454,34 @@ namespace Infraestructure.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "SurgeryFollowUps",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FollowUpDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    FollowUpNotes = table.Column<string>(type: "TEXT", nullable: true),
+                    Complications = table.Column<string>(type: "TEXT", nullable: true),
+                    FollowUpComplete = table.Column<string>(type: "TEXT", nullable: true),
+                    CardiologySurgeryId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SurgeryFollowUps", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SurgeryFollowUps_CardiologySurgeries_CardiologySurgeryId",
+                        column: x => x.CardiologySurgeryId,
+                        principalTable: "CardiologySurgeries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_AppointmentStatusId",
+                table: "Appointments",
+                column: "AppointmentStatusId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_PatientId",
                 table: "Appointments",
@@ -380,6 +495,11 @@ namespace Infraestructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_CardiacCatheterizationStudies_PatientId",
                 table: "CardiacCatheterizationStudies",
+                column: "PatientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CardiologySurgeries_PatientId",
+                table: "CardiologySurgeries",
                 column: "PatientId");
 
             migrationBuilder.CreateIndex(
@@ -413,6 +533,11 @@ namespace Infraestructure.Data.Migrations
                 column: "PatientId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Notes_NoteStatusId",
+                table: "Notes",
+                column: "NoteStatusId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PhysicalExaminations_PatientId",
                 table: "PhysicalExaminations",
                 column: "PatientId");
@@ -421,6 +546,11 @@ namespace Infraestructure.Data.Migrations
                 name: "IX_StressTests_PatientId",
                 table: "StressTests",
                 column: "PatientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SurgeryFollowUps_CardiologySurgeryId",
+                table: "SurgeryFollowUps",
+                column: "CardiologySurgeryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Treatments_PatientId",
@@ -459,13 +589,28 @@ namespace Infraestructure.Data.Migrations
                 name: "MedicalHistories");
 
             migrationBuilder.DropTable(
+                name: "Notes");
+
+            migrationBuilder.DropTable(
                 name: "PhysicalExaminations");
 
             migrationBuilder.DropTable(
                 name: "StressTests");
 
             migrationBuilder.DropTable(
+                name: "SurgeryFollowUps");
+
+            migrationBuilder.DropTable(
                 name: "Treatments");
+
+            migrationBuilder.DropTable(
+                name: "AppointmentStatuses");
+
+            migrationBuilder.DropTable(
+                name: "NoteStatuses");
+
+            migrationBuilder.DropTable(
+                name: "CardiologySurgeries");
 
             migrationBuilder.DropTable(
                 name: "Patients");

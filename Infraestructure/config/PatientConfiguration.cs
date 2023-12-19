@@ -54,7 +54,10 @@ namespace Infraestructure.config
             // Relationship treatment
             builder.HasMany(p => p.Treatments).WithOne(t => t.Patient)
             .HasForeignKey(t => t.PatientId);
-            
+
+            // Relationship cardiology surgery
+            builder.HasMany(p => p.CardiologySurgery).WithOne(t => t.Patient)
+            .HasForeignKey(cs => cs.PatientId);
         }
     }
 }

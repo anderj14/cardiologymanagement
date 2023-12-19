@@ -24,6 +24,7 @@ namespace Core.Entities
         public ICollection<BloodTest> BloodTests { get; set; }         
         public ICollection<Diagnostic> Diagnostics { get; set; }
         public ICollection<Treatment> Treatments { get; set; }
+        public ICollection<CardiologySurgery> CardiologySurgery { get; set; }
     
     }
 }

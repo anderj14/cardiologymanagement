@@ -23,6 +23,9 @@ namespace Infraestructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("AppointmentStatusId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
@@ -37,9 +40,25 @@ namespace Infraestructure.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AppointmentStatusId");
+
                     b.HasIndex("PatientId");
 
                     b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("Core.Entities.AppointmentStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AppointmentStatusName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppointmentStatuses");
                 });
 
             modelBuilder.Entity("Core.Entities.BloodTest", b =>
@@ -168,6 +187,61 @@ namespace Infraestructure.Data.Migrations
                     b.HasIndex("PatientId");
 
                     b.ToTable("CardiacCatheterizationStudies");
+                });
+
+            modelBuilder.Entity("Core.Entities.CardiologySurgery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CardiacCondition")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("IsElective")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("IsEmergency")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("IsMinimallyInvasive")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("IsSuccessful")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OperationRoom")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PostOpDiagnosis")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PreOpDiagnosis")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProcedureDescription")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SurgeryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("CardiologySurgeries");
                 });
 
             modelBuilder.Entity("Core.Entities.Diagnostic", b =>
@@ -404,6 +478,45 @@ namespace Infraestructure.Data.Migrations
                     b.ToTable("MedicalHistories");
                 });
 
+            modelBuilder.Entity("Core.Entities.NoteStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("NoteStatusName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NoteStatuses");
+                });
+
+            modelBuilder.Entity("Core.Entities.Notes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("NoteStatusId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NoteStatusId");
+
+                    b.ToTable("Notes");
+                });
+
             modelBuilder.Entity("Core.Entities.Patient", b =>
                 {
                     b.Property<int>("Id")
@@ -536,6 +649,34 @@ namespace Infraestructure.Data.Migrations
                     b.ToTable("StressTests");
                 });
 
+            modelBuilder.Entity("Core.Entities.SurgeryFollowUp", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CardiologySurgeryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Complications")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FollowUpComplete")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FollowUpDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FollowUpNotes")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CardiologySurgeryId");
+
+                    b.ToTable("SurgeryFollowUps");
+                });
+
             modelBuilder.Entity("Core.Entities.Treatment", b =>
                 {
                     b.Property<int>("Id")
@@ -575,11 +716,19 @@ namespace Infraestructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Appointment", b =>
                 {
+                    b.HasOne("Core.Entities.AppointmentStatus", "AppointmentStatus")
+                        .WithMany()
+                        .HasForeignKey("AppointmentStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Core.Entities.Patient", "Patient")
                         .WithMany("Appointments")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppointmentStatus");
 
                     b.Navigation("Patient");
                 });
@@ -599,6 +748,17 @@ namespace Infraestructure.Data.Migrations
                 {
                     b.HasOne("Core.Entities.Patient", "Patient")
                         .WithMany("CardiacCatheterizationStudies")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("Core.Entities.CardiologySurgery", b =>
+                {
+                    b.HasOne("Core.Entities.Patient", "Patient")
+                        .WithMany("CardiologySurgery")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -672,6 +832,17 @@ namespace Infraestructure.Data.Migrations
                     b.Navigation("Patient");
                 });
 
+            modelBuilder.Entity("Core.Entities.Notes", b =>
+                {
+                    b.HasOne("Core.Entities.NoteStatus", "NoteStatus")
+                        .WithMany()
+                        .HasForeignKey("NoteStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NoteStatus");
+                });
+
             modelBuilder.Entity("Core.Entities.PhysicalExamination", b =>
                 {
                     b.HasOne("Core.Entities.Patient", "Patient")
@@ -694,6 +865,17 @@ namespace Infraestructure.Data.Migrations
                     b.Navigation("Patient");
                 });
 
+            modelBuilder.Entity("Core.Entities.SurgeryFollowUp", b =>
+                {
+                    b.HasOne("Core.Entities.CardiologySurgery", "CardiologySurgery")
+                        .WithMany()
+                        .HasForeignKey("CardiologySurgeryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CardiologySurgery");
+                });
+
             modelBuilder.Entity("Core.Entities.Treatment", b =>
                 {
                     b.HasOne("Core.Entities.Patient", "Patient")
@@ -712,6 +894,8 @@ namespace Infraestructure.Data.Migrations
                     b.Navigation("BloodTests");
 
                     b.Navigation("CardiacCatheterizationStudies");
+
+                    b.Navigation("CardiologySurgery");
 
                     b.Navigation("Diagnostics");
 

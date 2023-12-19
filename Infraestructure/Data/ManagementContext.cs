@@ -12,6 +12,7 @@ namespace Infraestructure.Data
 
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<AppointmentStatus> AppointmentStatuses { get; set; }
         public DbSet<BloodTest> BloodTests { get; set; }
         public DbSet<CardiacCatheterizationStudy> CardiacCatheterizationStudies { get; set; }
         public DbSet<Diagnostic> Diagnostics { get; set; }
@@ -23,6 +24,10 @@ namespace Infraestructure.Data
         public DbSet<PhysicalExamination> PhysicalExaminations { get; set; }
         public DbSet<StressTest> StressTests { get; set; }
         public DbSet<Treatment> Treatments { get; set; }
+        public DbSet<CardiologySurgery> CardiologySurgeries { get; set; }
+        public DbSet<SurgeryFollowUp> SurgeryFollowUps { get; set; }
+        public DbSet<Notes> Notes { get; set; }
+        public DbSet<NoteStatus> NoteStatuses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
