@@ -1,5 +1,6 @@
 [
     {
+        "Id": 1,
         "FollowUpDate": "2023-12-25",
         "FollowUpNotes": "The patient is recovering as expected.",
         "Complications": "None",
@@ -7,6 +8,7 @@
         "CardiologySurgeryId": 1
     },
     {
+        "Id": 2,
         "FollowUpDate": "2023-12-30",
         "FollowUpNotes": "Signs of infection observed in the wound.",
         "Complications": "Wound infection",
@@ -14,6 +16,7 @@
         "CardiologySurgeryId": 1
     },
     {
+        "Id": 3,
         "FollowUpDate": "2024-01-05",
         "FollowUpNotes": "The patient experiences persistent pain.",
         "Complications": "Persistent pain",
@@ -21,6 +24,7 @@
         "CardiologySurgeryId": 1
     },
     {
+        "Id": 4,
         "FollowUpDate": "2023-12-28",
         "FollowUpNotes": "No Complications observed. Patient is doing well.",
         "Complications": "None",
@@ -28,6 +32,7 @@
         "CardiologySurgeryId": 2
     },
     {
+        "Id": 5,
         "FollowUpDate": "2024-01-02",
         "FollowUpNotes": "Patient reports mild discomfort but no significant issues.",
         "Complications": "Mild discomfort",
@@ -35,6 +40,7 @@
         "CardiologySurgeryId": 2
     },
     {
+        "Id": 6,
         "FollowUpDate": "2024-01-10",
         "FollowUpNotes": "Complete recovery observed. No Complications.",
         "Complications": "None",
@@ -42,6 +48,7 @@
         "CardiologySurgeryId": 2
     },
     {
+        "Id": 7,
         "FollowUpDate": "2024-01-15",
         "FollowUpNotes": "Patient is progressing well. No Complications reported.",
         "Complications": "None",
@@ -49,6 +56,7 @@
         "CardiologySurgeryId": 3
     },
     {
+        "Id": 8,
         "FollowUpDate": "2024-01-20",
         "FollowUpNotes": "No signs of Complications. Patient is satisfied with progress.",
         "Complications": "None",
@@ -56,6 +64,7 @@
         "CardiologySurgeryId": 3
     },
     {
+        "Id": 9,
         "FollowUpDate": "2024-02-02",
         "FollowUpNotes": "Patient reports occasional discomfort, but overall recovery is on track.",
         "Complications": "Occasional discomfort",
@@ -63,6 +72,7 @@
         "CardiologySurgeryId": 3
     },
     {
+        "Id": 10,
         "FollowUpDate": "2024-02-05",
         "FollowUpNotes": "Recovery complete. No Complications observed.",
         "Complications": "None",
@@ -70,6 +80,7 @@
         "CardiologySurgeryId": 4
     },
     {
+        "Id": 11,
         "FollowUpDate": "2024-02-10",
         "FollowUpNotes": "Patient is back to normal activities. No issues reported.",
         "Complications": "None",
@@ -77,6 +88,7 @@
         "CardiologySurgeryId": 4
     },
     {
+        "Id": 12,
         "FollowUpDate": "2024-02-15",
         "FollowUpNotes": "No Complications. Patient expresses satisfaction with the outcome.",
         "Complications": "None",

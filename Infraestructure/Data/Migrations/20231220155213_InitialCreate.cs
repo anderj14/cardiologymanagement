@@ -66,6 +66,7 @@ namespace Infraestructure.Data.Migrations
                     Title = table.Column<string>(type: "TEXT", nullable: true),
                     Content = table.Column<string>(type: "TEXT", nullable: true),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Time = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     NoteStatusId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -186,6 +187,7 @@ namespace Infraestructure.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     SurgeryName = table.Column<string>(type: "TEXT", nullable: true),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Time = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     ProcedureDescription = table.Column<string>(type: "TEXT", nullable: true),
                     Notes = table.Column<string>(type: "TEXT", nullable: true),
                     IsEmergency = table.Column<string>(type: "TEXT", nullable: true),

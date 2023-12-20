@@ -1,6 +1,6 @@
-namespace Core.Specification
+namespace Core.Specification.SurgeryFollowUpSpec
 {
-    public class AppointmentSpecParams
+    public class SurgeryFollowUpSpecParams
     {
         private const int MaxPageSize = 100;
         public int PageIndex { get; set; } = 1;
@@ -12,11 +12,12 @@ namespace Core.Specification
             get => _pageSize;
             set => _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
         }
-        public DateTime? Date { get; set; }
-        public int? AppointmentStatusId { get; set; }
-        
+
+        public int? CardiologySurgeryId { get; set; }
+
         public string Sort { get; set; }
         private string _search;
+
         public string Search
         {
             get => _search;

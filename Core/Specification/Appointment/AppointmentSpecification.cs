@@ -6,10 +6,14 @@ namespace Core.Specification
     {
         public AppointmentSpecification(AppointmentSpecParams appointmentParams)
             : base(x =>
-            string.IsNullOrEmpty(appointmentParams.Search) || x.Patient.PatientName.ToLower().Contains(appointmentParams.Search)
-            && (appointmentParams.Date == null || x.Date.Date == appointmentParams.Date.Value.Date))
+            (string.IsNullOrEmpty(appointmentParams.Search) || x.Patient.PatientName.ToLower().Contains
+            (appointmentParams.Search))
+            && (appointmentParams.Date == null || x.Date.Date == appointmentParams.Date.Value.Date)
+            && (!appointmentParams.AppointmentStatusId.HasValue || x.AppointmentStatusId == appointmentParams.AppointmentStatusId)
+            )
         {
             AddInclude(a => a.Patient);
+            AddInclude(a => a.AppointmentStatus);
 
             ApplyPaging(appointmentParams.PageSize * (appointmentParams.PageIndex - 1),
             appointmentParams.PageSize);
@@ -42,19 +46,22 @@ namespace Core.Specification
             : base(a => a.PatientId == patientId && a.Id == appointmentId)
         {
             AddInclude(a => a.Patient);
+            AddInclude(a => a.AppointmentStatus);
         }
 
 
         public AppointmentSpecification(int id)
-            : base(a => a.Id == id)
+            : base(a => a.PatientId == id)
         {
             AddInclude(a => a.Patient);
+            AddInclude(a => a.AppointmentStatus);
         }
 
         public AppointmentSpecification(DateTime date)
             : base(a => a.Date.Date == date.Date)
         {
             AddInclude(a => a.Patient);
+            AddInclude(a => a.AppointmentStatus);
             AddOrderBy(a => a.Date);
 
         }

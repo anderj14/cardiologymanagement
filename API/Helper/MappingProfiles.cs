@@ -20,14 +20,12 @@ namespace API.Helper
             .ForMember(p => p.MedicalHistories, o => o.MapFrom(s => s.MedicalHistories))
             .ForMember(p => p.PhysicalExaminations, o => o.MapFrom(s => s.PhysicalExaminations))
             .ForMember(p => p.StressTests, o => o.MapFrom(s => s.StressTests))
-            .ForMember(p => p.Treatments, o => o.MapFrom(s => s.Treatments));
-
-            // CreateMap<Model, ModelDto>()
-            // .ForMember(d => d.Brand, o => o.MapFrom(s => s.Brand.BrandName));
-
+            .ForMember(p => p.Treatments, o => o.MapFrom(s => s.Treatments))
+            .ForMember(p => p.CardiologySurgeries, o => o.MapFrom(s => s.CardiologySurgery));
 
             CreateMap<Appointment, AppointmentDto>()
-            .ForMember(d => d.Patient, o => o.MapFrom(s => s.Patient.PatientName));
+            .ForMember(d => d.Patient, o => o.MapFrom(s => s.Patient.PatientName))
+            .ForMember(d => d.AppointmentStatus, o => o.MapFrom(s => s.AppointmentStatus.AppointmentStatusName));
             CreateMap<BloodTest, BloodTestDto>();
             CreateMap<CardiacCatheterizationStudy, CardiacCatheterizationStudyDto>();
             CreateMap<Diagnostic, DiagnosticDto>();
@@ -39,6 +37,19 @@ namespace API.Helper
             CreateMap<PhysicalExamination, PhysicalExaminationDto>();
             CreateMap<StressTest, StressTestDto>();
             CreateMap<Treatment, TreatmentDto>();
+
+            CreateMap<CardiologySurgery, CardiologySurgeryDto>();
+            // .ForMember(d => d.Patient, o => o.MapFrom(s => s.Patient.PatientName));
+
+            CreateMap<SurgeryFollowUp, SurgeryFollowUpDto>()
+            .ForMember(d => d.CardiologySurgery, o => o.MapFrom(s => s.CardiologySurgery.SurgeryName));
+
+            CreateMap<Notes, NotesDto>()
+            .ForMember(d => d.NoteStatus, o => o.MapFrom(s => s.NoteStatus.NoteStatusName));
+
+            CreateMap<NoteStatus, NoteStatusDto>();
+
+            CreateMap<AppointmentStatus, AppointmentStatusDto>();
         }
     }
 }

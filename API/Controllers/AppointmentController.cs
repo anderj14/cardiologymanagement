@@ -10,9 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class AppointmentController : ControllerBase
+    public class AppointmentController : BaseApiController
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -24,11 +22,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Pagination<AppointmentDto>>> GetAppointments(
-                    [FromQuery] AppointmentSpecParams appointmentParams
-                )
+            [FromQuery] AppointmentSpecParams appointmentParams
+        )
         {
             // If a date is provided in the parameters, use a different specification
             if (appointmentParams.Date.HasValue)

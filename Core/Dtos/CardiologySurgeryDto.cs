@@ -1,10 +1,10 @@
-namespace Core.Entities
+namespace Core.Dtos
 {
-    public class CardiologySurgery : BaseEntity
+    public class CardiologySurgeryDto
     {
+        public int Id { get; set; }
         public string SurgeryName { get; set; }
         public DateTime Date { get; set; }
-        public TimeSpan Time { get; set; }
         public string ProcedureDescription { get; set; }
         public string Notes { get; set; }
         public string IsEmergency { get; set; }
@@ -16,9 +16,6 @@ namespace Core.Entities
         public int Duration { get; set; }
         public string CardiacCondition { get; set; }
         public string IsMinimallyInvasive { get; set; }
-
         public int PatientId { get; set; }
-        public Patient Patient { get; set; }
     }
-
 }

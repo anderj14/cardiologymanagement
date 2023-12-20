@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+
 using Core.Entities;
 
 namespace Core.Specification
@@ -27,6 +23,7 @@ namespace Core.Specification
             AddInclude(p => p.PhysicalExaminations);
             AddInclude(p => p.StressTests);
             AddInclude(p => p.Treatments);
+            AddInclude(p => p.CardiologySurgery);
 
             AddOrderBy(p => p.PatientName);
 
@@ -67,6 +64,8 @@ namespace Core.Specification
             AddInclude(p => p.PhysicalExaminations);
             AddInclude(p => p.StressTests);
             AddInclude(p => p.Treatments);
+            AddInclude(p => p.CardiologySurgery);
+
         }
     }
 }

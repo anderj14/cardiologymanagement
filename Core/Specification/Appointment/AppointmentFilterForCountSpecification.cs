@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Core.Entities;
 
 namespace Core.Specification
@@ -10,8 +7,8 @@ namespace Core.Specification
     {
         public AppointmentFilterForCountSpecification(AppointmentSpecParams appointmentParams)
             : base(x =>
-                string.IsNullOrEmpty(appointmentParams.Search) ||
-                x.Patient.PatientName.ToLower().Contains(appointmentParams.Search))
+                string.IsNullOrEmpty(appointmentParams.Search) || x.Patient.PatientName.ToLower().Contains(appointmentParams.Search)
+                && (!appointmentParams.AppointmentStatusId.HasValue || x.AppointmentStatusId == appointmentParams.AppointmentStatusId))
         {
         }
     }

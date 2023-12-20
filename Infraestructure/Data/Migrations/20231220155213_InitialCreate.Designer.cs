@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Data.Migrations
 {
     [DbContext(typeof(ManagementContext))]
-    [Migration("20231219143059_InitialCreate")]
+    [Migration("20231220155213_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -238,6 +238,9 @@ namespace Infraestructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SurgeryName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<TimeSpan>("Time")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -509,6 +512,9 @@ namespace Infraestructure.Data.Migrations
 
                     b.Property<int>("NoteStatusId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");

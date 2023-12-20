@@ -237,6 +237,9 @@ namespace Infraestructure.Data.Migrations
                     b.Property<string>("SurgeryName")
                         .HasColumnType("TEXT");
 
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PatientId");
@@ -506,6 +509,9 @@ namespace Infraestructure.Data.Migrations
 
                     b.Property<int>("NoteStatusId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
