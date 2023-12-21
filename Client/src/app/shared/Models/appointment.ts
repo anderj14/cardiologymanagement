@@ -4,4 +4,5 @@ export interface Appointment {
     time: string
     description: string
     patient: number
+    appointmentStatus: string;
 }

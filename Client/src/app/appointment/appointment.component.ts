@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
 import { Appointment } from '../shared/Models/appointment';
 import { AppointmentService } from '../sections/appointment/appointment.service';
 import { AppointmentParams } from '../shared/Models/appointmentParams';
+import { AppointmentStatus } from '../shared/Models/appointmentStatus';
 
 @Component({
   selector: 'app-appointment',
@@ -11,6 +12,7 @@ import { AppointmentParams } from '../shared/Models/appointmentParams';
 export class AppointmentComponent implements OnInit {
   @ViewChild('search') searchTerm?: ElementRef;
   appointments!: Appointment[];
+  appointmentsStatuses!: AppointmentStatus[];
 
   appointmentParams = new AppointmentParams();
   sortOptions = [
@@ -27,6 +29,7 @@ export class AppointmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAppointments();
+    this.getAppointmentStatus();
   }
   onDateSelected(selectedDate: Date): void {
     this.appointmentParams.date = selectedDate.toISOString(); // Ajusta el formato de fecha según tus necesidades
@@ -71,5 +74,30 @@ export class AppointmentComponent implements OnInit {
     this.getAppointments();
   }
 
+  getAppointmentStatus() {
+    this.appointmentService.getAppointmentStatus().subscribe({
+      next: response => this.appointmentsStatuses = [{ id: 0, appointmentStatusName: 'All' }, ...response],
+      error: error => console.log(error)
+    });
+  }
+
+  onAppointmentStatusSelected(appointmentStatusId: number) {
+    this.appointmentParams.appointmentStatusId = appointmentStatusId;
+    this.appointmentParams.pageNumber = 1;
+    this.getAppointments();
+  }
+
+  showPopup = false;
+
+  togglePopup() {
+    this.showPopup = !this.showPopup;
+  }
+
+  closePopup() {
+    this.showPopup = false;
+  }
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
 }
 

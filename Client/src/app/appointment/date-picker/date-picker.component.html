@@ -1,9 +1,13 @@
 <div class="date-picker">
-    <button (click)="selectDate(-1, 'year')"><<<</button>
-    <button (click)="selectDate(-1, 'month')"><<</button>
-    <button (click)="selectDate(-1, 'day')"><</button>
+    <div class="left">
+        <button (click)="selectDate(-1, 'year')"><<<</button>
+        <button (click)="selectDate(-1, 'month')"><<</button>
+        <button (click)="selectDate(-1, 'day')"><</button>
+    </div>
     <span>{{ currentDate | date: 'longDate' }}</span>
-    <button (click)="selectDate(1, 'day')">></button>
-    <button (click)="selectDate(1, 'month')">>></button>
-    <button (click)="selectDate(1, 'year')">>>></button>
+    <div class="right">
+        <button (click)="selectDate(1, 'day')">></button>
+        <button (click)="selectDate(1, 'month')">>></button>
+        <button (click)="selectDate(1, 'year')">>>></button>
+    </div>
 </div>

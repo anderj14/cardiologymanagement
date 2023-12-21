@@ -8,7 +8,8 @@ namespace Core.Specification
             : base(x =>
             (string.IsNullOrEmpty(appointmentParams.Search) || x.Patient.PatientName.ToLower().Contains
             (appointmentParams.Search))
-            && (appointmentParams.Date == null || x.Date.Date == appointmentParams.Date.Value.Date)
+            // && (appointmentParams.Date == null || x.Date.Date == appointmentParams.Date.Value.Date)
+            && (!appointmentParams.Date.HasValue || x.Date.Date == appointmentParams.Date.Value.Date)
             && (!appointmentParams.AppointmentStatusId.HasValue || x.AppointmentStatusId == appointmentParams.AppointmentStatusId)
             )
         {
@@ -48,10 +49,14 @@ namespace Core.Specification
             AddInclude(a => a.Patient);
             AddInclude(a => a.AppointmentStatus);
         }
-
-
         public AppointmentSpecification(int id)
-            : base(a => a.PatientId == id)
+            : base(a => a.Id == id)
+        {
+            AddInclude(a => a.Patient);
+            AddInclude(a => a.AppointmentStatus);
+        }
+        public AppointmentSpecification(int id, bool getByPatientId = false)
+        : base(a => getByPatientId ? a.PatientId == id : a.Id == id)
         {
             AddInclude(a => a.Patient);
             AddInclude(a => a.AppointmentStatus);
@@ -63,7 +68,6 @@ namespace Core.Specification
             AddInclude(a => a.Patient);
             AddInclude(a => a.AppointmentStatus);
             AddOrderBy(a => a.Date);
-
         }
     }
 }

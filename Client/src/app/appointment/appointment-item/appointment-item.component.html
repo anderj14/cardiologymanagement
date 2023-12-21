@@ -7,7 +7,7 @@
     <p><strong>Date: </strong>{{appointmet.date | date}} {{appointmet.time}}</p>
     <mat-card-subtitle>Click For More Details</mat-card-subtitle>
     <div class="status">
-      <strong>Status: </strong> <p class="pending"> Pending</p>
+      <strong>Status: </strong> <p [class]="getStatusClass(appointmet.appointmentStatus)"> {{appointmet.appointmentStatus}}</p>
     </div>
 
   </mat-card-content>

@@ -19,9 +19,7 @@ mat-card {
     justify-content: end;
 
     p {
-        .pending {
-            color: #FFD700;
-        }
+        margin-left: 5px;
         &.realiced {
             color: #008000;
         }

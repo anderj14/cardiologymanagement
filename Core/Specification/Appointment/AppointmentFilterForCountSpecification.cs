@@ -8,7 +8,10 @@ namespace Core.Specification
         public AppointmentFilterForCountSpecification(AppointmentSpecParams appointmentParams)
             : base(x =>
                 string.IsNullOrEmpty(appointmentParams.Search) || x.Patient.PatientName.ToLower().Contains(appointmentParams.Search)
-                && (!appointmentParams.AppointmentStatusId.HasValue || x.AppointmentStatusId == appointmentParams.AppointmentStatusId))
+                && (!appointmentParams.Date.HasValue || x.Date.Date == appointmentParams.Date.Value.Date)
+                && (!appointmentParams.AppointmentStatusId.HasValue || x.AppointmentStatusId == appointmentParams.AppointmentStatusId)
+                )
+                
         {
         }
     }
