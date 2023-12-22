@@ -2,7 +2,7 @@
 
     <div class="header">
         <div class="title">
-            <h2>Appointments</h2>
+            <h1>Appointments</h1>
         </div>
 
         <div class="box filtering">
@@ -32,7 +32,7 @@
 
     <div class="cards-box">
         <div class="card-box" *ngFor="let appointment of appointments">
-            <app-appointment-item [appointmet]="appointment"></app-appointment-item>
+            <app-appointment-item [appointment]="appointment"></app-appointment-item>
         </div>
     </div>
     <div class="pagination" *ngIf="totalCount > 0">

@@ -1,0 +1,39 @@
+<div class="content-main">
+
+    <div class="header">
+        <div class="title">
+            <h1>Surgeries</h1>
+        </div>
+
+        <div class="box filtering">
+            <app-paging-header [totalCount]="totalCount" [pageNumber]="surgeryParams.pageNumber"
+                [pageSize]="surgeryParams.pageSize"></app-paging-header>
+
+            <div class="box-search">
+                <div class="select">
+                    <select (change)="onSortSelected($event)">
+                        <option *ngFor="let sort of sortOptions" [value]="sort.value">
+                            {{sort.name}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="search">
+                    <input (keyup.enter)="onSearch()" type="text" class="" #search>
+                    <button (click)="onSearch()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cards-box">
+        <div class="card-box" *ngFor="let surgery of surgeries">
+            <app-surgery-item [surgery]="surgery"></app-surgery-item>
+        </div>
+    </div>
+    <div class="pagination" *ngIf="totalCount > 0">
+        <app-pagination [totalCount]="totalCount" [pageSize]="surgeryParams.pageSize"
+            (pageChanged)="onPageChanged($event)"></app-pagination>
+    </div>
+
+</div>

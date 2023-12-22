@@ -1,0 +1,74 @@
+<div class="section">
+
+    <div class="action">
+        <div class="back">
+            <i routerLink="/surgeries" class="bi bi-arrow-left"></i>
+        </div>
+        <div class="delete">
+            <button class="">Delete</button>
+        </div>
+    </div>
+
+    <div class="content" *ngIf="surgery">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-subtitle>Patient</mat-card-subtitle>
+                <mat-card-title>{{surgery.patient}}</mat-card-title>
+            </mat-card-header>
+
+            <div class="box">
+
+                <mat-card-content>
+                    <div class="box">
+                        <mat-card-subtitle>Date</mat-card-subtitle>
+                        <p> {{surgery.date | date}}</p>
+
+                        <mat-card-subtitle>Procedure Description</mat-card-subtitle>
+                        <p>{{surgery.procedureDescription}}</p>
+
+                        <mat-card-subtitle>Notes</mat-card-subtitle>
+                        <p>{{surgery.notes}}</p>
+
+                        <mat-card-subtitle>Is Emergency (Yes/No)</mat-card-subtitle>
+                        <p>{{surgery.isEmergency}}</p>
+
+                        <mat-card-subtitle>Is Elective (Yes/No)</mat-card-subtitle>
+                        <p>{{surgery.isElective}}</p>
+
+                        <mat-card-subtitle>Operation Room</mat-card-subtitle>
+                        <p>{{surgery.operationRoom}}</p>
+                    </div>
+                    <div class="box">
+                        <mat-card-subtitle>Preoperative Diagnosis</mat-card-subtitle>
+                        <p> {{surgery.preOpDiagnosis}}</p>
+
+                        <mat-card-subtitle>Postoperative Diagnosis</mat-card-subtitle>
+                        <p>{{surgery.postOpDiagnosis}}</p>
+
+                        <mat-card-subtitle>Is Successful (Yes/No)</mat-card-subtitle>
+                        <p>{{surgery.isSuccessful}}</p>
+
+                        <mat-card-subtitle>Duration (Hours)</mat-card-subtitle>
+                        <p>{{surgery.duration - 115}} Hs</p>
+
+                        <mat-card-subtitle>Cardiac Condition</mat-card-subtitle>
+                        <p>{{surgery.cardiacCondition}}</p>
+
+                        <mat-card-subtitle>Is Minimally Invasive (Yes/No)</mat-card-subtitle>
+                        <p>{{surgery.isMinimallyInvasive}}</p>
+                    </div>
+
+                </mat-card-content>
+
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-actions>
+                <button class="update">Update</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+
+</div>

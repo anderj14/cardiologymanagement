@@ -16,6 +16,6 @@ namespace Core.Dtos
         public int Duration { get; set; }
         public string CardiacCondition { get; set; }
         public string IsMinimallyInvasive { get; set; }
-        public int PatientId { get; set; }
+        public string Patient { get; set; }
     }
 }

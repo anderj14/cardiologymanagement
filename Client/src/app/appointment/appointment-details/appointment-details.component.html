@@ -9,29 +9,44 @@
         </div>
     </div>
 
-    <div class="content">
-        <div class="patient" *ngIf="appointment">
-            <div class="card">
-                <div class="header">
-                    <p>{{appointment.patient}}</p>
-                    <div class="update">
-                        <button class="">Update</button>
+    <div class="content" *ngIf="appointment">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-subtitle>Patient</mat-card-subtitle>
+                <mat-card-title>{{appointment.patient}}</mat-card-title>
+            </mat-card-header>
+
+            <div class="box">
+
+                <mat-card-content>
+                    <div class="box">
+                        <mat-card-subtitle>Date</mat-card-subtitle>
+                        <p> {{appointment.date | date}}</p>
+
+                        <mat-card-subtitle>Time</mat-card-subtitle>
+                        <p>{{appointment.time}}</p>
+
+                        <mat-card-subtitle>Description</mat-card-subtitle>
+                        <p>{{appointment.description}}</p>
+
+                        <mat-card-subtitle>Status</mat-card-subtitle>
+                        <div class="status">
+                            <p [class]="getStatusClass(appointment.appointmentStatus)">
+                                {{appointment.appointmentStatus}}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="body">
-                    <div class="date">
-                        <p><strong>Date:</strong> {{appointment.date | date}}</p>
-                        <p><strong>Time:</strong> {{appointment.time}}</p>
-                        <p><strong>Description:</strong> {{appointment.description}}</p>
-                        <p><strong>Status:</strong>Pending</p>
-                        <!-- <select>
-                            <option value="" actived>Pending</option>
-                            <option value="">Canceled</option>
-                            <option value="">Realiced</option>
-                        </select> -->
-                    </div>
-                </div>
+
+                </mat-card-content>
+
             </div>
-        </div>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-actions>
+                <button class="update">Update</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
+
 </div>

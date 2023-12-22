@@ -1,13 +1,13 @@
-<mat-card *ngIf="appointmet" routerLink="/appointments/{{appointmet.id}}">
+<mat-card *ngIf="appointment" routerLink="/appointments/{{appointment.id}}">
   <mat-card-header>
-    <mat-card-title>{{appointmet.patient}}</mat-card-title>
+    <mat-card-title>{{appointment.patient}}</mat-card-title>
     <mat-card-subtitle>Patient</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p><strong>Date: </strong>{{appointmet.date | date}} {{appointmet.time}}</p>
+    <p><strong>Date: </strong>{{appointment.date | date}} {{appointment.time}}</p>
     <mat-card-subtitle>Click For More Details</mat-card-subtitle>
     <div class="status">
-      <strong>Status: </strong> <p [class]="getStatusClass(appointmet.appointmentStatus)"> {{appointmet.appointmentStatus}}</p>
+      <strong>Status: </strong> <p [class]="getStatusClass(appointment.appointmentStatus)"> {{appointment.appointmentStatus}}</p>
     </div>
 
   </mat-card-content>

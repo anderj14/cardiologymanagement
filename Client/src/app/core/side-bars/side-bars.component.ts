@@ -34,9 +34,9 @@ export class SideBarsComponent {
       route: 'appointments',
     },
     {
-      icon: 'cut',
-      label: 'Surjery',
-      route: 'surjery',
+      icon: 'content_cut',
+      label: 'Surgeries',
+      route: 'surgeries',
     },
     {
       icon: 'description',

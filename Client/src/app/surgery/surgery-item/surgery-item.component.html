@@ -1,0 +1,13 @@
+<mat-card *ngIf="surgery" routerLink="/surgeries/{{surgery.id}}">
+    <mat-card-header>
+      <mat-card-title>{{surgery.patient}}</mat-card-title>
+      <mat-card-subtitle>Patient</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Date: </strong>{{surgery.date | date}}</p>
+      <p><strong>Procedure Description: </strong> {{surgery.procedureDescription}}</p>
+      <p><strong>Notes: </strong> {{surgery.notes}}</p>
+      <mat-card-subtitle>Click For More Details</mat-card-subtitle>
+  
+    </mat-card-content>
+  </mat-card>

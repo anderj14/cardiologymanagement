@@ -8,7 +8,7 @@ import { Appointment } from 'src/app/shared/Models/appointment';
 })
 export class AppointmentItemComponent {
 
-  @Input() appointmet?: Appointment;
+  @Input() appointment?: Appointment;
 
   getStatusClass(status: string): string {
     const lowercaseStatus = status.toLowerCase();

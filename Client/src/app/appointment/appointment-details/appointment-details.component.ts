@@ -29,4 +29,20 @@ export class AppointmentDetailsComponent implements OnInit {
       });
     }
   }
+
+
+  getStatusClass(status: string): string {
+    const lowercaseStatus = status.toLowerCase();
+
+    switch (lowercaseStatus) {
+      case 'pending':
+        return 'pending';
+      case 'canceled':
+        return 'canceled';
+      case 'realiced':
+        return 'realiced';
+      default:
+        return '';
+    }
+  }
 }

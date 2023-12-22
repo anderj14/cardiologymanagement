@@ -35,14 +35,13 @@
     }
 
     .content {
-
         padding: 20px;
 
         .card {
             border: none;
             padding: 10px;
-            cursor: pointer;
             transition: 0.2s;
+            padding: 20px;
 
             &:hover {
                 box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.180);
@@ -56,6 +55,7 @@
                 border-radius: 8px;
             }
 
+
             mat-card-content {
                 display: flex;
                 align-items: center;
@@ -65,24 +65,6 @@
             mat-card-actions {
                 margin-top: 30px;
                 margin-bottom: 10px;
-            }
-        }
-
-        .status {
-            display: flex;
-
-            p {
-                &.realiced {
-                    color: #008000;
-                }
-
-                &.canceled {
-                    color: #FF0000;
-                }
-
-                &.pending {
-                    color: #FFD700;
-                }
             }
         }
     }

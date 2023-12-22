@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'server-error', component: ServerErrorComponent },
   { path: 'patients', loadChildren: () => import('./patient/patient.module').then(m => m.PatientModule) },
   { path: 'appointments', loadChildren: () => import('./appointment/appointment.module').then(m => m.AppointmentModule) },
+  { path: 'surgeries', loadChildren: () => import('./surgery/surgery.module').then(m => m.SurgeryModule) },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

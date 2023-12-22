@@ -50,30 +50,30 @@ namespace API.Controllers
             return Ok(_mapper.Map<CardiologySurgery, CardiologySurgeryDto>(cardiologySurgery));
         }
 
-        [HttpGet("patient/{patientId}/cardiologySurgeries")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IReadOnlyList<CardiologySurgeryDto>>> GetPatientCardiologySurgeries(int patientId)
-        {
-            var spec = new CardiologySurgerySpecification(patientId);
+        // [HttpGet("patient/{patientId}/cardiologySurgeries")]
+        // [ProducesResponseType(StatusCodes.Status200OK)]
+        // [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        // public async Task<ActionResult<IReadOnlyList<CardiologySurgeryDto>>> GetPatientCardiologySurgeries(int patientId)
+        // {
+        //     var spec = new CardiologySurgerySpecification(patientId);
             
-            var cardiologySurgeries = await _unitOfWork.Repository<CardiologySurgery>().ListAsync(spec);
-            var cardiologySurgeryDtos = _mapper.Map<IReadOnlyList<CardiologySurgeryDto>>(cardiologySurgeries);
+        //     var cardiologySurgeries = await _unitOfWork.Repository<CardiologySurgery>().ListAsync(spec);
+        //     var cardiologySurgeryDtos = _mapper.Map<IReadOnlyList<CardiologySurgeryDto>>(cardiologySurgeries);
 
-            return Ok(cardiologySurgeryDtos);
-        }
+        //     return Ok(cardiologySurgeryDtos);
+        // }
 
-        [HttpGet("patient/{patientId}/cardiologySurgeries/{cardiologySurgeryId}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<CardiologySurgeryDto>> GetPatientCardiologySurgery(int patientId, int cardiologySurgeryId)
-        {
-            var spec = new CardiologySurgerySpecification(patientId, cardiologySurgeryId);
+        // [HttpGet("patient/{patientId}/cardiologySurgeries/{cardiologySurgeryId}")]
+        // [ProducesResponseType(StatusCodes.Status200OK)]
+        // [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        // public async Task<ActionResult<CardiologySurgeryDto>> GetPatientCardiologySurgery(int patientId, int cardiologySurgeryId)
+        // {
+        //     var spec = new CardiologySurgerySpecification(patientId, cardiologySurgeryId);
             
-            var cardiologySurgery = await _unitOfWork.Repository<CardiologySurgery>().GetEntityWithSpec(spec);
-            var cardiologySurgeryDto = _mapper.Map<CardiologySurgeryDto>(cardiologySurgery);
+        //     var cardiologySurgery = await _unitOfWork.Repository<CardiologySurgery>().GetEntityWithSpec(spec);
+        //     var cardiologySurgeryDto = _mapper.Map<CardiologySurgeryDto>(cardiologySurgery);
 
-            return Ok(cardiologySurgeryDto);
-        }
+        //     return Ok(cardiologySurgeryDto);
+        // }
     }
 }

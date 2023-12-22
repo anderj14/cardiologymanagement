@@ -38,8 +38,8 @@ namespace API.Helper
             CreateMap<StressTest, StressTestDto>();
             CreateMap<Treatment, TreatmentDto>();
 
-            CreateMap<CardiologySurgery, CardiologySurgeryDto>();
-            // .ForMember(d => d.Patient, o => o.MapFrom(s => s.Patient.PatientName));
+            CreateMap<CardiologySurgery, CardiologySurgeryDto>()
+            .ForMember(d => d.Patient, o => o.MapFrom(s => s.Patient.PatientName));
 
             CreateMap<SurgeryFollowUp, SurgeryFollowUpDto>()
             .ForMember(d => d.CardiologySurgery, o => o.MapFrom(s => s.CardiologySurgery.SurgeryName));

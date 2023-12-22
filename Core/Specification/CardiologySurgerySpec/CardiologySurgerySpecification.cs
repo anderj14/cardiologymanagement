@@ -34,7 +34,7 @@ namespace Core.Specification.CardiologySurgerySpec
         }
 
         public CardiologySurgerySpecification(int id)
-            : base(cs => cs.PatientId == id)
+            : base(cs => cs.Id == id)
         {
             AddInclude(cs => cs.Patient);
         }
