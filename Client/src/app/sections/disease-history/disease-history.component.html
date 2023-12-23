@@ -1,30 +1,36 @@
 <div class="content">
-    <div class="diseases-history">
-        <div class="action">
-            <div class="back">
-                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
-            </div>
-        </div>
-        <h2>Diseases History of {{patientName}}</h2>
-        <div class="table-wrapper">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Start Date</th>
-                        <th>Description</th>
-                        <th>Treatment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let diseaseHistory of diseaseHistory"
-                    [routerLink]="['/patients', patientId, 'diseaseshistory', diseaseHistory.id]"
-                    >
-                        <td>{{diseaseHistory.startDate | date}}</td>
-                        <td>{{diseaseHistory.description}}</td>
-                        <td>{{diseaseHistory.treatment}}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
         </div>
     </div>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-subtitle>Disease Histories</mat-card-subtitle>
+            <mat-card-title>{{patientName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="table-wrapper">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Start Date</th>
+                            <th>Description</th>
+                            <th>Treatment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let diseaseHistory of diseaseHistory"
+                            [routerLink]="['/patients', patientId, 'diseaseshistory', diseaseHistory.id]">
+                            <td>{{diseaseHistory.startDate | date}}</td>
+                            <td>{{diseaseHistory.description}}</td>
+                            <td>{{diseaseHistory.treatment}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-card-content>
+    </mat-card>
 </div>

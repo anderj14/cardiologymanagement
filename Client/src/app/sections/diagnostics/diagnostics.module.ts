@@ -4,6 +4,7 @@ import { DiagnosticComponent } from './diagnostic.component';
 import { DiagnosticDetailsComponent } from './diagnostic-details/diagnostic-details.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { DiagnosticRoutingModule } from './diagnostic-routing.module';
+import { MaterialModule } from 'src/app/material/material/material.module';
 
 
 
@@ -15,7 +16,8 @@ import { DiagnosticRoutingModule } from './diagnostic-routing.module';
   imports: [
     CommonModule,
     CoreModule,
-    DiagnosticRoutingModule
+    DiagnosticRoutingModule,
+    MaterialModule
   ],
   exports: [
   ]

@@ -4,6 +4,7 @@ import { DiseaseHistoryDetailsComponent } from './disease-history-details/diseas
 import { DiseaseHistoryComponent } from './disease-history.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { DiseaseHistoryRoutingModule } from './disease-history-routing.module';
+import { MaterialModule } from 'src/app/material/material/material.module';
 
 
 
@@ -15,7 +16,8 @@ import { DiseaseHistoryRoutingModule } from './disease-history-routing.module';
   imports: [
     CommonModule,
     CoreModule,
-    DiseaseHistoryRoutingModule
+    DiseaseHistoryRoutingModule,
+    MaterialModule
   ]
 })
 export class DiseaseHistoryModule { }

@@ -6,7 +6,8 @@
             </a>
             <ul class="d-flex navbar me-auto m-2">
                 <li class="nav-item m-2">
-                    <a class="nav-link" routerLink="/" href="#">Home</a>
+                    <!-- <a class="nav-link" routerLink="/" href="#">Home</a> -->
+                    <a class="nav-link" routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Home</a>
                 </li>
                 <li class="nav-item m-2">
                     <a class="nav-link" href="#">About Us</a>
@@ -15,7 +16,8 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item m-2" >
-                    <a class="nav-link" routerLink="/test-error" href="#">Error</a>
+                    <!-- <a class="nav-link" routerLink="/test-error">Error</a> -->
+                    <a class="nav-link" routerLink="/test-error" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Error</a>
                 </li>
             </ul>
         </div>

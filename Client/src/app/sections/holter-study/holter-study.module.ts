@@ -4,6 +4,7 @@ import { HolterStudyComponent } from './holter-study.component';
 import { HolterStudyDetailsComponent } from './holter-study-details/holter-study-details.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { HolterStudyRoutingModule } from './holter-study-routing.module';
+import { MaterialModule } from 'src/app/material/material/material.module';
 
 
 
@@ -15,7 +16,8 @@ import { HolterStudyRoutingModule } from './holter-study-routing.module';
   imports: [
     CommonModule,
     HolterStudyRoutingModule,
-    CoreModule
+    CoreModule,
+    MaterialModule
   ]
 })
 export class HolterStudyModule { }

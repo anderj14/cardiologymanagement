@@ -5,6 +5,7 @@ import { PhysicalExaminationDetailsComponent } from './physical-examination-deta
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
 import { PhysicalExaminationRoutingModule } from './physical-examination-routing.module';
+import { MaterialModule } from 'src/app/material/material/material.module';
 
 
 
@@ -16,7 +17,8 @@ import { PhysicalExaminationRoutingModule } from './physical-examination-routing
   imports: [
     CommonModule,
     PhysicalExaminationRoutingModule,
-    CoreModule
+    CoreModule,
+    MaterialModule
   ]
 })
 export class PhysicalExaminationModule { }

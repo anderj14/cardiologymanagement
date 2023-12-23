@@ -1,25 +1,37 @@
 <div class="content">
-    <div class="echocardiogram">
-        <div class="action">
-            <div class="back">
-                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
-            </div>
-            <div class="options">
-                <button class="delete">Delete</button>
-                <button class="update">Update</button>
-            </div>
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
         </div>
-        <div *ngIf="echocardiogram">
-            <h2>Echocardiograms details</h2>
-            <p><strong>Patient Name:</strong> {{patientName}}</p>
-            <p><strong>Date :</strong> {{echocardiogram.date | date}}</p>
-            <p><strong>Cardiac Dimensions :</strong> {{echocardiogram.cardiacDimensions}}</p>
-            <p><strong>Ejection Fraction :</strong> {{echocardiogram.ejectionFraction}}</p>
-            <p><strong>Valve Function :</strong> {{echocardiogram.valveFunction}}</p>
-            <p><strong>Velocities Blood Flows :</strong> {{echocardiogram.velocitiesBloodFlows}}</p>
-            <p><strong>Movement Cardiac Walls :</strong> {{echocardiogram.movementCardiacWalls}}</p>
-            <p><strong>Pulmonary Arterial Pressure :</strong> {{echocardiogram.pulmonaryArterialPressure}}</p>
-            <p><strong>Blood Flow :</strong> {{echocardiogram.bloodFlow}}</p>
+        <div class="options">
+            <button class="delete">Delete</button>
+            <button class="update">Update</button>
         </div>
     </div>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Diagnostic Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="echocardiogram">
+            <mat-card-subtitle>Patient Name</mat-card-subtitle>
+            <p>{{ patientName }}</p>
+            <mat-card-subtitle>Date</mat-card-subtitle>
+            <p>{{echocardiogram.date | date}}</p>
+            <mat-card-subtitle>Cardiac Dimensions</mat-card-subtitle>
+            <p>{{echocardiogram.cardiacDimensions}}</p>
+            <mat-card-subtitle>Ejection Fraction</mat-card-subtitle>
+            <p>{{echocardiogram.ejectionFraction}}</p>
+            <mat-card-subtitle>Valve Function</mat-card-subtitle>
+            <p>{{echocardiogram.valveFunction}}</p>
+            <mat-card-subtitle>Velocities Blood Flows</mat-card-subtitle>
+            <p>{{echocardiogram.velocitiesBloodFlows}}</p>
+            <mat-card-subtitle>Movement Cardiac Walls</mat-card-subtitle>
+            <p>{{echocardiogram.movementCardiacWalls}}</p>
+            <mat-card-subtitle>Pulmonary Arterial Pressure</mat-card-subtitle>
+            <p>{{echocardiogram.pulmonaryArterialPressure}}</p>
+            <mat-card-subtitle>Blood Flow</mat-card-subtitle>
+            <p>{{echocardiogram.bloodFlow}}</p>
+        </mat-card-content>
+    </mat-card>
 </div>

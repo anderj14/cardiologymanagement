@@ -1,51 +1,42 @@
 .content {
     padding: 25px;
 
-    .echocardiograms {
-        .action {
-            margin-bottom: 10px;
+    .action {
+        margin-bottom: 10px;
 
-            .back {
-                i {
-                    font-size: 35px;
-                    color: #303D50;
-                    cursor: pointer;
-                    transition: 0.5s;
+        .back {
+            i {
+                font-size: 35px;
+                color: #303D50;
+                cursor: pointer;
+                transition: 0.5s;
 
-                    &:hover {
-                        color: #6985af;
-                        padding: 5px;
-                    }
+                &:hover {
+                    color: #6985af;
+                    padding: 5px;
                 }
             }
         }
+    }
 
-        h2 {
-            margin-bottom: 25px;
-            font-weight: 500;
-            font-family: 'montserrat', sans-serif;
+    .table-wrapper {
+        overflow-X: scroll;
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0px;
+            min-width: max-content;
         }
 
-        .table-wrapper {
-            overflow-X: scroll;
-
-            table {
-                border-collapse: separate;
-                border-spacing: 0px;
-                min-width: max-content;
+        table.table-hover {
+            thead th {
+                position: sticky;
             }
 
-            table.table-hover {
-                thead th {
-                    position: sticky;
-                }
-
-                tbody tr:hover {
-                    background-color: #f3f3f3;
-                    cursor: pointer;
-                }
+            tbody tr:hover {
+                background-color: #f3f3f3;
+                cursor: pointer;
             }
         }
-
     }
 }

@@ -20,16 +20,19 @@ mat-card {
 
     p {
         margin-left: 5px;
+        padding: 3px 10px;
+        border-radius: 8px;
+        color: #fff;
         &.realiced {
-            color: #008000;
+            background-color: #1cbf1c;
         }
 
         &.canceled {
-            color: #FF0000;
+            background-color: #d84646;
         }
 
         &.pending {
-            color: #FFD700;
+            background-color: #f4d839;
         }
     }
 }

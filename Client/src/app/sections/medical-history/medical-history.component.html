@@ -1,37 +1,41 @@
 <div class="content">
-    <div class="medical-histories">
-        <div class="action">
-            <div class="back">
-                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
-            </div>
-        </div>
-
-        <h2>Medical histories of {{patientName}}</h2>
-
-        <div class="table-wrapper">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Previous Heart Disease</th>
-                        <th>High Blood Pressure</th>
-                        <th>Diabetes</th>
-                        <th>Hyperlipidemia</th>
-                    </tr>
-
-                </thead>
-                <tbody>
-                    <tr *ngFor="let medicalHistory of medicalhistory"
-                    [routerLink]="['/patients',patientId,'medicalhistories', medicalHistory.id]"
-                    >
-                        <td>{{ medicalHistory.date | date}}</td>
-                        <td>{{ medicalHistory.previousHeartDisease }}</td>
-                        <td>{{ medicalHistory.highBloodPressure }}</td>
-                        <td>{{ medicalHistory.diabetes }}</td>
-                        <td>{{ medicalHistory.hyperlipidemia }}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
         </div>
     </div>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-subtitle>Medical Histories</mat-card-subtitle>
+            <mat-card-title>{{patientName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="table-wrapper">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Previous Heart Disease</th>
+                            <th>High Blood Pressure</th>
+                            <th>Diabetes</th>
+                            <th>Hyperlipidemia</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let medicalHistory of medicalhistory"
+                            [routerLink]="['/patients',patientId,'medicalhistories', medicalHistory.id]">
+                            <td>{{ medicalHistory.date | date}}</td>
+                            <td>{{ medicalHistory.previousHeartDisease }}</td>
+                            <td>{{ medicalHistory.highBloodPressure }}</td>
+                            <td>{{ medicalHistory.diabetes }}</td>
+                            <td>{{ medicalHistory.hyperlipidemia }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-card-content>
+    </mat-card>
 </div>

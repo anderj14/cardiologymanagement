@@ -1,22 +1,24 @@
-
 <div class="content">
-  <div class="appointments">
-    <div class="action">
-      <div class="back">
-        <i routerLink="/patients/{{patientId}}/appointments" class="bi bi-arrow-left"></i>
-      </div>
-      <div class="options">
-        <button class="delete">Delete</button>
-        <button class="update">Update</button>
-      </div>
+  <div class="action">
+    <div class="back">
+      <i routerLink="/patients/{{patientId}}/appointments" class="bi bi-arrow-left"></i>
     </div>
-    <div *ngIf="appointment">
-      <h2>Appointment Details</h2>
+    <div class="options">
+      <button class="delete">Delete</button>
+      <button class="update">Update</button>
+    </div>
+  </div>
+  <mat-card class="card">
+    <mat-card-header>
+      <!-- <mat-card-subtitle></mat-card-subtitle> -->
+      <mat-card-title>Appintment Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="appointment">
       <p><strong>Patient Name:</strong> {{ patientName }}</p>
       <p><strong>Fecha:</strong> {{ appointment.date | date }}</p>
       <p><strong>Hora:</strong> {{ appointment.time }}</p>
       <p><strong>Descripción:</strong> {{ appointment.description }}</p>
-    </div>
-
-  </div>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+  </mat-card>
 </div>

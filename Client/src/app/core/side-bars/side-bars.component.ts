@@ -21,7 +21,7 @@ export class SideBarsComponent {
     {
       icon: 'dashboard',
       label: 'Dashboard',
-      route: 'home',
+      route: 'dashboard',
     },
     {
       icon: 'personal_injury',

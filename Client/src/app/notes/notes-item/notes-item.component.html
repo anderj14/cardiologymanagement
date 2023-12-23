@@ -1,1 +1,12 @@
-<p>notes-item works!</p>
+<mat-card *ngIf="note" routerLink="/notes/{{note.id}}">
+  <mat-card-content>
+    <p><strong>Date: </strong>{{note.date | date}}</p>
+    <p><strong>Title: </strong>{{note.title}}</p>
+    <p><strong>Date: </strong>{{note.date | date}}</p>
+    <mat-card-subtitle>Click For More Details</mat-card-subtitle>
+    <div class="status">
+      <strong>Status: </strong>
+      <p [class]="getStatusClass(note.noteStatus)"> {{note.noteStatus}}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

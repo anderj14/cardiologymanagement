@@ -22,10 +22,10 @@ export class AppointmentService {
     params = params.append('sort', appointmentParams.sort);
     params = params.append('pageIndex', appointmentParams.pageNumber.toString());
     params = params.append('pageSize', appointmentParams.pageSize.toString());
-    if(appointmentParams.search) params = params.append('search', appointmentParams.search);
-    if(appointmentParams.date) params = params.append('date', appointmentParams.date);
+    if (appointmentParams.search) params = params.append('search', appointmentParams.search);
+    if (appointmentParams.date) params = params.append('date', appointmentParams.date);
 
-    return this.http.get<Pagination<Appointment[]>>(`${this.baseUrl}appointment`, {params});
+    return this.http.get<Pagination<Appointment[]>>(`${this.baseUrl}appointment`, { params });
   }
 
   getAppointment(id: number): Observable<Appointment> {
@@ -40,8 +40,7 @@ export class AppointmentService {
     return this.http.get<Appointment>(`${this.baseUrl}appointment/patient/${patientId}/appointments/${appointmentId}`);
   }
 
-  getAppointmentStatus()
-  {
+  getAppointmentStatus() {
     return this.http.get<AppointmentStatus[]>(`${this.baseUrl}appointmentStatuses`)
   }
 

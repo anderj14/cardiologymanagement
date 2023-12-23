@@ -1,29 +1,43 @@
 <div class="content">
-    <div class="medical-history">
-        <div class="action">
-            <div class="back">
-                <i routerLink="/patients/{{patientId}}/medicalhistories" class="bi bi-arrow-left"></i>
-            </div>
-            <div class="options">
-                <button class="delete">Delete</button>
-                <button class="update">Update</button>
-            </div>
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients/{{patientId}}/medicalhistories" class="bi bi-arrow-left"></i>
         </div>
-
-        <div *ngIf="medicalHistory">
-            <h2>Medical history details</h2>
-            <p><strong>Patient Name: </strong>{{ patientName }}</p>
-            <p><strong>Date: </strong>{{ medicalHistory.date | date }}</p>
-            <p><strong>Previous Heart Disease: </strong>{{ medicalHistory.previousHeartDisease }}</p>
-            <p><strong>High Blood Pressure: </strong>{{ medicalHistory.highBloodPressure }}</p>
-            <p><strong>Diabetes: </strong>{{ medicalHistory.diabetes }}</p>
-            <p><strong>Hyperlipidemia: </strong>{{ medicalHistory.hyperlipidemia }}</p>
-            <p><strong>Obesity: </strong>{{ medicalHistory.obesity }}</p>
-            <p><strong>Smoking: </strong>{{ medicalHistory.smoking }}</p>
-            <p><strong>Cardiac Procedures Surgeries: </strong>{{ medicalHistory.cardiacProceduresSurgeries }}</p>
-            <p><strong>Systemic Diseases: </strong>{{ medicalHistory.systemicDiseases }}</p>
-            <p><strong>Medications: </strong>{{ medicalHistory.medications }}</p>
-            <p><strong>Family Diseases: </strong>{{ medicalHistory.familyDiseases }}</p>
+        <div class="options">
+            <button class="delete">Delete</button>
+            <button class="update">Update</button>
         </div>
     </div>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Medical History</mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="medicalHistory">
+            <mat-card-subtitle>Patient Name</mat-card-subtitle>
+            <p>{{ patientName }}</p>
+            <mat-card-subtitle>Date</mat-card-subtitle>
+            <p>{{medicalHistory.date | date}}</p>
+            <mat-card-subtitle>Previous Heart Disease</mat-card-subtitle>
+            <p>{{medicalHistory.previousHeartDisease}}</p>
+            <mat-card-subtitle>High Blood Pressure</mat-card-subtitle>
+            <p>{{medicalHistory.highBloodPressure}}</p>
+            <mat-card-subtitle>Diabetes</mat-card-subtitle>
+            <p>{{medicalHistory.diabetes}}</p>
+            <mat-card-subtitle>Hyperlipidemia</mat-card-subtitle>
+            <p>{{medicalHistory.hyperlipidemia}}</p>
+            <mat-card-subtitle>Obesity</mat-card-subtitle>
+            <p>{{medicalHistory.obesity}}</p>
+            <mat-card-subtitle>Smoking</mat-card-subtitle>
+            <p>{{medicalHistory.smoking}}</p>
+            <mat-card-subtitle>Cardiac Procedures Surgeries</mat-card-subtitle>
+            <p>{{medicalHistory.cardiacProceduresSurgeries}}</p>
+            <mat-card-subtitle>Systemic Diseases</mat-card-subtitle>
+            <p>{{medicalHistory.systemicDiseases}}</p>
+            <mat-card-subtitle>Medications</mat-card-subtitle>
+            <p>{{medicalHistory.medications}}</p>
+            <mat-card-subtitle>Family Diseases</mat-card-subtitle>
+            <p>{{medicalHistory.familyDiseases}}</p>
+        </mat-card-content>
+    </mat-card>
 </div>

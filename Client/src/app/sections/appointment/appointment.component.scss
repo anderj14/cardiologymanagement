@@ -1,31 +1,23 @@
 .content {
     padding: 25px;
 
-    .appointments {
-        .action {
-            margin-bottom: 10px;
+    .action {
+        margin-bottom: 10px;
 
-            .back {
-                i {
-                    font-size: 35px;
-                    color: #303D50;
-                    cursor: pointer;
-                    transition: 0.5s;
+        .back {
+            i {
+                font-size: 30px;
+                color: #303D50;
+                cursor: pointer;
+                transition: 0.5s;
 
-                    &:hover {
-                        color: #6985af;
-                        padding: 5px;
-                    }
+                &:hover {
+                    color: #6985af;
+                    padding: 5px;
                 }
             }
         }
-
-        h2 {
-            margin-bottom: 25px;
-            font-weight: 500;
-            font-family: 'montserrat', sans-serif;
-        }
-
+        
         table {
             width: 100%;
         }

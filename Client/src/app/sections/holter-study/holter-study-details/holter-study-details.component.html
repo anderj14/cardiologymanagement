@@ -1,29 +1,41 @@
 <div class="content">
-    <div class="holter-study">
-        <div class="action">
-            <div class="back">
-                <i routerLink="/patients/{{patientId}}/holterstudies" class="bi bi-arrow-left"></i>
-            </div>
-            <div class="options">
-                <button class="delete">Delete</button>
-                <button class="update">Update</button>
-            </div>
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients/{{patientId}}/holterstudies" class="bi bi-arrow-left"></i>
         </div>
-
-        <div *ngIf="holterStudy">
-            <h2>Holter study details</h2>
-            <p><strong>Patient Name: </strong>{{patientName}}</p>
-            <p><strong>Date: </strong>{{holterStudy.date | date}}</p>
-            <p><strong>Time: </strong>{{holterStudy.time}}</p>
-            <p><strong>Study Diration: </strong>{{holterStudy.studyDuration}}</p>
-            <p><strong>Average Heart Rate: </strong>{{holterStudy.averageHeartRate}}</p>
-            <p> <strong>Maximum Heart Rate:</strong>{{holterStudy.maximumHeartRate}}</p>
-            <p><strong>Type Heart Rhythm: </strong>{{holterStudy.typeHeartRhythm}}</p>
-            <p><strong>Arrhythmia Episodes: </strong>{{holterStudy.arrhythmiaEpisodes}}</p>
-            <p><strong>Physical Activity: </strong>{{holterStudy.physicalActivity}}</p>
-            <p><strong>Patient Symptoms: </strong>{{holterStudy.patientSymptoms}}</p>
-            <p><strong>Conclusion: </strong>{{holterStudy.conclusion}}</p>
+        <div class="options">
+            <button class="delete">Delete</button>
+            <button class="update">Update</button>
         </div>
-
     </div>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Holter Studies</mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="holterStudy">
+            <mat-card-subtitle>Patient Name</mat-card-subtitle>
+            <p>{{ patientName }}</p>
+            <mat-card-subtitle>Date</mat-card-subtitle>
+            <p>{{holterStudy.date | date}}</p>
+            <mat-card-subtitle>Time</mat-card-subtitle>
+            <p>{{holterStudy.time | date}}</p>
+            <mat-card-subtitle>Study Diration</mat-card-subtitle>
+            <p>{{holterStudy.studyDuration}}</p>
+            <mat-card-subtitle>Average Heart Rate</mat-card-subtitle>
+            <p>{{holterStudy.averageHeartRate}}</p>
+            <mat-card-subtitle>Maximum Heart Rate</mat-card-subtitle>
+            <p>{{holterStudy.maximumHeartRate}}</p>
+            <mat-card-subtitle>Type Heart Rhythm</mat-card-subtitle>
+            <p>{{holterStudy.typeHeartRhythm}}</p>
+            <mat-card-subtitle>Arrhythmia Episodes</mat-card-subtitle>
+            <p>{{holterStudy.arrhythmiaEpisodes}}</p>
+            <mat-card-subtitle>Physical Activity</mat-card-subtitle>
+            <p>{{holterStudy.physicalActivity}}</p>
+            <mat-card-subtitle>Patient Symptoms</mat-card-subtitle>
+            <p>{{holterStudy.patientSymptoms}}</p>
+            <mat-card-subtitle>Conclusion</mat-card-subtitle>
+            <p>{{holterStudy.conclusion}}</p>
+        </mat-card-content>
+    </mat-card>
 </div>

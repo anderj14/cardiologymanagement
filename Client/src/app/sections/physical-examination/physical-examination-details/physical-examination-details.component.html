@@ -1,28 +1,38 @@
 <div class="content">
-    <div class="physical-examination">
-        <div class="action">
-            <div class="back">
-                <i routerLink="/patients/{{patientId}}/physicalexaminations" class="bi bi-arrow-left"></i>
-            </div>
-            <div class="options">
-                <button class="delete">Delete</button>
-                <button class="update">Update</button>
-            </div>
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients/{{patientId}}/physicalexaminations" class="bi bi-arrow-left"></i>
         </div>
-
-        <div *ngIf="physicalExamination">
-            <h2>Physical examination details</h2>
-            <p><strong>Date: </strong>{{physicalExamination.date | date}}</p>
-            <p><strong>Time: </strong>{{physicalExamination.time}}</p>
-            <p><strong>Duration: </strong>{{physicalExamination.duration}}</p>
-            <p><strong>Max Heart Rate: </strong>{{physicalExamination.maxHeartRate}}</p>
-            <p><strong>Peak Pressure: </strong>{{physicalExamination.peakPressure}}</p>
-            <p><strong>Exercise Induced Symptoms: </strong>{{physicalExamination.exerciseInducedSymptoms}}</p>
-            <p><strong>Abnormal Ecg Findings: </strong>{{physicalExamination.abnormalEcgFindings}}</p>
-            <!-- <p><strong></strong>{{physicalExamination.</p>
-            <p><strong></strong>{{physicalExamination.}} </p> -->
-            <p><strong>Conclusion: </strong>{{physicalExamination.conclusion}}</p>
+        <div class="options">
+            <button class="delete">Delete</button>
+            <button class="update">Update</button>
         </div>
-
     </div>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Physical Examination Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="physicalExamination">
+            <mat-card-subtitle>Patient Name</mat-card-subtitle>
+            <p>{{ patientName }}</p>
+            <mat-card-subtitle>Date</mat-card-subtitle>
+            <p>{{physicalExamination.date | date}}</p>
+            <mat-card-subtitle>Time</mat-card-subtitle>
+            <p>{{physicalExamination.time | date}}</p>
+            <mat-card-subtitle>Duration</mat-card-subtitle>
+            <p>{{physicalExamination.duration}}</p>
+            <mat-card-subtitle>Max Heart Rate</mat-card-subtitle>
+            <p>{{physicalExamination.maxHeartRate}}</p>
+            <mat-card-subtitle>Peak Pressure</mat-card-subtitle>
+            <p>{{physicalExamination.peakPressure}}</p>
+            <mat-card-subtitle>Exercise Induced Symptoms</mat-card-subtitle>
+            <p>{{physicalExamination.exerciseInducedSymptoms}}</p>
+            <mat-card-subtitle>Abnormal Ecg Findings</mat-card-subtitle>
+            <p>{{physicalExamination.abnormalEcgFindings}}</p>
+            <mat-divider />
+            <mat-card-subtitle style="margin-top: 10px;">Conclusions</mat-card-subtitle>
+            <p>{{physicalExamination.conclusion}}</p>
+        </mat-card-content>
+    </mat-card>
 </div>

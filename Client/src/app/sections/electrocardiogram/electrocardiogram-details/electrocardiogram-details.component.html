@@ -1,24 +1,35 @@
 <div class="content">
-    <div class="electrocardiogram">
-        <div class="action">
-            <div class="back">
-                <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
-            </div>
-            <div class="options">
-                <button class="delete">Delete</button>
-                <button class="update">Update</button>
-            </div>
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients/{{patientId}}" class="bi bi-arrow-left"></i>
         </div>
-        <div *ngIf="electrocardiogram">
-            <h2>Electrocardiograms details</h2>
-            <p><strong>Patient Name: </strong>{{patientName}}</p>
-            <p><strong>Date: </strong>{{electrocardiogram.date | date}}</p>
-            <p><strong>Heart Rhythm: </strong>{{electrocardiogram.heartRhythm}}</p>
-            <p><strong>Intervals Segments: </strong>{{electrocardiogram.intervalsSegments}}</p>
-            <p><strong>Characteristic Waves: </strong>{{electrocardiogram.characteristicWaves}}</p>
-            <p><strong>Heart Rate: </strong>{{electrocardiogram.heartRate}}</p>
-            <p><strong>Abnormalities: </strong>{{electrocardiogram.abnormalities}}</p>
-            <p><strong>Artifacts: </strong>{{electrocardiogram.artifacts}}</p>
+        <div class="options">
+            <button class="delete">Delete</button>
+            <button class="update">Update</button>
         </div>
     </div>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Electrocardiograms Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="electrocardiogram">
+            <mat-card-subtitle>Patient Name</mat-card-subtitle>
+            <p>{{ patientName }}</p>
+            <mat-card-subtitle>Date</mat-card-subtitle>
+            <p>{{electrocardiogram.date | date}}</p>
+            <mat-card-subtitle>Heart Rhythm</mat-card-subtitle>
+            <p>{{electrocardiogram.heartRhythm}}</p>
+            <mat-card-subtitle>Intervals Segments</mat-card-subtitle>
+            <p>{{electrocardiogram.intervalsSegments}}</p>
+            <mat-card-subtitle>Characteristic Waves</mat-card-subtitle>
+            <p>{{electrocardiogram.characteristicWaves}}</p>
+            <mat-card-subtitle>Heart Rate</mat-card-subtitle>
+            <p>{{electrocardiogram.heartRate}}</p>
+            <mat-card-subtitle>Abnormalities</mat-card-subtitle>
+            <p>{{electrocardiogram.abnormalities}}</p>
+            <mat-card-subtitle>Artifacts</mat-card-subtitle>
+            <p>{{electrocardiogram.artifacts}}</p>
+        </mat-card-content>
+    </mat-card>
 </div>

@@ -1,1 +1,57 @@
-<p>notes works!</p>
+<div class="content-main">
+
+    <div class="header">
+        <div class="title">
+            <h1>Notes</h1>
+        </div>
+
+        <div class="box filtering">
+            <app-paging-header [totalCount]="totalCount" [pageNumber]="noteParams.pageNumber"
+                [pageSize]="noteParams.pageSize"></app-paging-header>
+
+            <div class="box-search">
+                <div class="select">
+                    <select (change)="onSortSelected($event)">
+                        <option *ngFor="let sort of sortOptions" [value]="sort.value">
+                            {{sort.name}}
+                        </option>
+                    </select>
+                    <button (click)="togglePopup()" class="filter bi bi-filter p-2">Filter</button>
+                </div>
+
+                <div class="search">
+                    <input (keyup.enter)="onSearch()" type="text" class="" #search>
+                    <button (click)="onSearch()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cards-box">
+        <div class="card-box" *ngFor="let note of notes">
+            <app-notes-item [note]="note"></app-notes-item>
+        </div>
+    </div>
+    <div class="pagination" *ngIf="totalCount > 0">
+        <app-pagination [totalCount]="totalCount" [pageSize]="noteParams.pageSize"
+            (pageChanged)="onPageChanged($event)"></app-pagination>
+    </div>
+
+</div>
+
+
+
+<div *ngIf="showPopup" class="popup-overlay" (click)="closePopup()">
+    <div class="popup-content" (click)="stopPropagation($event)">
+        <div class="box">
+            <h5 class="">Status</h5>
+            <ul class="">
+                <li class="" *ngFor="let noteStatus of noteStatuses">
+                    <input type="checkbox" [checked]="noteStatus.id === noteParams.noteStatusId"
+                        [value]="noteStatus.id" (change)="onNoteStatusSelected(noteStatus.id)">
+                    {{ noteStatus.noteStatusName }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

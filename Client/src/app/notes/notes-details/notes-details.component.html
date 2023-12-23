@@ -1,1 +1,49 @@
-<p>notes-details works!</p>
+<div class="section">
+
+    <div class="action">
+        <div class="back">
+            <i routerLink="/notes" class="bi bi-arrow-left"></i>
+        </div>
+        <div class="delete">
+            <button class="">Delete</button>
+        </div>
+    </div>
+
+    <div class="content" *ngIf="note">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-subtitle>Note</mat-card-subtitle>
+                <mat-card-title>{{note.title}}</mat-card-title>
+            </mat-card-header>
+
+            <div class="box">
+
+                <mat-card-content>
+                    <div class="box">
+                        <mat-card-subtitle>Date</mat-card-subtitle>
+                        <p> {{note.date | date}}</p>
+
+                        <mat-card-subtitle>Content</mat-card-subtitle>
+                        <p>{{note.content}}</p>
+
+                        <mat-card-subtitle>Status</mat-card-subtitle>
+                        <div class="status">
+                            <p [class]="getStatusClass(note.noteStatus)">
+                                {{note.noteStatus}}
+                            </p>
+                        </div>
+                    </div>
+
+                </mat-card-content>
+
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-actions>
+                <button class="update">Update</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>

@@ -30,8 +30,6 @@ export class SurgeryComponent implements OnInit {
   getSurgeries() {
     this.surgeryService.getSurgeries(this.surgeryParams).subscribe({
       next: response => {
-        console.log(response);
-
         this.surgeries = response.data;
         this.surgeryParams.pageNumber = response.pageIndex;
         this.surgeryParams.pageSize = response.pageSize;

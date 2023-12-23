@@ -1,24 +1,35 @@
 <div class="content">
-    <div class="diagnostics">
-        <div class="action">
-            <div class="back">
-                <i routerLink="/patients/{{patientId}}/diagnostics" class="bi bi-arrow-left"></i>
-            </div>
-            <div class="options">
-                <button class="delete">Delete</button>
-                <button class="update">Update</button>
-            </div>
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients/{{patientId}}/diagnostics" class="bi bi-arrow-left"></i>
         </div>
-        <div *ngIf="diagnostic">
-            <h2>Blood Test Details</h2>
-            <p><strong>Patient Name:</strong> {{ patientName }}</p>
-            <p><strong>Date:</strong> {{ diagnostic.date | date }}</p>
-            <p><strong>Condition Name:</strong> {{ diagnostic.conditionName }}</p>
-            <p><strong>Description:</strong> {{ diagnostic.description }}</p>
-            <p><strong>Classification Condition:</strong> {{ diagnostic.classificationCondition }}</p>
-            <p><strong>Severity:</strong> {{ diagnostic.severity }}</p>
-            <p><strong>Risk Assessment:</strong> {{ diagnostic.riskAssessment }}</p>
-            <p><strong>Conclusions:</strong> {{ diagnostic.conclusions }}</p>
+        <div class="options">
+            <button class="delete">Delete</button>
+            <button class="update">Update</button>
         </div>
     </div>
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Diagnostic Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="diagnostic">
+            <mat-card-subtitle>Patient Name</mat-card-subtitle>
+            <p>{{ patientName }}</p>
+            <mat-card-subtitle>Date</mat-card-subtitle>
+            <p>{{diagnostic.date | date}}</p>
+            <mat-card-subtitle>Condition Name</mat-card-subtitle>
+            <p>{{diagnostic.conditionName}}</p>
+            <mat-card-subtitle>Description</mat-card-subtitle>
+            <p>{{diagnostic.description}}</p>
+            <mat-card-subtitle>Classification Condition</mat-card-subtitle>
+            <p>{{diagnostic.classificationCondition}}</p>
+            <mat-card-subtitle>Severity</mat-card-subtitle>
+            <p>{{diagnostic.severity}}</p>
+            <mat-card-subtitle>Risk Assessment</mat-card-subtitle>
+            <p>{{diagnostic.riskAssessment}}</p>
+            <mat-divider />
+            <mat-card-subtitle style="margin-top: 10px;">Conclusions</mat-card-subtitle>
+            <p>{{diagnostic.conclusions}}</p>
+        </mat-card-content>
+    </mat-card>
 </div>

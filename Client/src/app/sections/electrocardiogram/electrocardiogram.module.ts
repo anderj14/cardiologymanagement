@@ -4,6 +4,7 @@ import { ElectrocardiogramComponent } from './electrocardiogram.component';
 import { ElectrocardiogramDetailsComponent } from './electrocardiogram-details/electrocardiogram-details.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { ElectrocardiogramRoutingModule } from './electrocardiogram-routing.module';
+import { MaterialModule } from 'src/app/material/material/material.module';
 
 
 
@@ -15,7 +16,8 @@ import { ElectrocardiogramRoutingModule } from './electrocardiogram-routing.modu
   imports: [
     CommonModule,
     ElectrocardiogramRoutingModule,
-    CoreModule
+    CoreModule,
+    MaterialModule
   ]
 })
 export class ElectrocardiogramModule { }

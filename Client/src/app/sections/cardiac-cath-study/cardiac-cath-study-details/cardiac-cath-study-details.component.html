@@ -1,41 +1,82 @@
 <div class="content">
-  <div class="cardiacCathStudies">
-    <div class="action">
-      <div class="back">
-        <i routerLink="/patients/{{patientId}}/cardiacCathStudies" class="bi bi-arrow-left"></i>
-      </div>
-      <div class="options">
-        <button class="delete">Delete</button>
-        <button class="update">Update</button>
-      </div>
+  <div class="action">
+    <div class="back">
+      <i routerLink="/patients/{{patientId}}/cardiacCathStudies" class="bi bi-arrow-left"></i>
     </div>
-    <div *ngIf="cardiacCathStudy">
-      <h2>Cardiac Catheterization Studies Details</h2>
-      <p><strong>Patient Name:</strong> {{ patientName }}</p>
-      <p><strong>Date:</strong> {{cardiacCathStudy.date | date}}</p>
-      <p><strong>Time:</strong> {{cardiacCathStudy.time}}</p>
-      <p><strong>Number Location Main Coronary:</strong> {{cardiacCathStudy.numLocationMainCoronary}}</p>
-      <p><strong>Blockage Each Coronary Artery:</strong> {{cardiacCathStudy.blockageEachCoronaryArtery}}</p>
-      <p><strong>Description Abnormality:</strong> {{cardiacCathStudy.descriptionAbnormality}}</p>
-      <p><strong>Blood Pressure Aorta:</strong> {{cardiacCathStudy.bloodPressureAorta}}</p>
-      <p><strong>Chambers Left Atrium:</strong> {{cardiacCathStudy.chambersLeftAtrium}}</p>
-      <p><strong>Chambers Left Ventricle:</strong> {{cardiacCathStudy.chambersLeftVentricle}}</p>
-      <p><strong>Chambers Right Atrium:</strong> {{cardiacCathStudy.chambersRightAtrium}}</p>
-      <p><strong>Chambers Right Ventricle:</strong> {{cardiacCathStudy.chambersRightVentricle}}</p>
-      <p><strong>Blood Flow Coronary Arteries:</strong> {{cardiacCathStudy.bloodFlowCoronaryArteries}}</p>
-      <p><strong>Velocity Blood Flow:</strong> {{cardiacCathStudy.velocityBloodFlow}}</p>
-      <p><strong>Left Ventricular Ejection Fraction:</strong> {{cardiacCathStudy.leftVentricularEjectionFraction}}</p>
-      <p><strong>Blood Pressure Pulmonary Arteries:</strong> {{cardiacCathStudy.bloodPressurePulmonaryArteries}}</p>
-      <p><strong>Valvular Insufficiency Aortic:</strong> {{cardiacCathStudy.valvularInsufficiencyAortic}}</p>
-      <p><strong>Valvular Insufficiency Mitral:</strong> {{cardiacCathStudy.valvularInsufficiencyMitral}}</p>
-      <p><strong>Valvular Insufficiency Pulmonary:</strong> {{cardiacCathStudy.valvularInsufficiencyPulmonary}}</p>
-      <p><strong>Valvular Insufficiency Tricuspid:</strong> {{cardiacCathStudy.valvularInsufficiencyTricuspid}}</p>
-      <p><strong>Pressure Gradient Valves:</strong> {{cardiacCathStudy.pressureGradientValves}}</p>
-      <p><strong>Structural Abnormalities:</strong> {{cardiacCathStudy.structuralAbnormalities}}</p>
-      <p><strong>Functions Cardiac Chambers:</strong> {{cardiacCathStudy.functionsCardiacChambers}}</p>
-      <p><strong>Description Complication:</strong> {{cardiacCathStudy.descriptionComplication}}</p>
-      <p><strong>Conclusion:</strong> {{cardiacCathStudy.conclusion}}</p>
-
+    <div class="options">
+      <button class="delete">Delete</button>
+      <button class="update">Update</button>
     </div>
   </div>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Blood Tests Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="cardiacCathStudy">
+
+      <div class="box">
+        <mat-card-subtitle>Patient Name</mat-card-subtitle>
+        <p>{{ patientName }}</p>
+        <mat-card-subtitle>Date</mat-card-subtitle>
+        <p>{{cardiacCathStudy.date | date}}</p>
+        <mat-card-subtitle>Time</mat-card-subtitle>
+        <p>{{cardiacCathStudy.time}}</p>
+        <mat-card-subtitle>Number Location Main Coronary</mat-card-subtitle>
+        <p>{{cardiacCathStudy.numLocationMainCoronary}}</p>
+        <mat-card-subtitle>Blockage Each Coronary Artery</mat-card-subtitle>
+        <p>{{cardiacCathStudy.blockageEachCoronaryArtery}}</p>
+        <mat-card-subtitle>Description Abnormality</mat-card-subtitle>
+        <p>{{cardiacCathStudy.descriptionAbnormality}}</p>
+        <mat-card-subtitle>Blood Pressure Aorta</mat-card-subtitle>
+        <p>{{cardiacCathStudy.bloodPressureAorta}}</p>
+        <mat-card-subtitle>Chambers Left Atrium</mat-card-subtitle>
+        <p>{{cardiacCathStudy.chambersLeftAtrium}}</p>
+      </div>
+
+      <div class="box">
+        <mat-card-subtitle>Chambers Left Ventricle</mat-card-subtitle>
+        <p>{{cardiacCathStudy.chambersLeftVentricle}}</p>
+        <mat-card-subtitle>Chambers Right Atrium</mat-card-subtitle>
+        <p>{{cardiacCathStudy.chambersRightAtrium}}</p>
+        <mat-card-subtitle>Chambers Right Ventricle</mat-card-subtitle>
+        <p>{{cardiacCathStudy.chambersRightVentricle}}</p>
+        <mat-card-subtitle>Blood Flow Coronary Arteries</mat-card-subtitle>
+        <p>{{cardiacCathStudy.bloodFlowCoronaryArteries}}</p>
+        <mat-card-subtitle>Velocity Blood Flow</mat-card-subtitle>
+        <p>{{cardiacCathStudy.velocityBloodFlow}}</p>
+        <mat-card-subtitle>Left Ventricular Ejection Fraction</mat-card-subtitle>
+        <p>{{cardiacCathStudy.leftVentricularEjectionFraction}}</p>
+        <mat-card-subtitle>Blood Pressure Pulmonary Arteries</mat-card-subtitle>
+        <p>{{cardiacCathStudy.bloodPressurePulmonaryArteries}}</p>
+        <mat-card-subtitle>Valvular Insufficiency Aortic</mat-card-subtitle>
+        <p>{{cardiacCathStudy.valvularInsufficiencyAortic}}</p>
+      </div>
+
+      <div class="box">
+        <mat-card-subtitle>Valvular Insufficiency Mitral</mat-card-subtitle>
+        <p>{{cardiacCathStudy.valvularInsufficiencyMitral}}</p>
+        <mat-card-subtitle>Valvular Insufficiency Pulmonary</mat-card-subtitle>
+        <p>{{cardiacCathStudy.valvularInsufficiencyPulmonary}}</p>
+        <mat-card-subtitle>Valvular Insufficiency Tricuspid</mat-card-subtitle>
+        <p>{{cardiacCathStudy.valvularInsufficiencyTricuspid}}</p>
+        <mat-card-subtitle>Pressure Gradient Valves</mat-card-subtitle>
+        <p>{{cardiacCathStudy.pressureGradientValves}}</p>
+        <mat-card-subtitle>Structural Abnormalities</mat-card-subtitle>
+        <p>{{cardiacCathStudy.structuralAbnormalities}}</p>
+        <mat-card-subtitle>Functions Cardiac Chambers</mat-card-subtitle>
+        <p>{{cardiacCathStudy.functionsCardiacChambers}}</p>
+        <mat-card-subtitle>Description Complication</mat-card-subtitle>
+        <p>{{cardiacCathStudy.descriptionComplication}}</p>
+      </div>
+
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div class="box">
+        <mat-card-subtitle>Conclusion</mat-card-subtitle>
+        <p>{{cardiacCathStudy.conclusion}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -13,5 +13,5 @@ export interface Surgery {
     duration: number
     cardiacCondition: string
     isMinimallyInvasive: string
-    patient: number
+    patient: string
 }

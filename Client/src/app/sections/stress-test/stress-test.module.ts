@@ -4,6 +4,7 @@ import { StressTestComponent } from './stress-test.component';
 import { StressTestDetailsComponent } from './stress-test-details/stress-test-details.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { StressTestRoutingModule } from './stress-test-routing.module';
+import { MaterialModule } from 'src/app/material/material/material.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { StressTestRoutingModule } from './stress-test-routing.module';
   imports: [
     CommonModule,
     CoreModule,
-    StressTestRoutingModule
+    StressTestRoutingModule,
+    MaterialModule
   ]
 })
 export class StressTestModule { }

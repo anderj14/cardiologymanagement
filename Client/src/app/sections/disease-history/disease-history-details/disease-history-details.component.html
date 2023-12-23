@@ -1,21 +1,27 @@
 <div class="content">
-    <div class="disease-history">
-        <div class="action">
-            <div class="back">
-                <i routerLink="/patients/{{patientId}}/diseaseshistory" class="bi bi-arrow-left"></i>
-            </div>
-            <div class="options">
-                <button class="delete">Delete</button>
-                <button class="update">Update</button>
-            </div>
+    <div class="action">
+        <div class="back">
+            <i routerLink="/patients/{{patientId}}/diseaseshistory" class="bi bi-arrow-left"></i>
         </div>
-
-        <div *ngIf="diseaseHistory">
-            <h2>Disease History Details</h2>
-            <p><strong>Patient Name: </strong>{{patientName}}</p>
-            <p><strong>Start Date: </strong>{{diseaseHistory.description}}</p>
-            <p><strong>Description: </strong>{{diseaseHistory.description}}</p>
-            <p><strong>Treatment: </strong>{{diseaseHistory.treatment}}</p>
+        <div class="options">
+            <button class="delete">Delete</button>
+            <button class="update">Update</button>
         </div>
     </div>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Disease History Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="diseaseHistory">
+            <mat-card-subtitle>Patient Name</mat-card-subtitle>
+            <p>{{ patientName }}</p>
+            <mat-card-subtitle>Start Date</mat-card-subtitle>
+            <p>{{diseaseHistory.startDate | date}}</p>
+            <mat-card-subtitle>Description</mat-card-subtitle>
+            <p>{{diseaseHistory.description}}</p>
+            <mat-card-subtitle>Treatment</mat-card-subtitle>
+            <p>{{diseaseHistory.treatment}}</p>
+        </mat-card-content>
+    </mat-card>
 </div>

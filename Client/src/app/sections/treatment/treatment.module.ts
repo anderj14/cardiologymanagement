@@ -4,6 +4,7 @@ import { TreatmentComponent } from './treatment.component';
 import { TreatmentDetailsComponent } from './treatment-details/treatment-details.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { TreatmentRoutingModule } from './treatment-routing.module';
+import { MaterialModule } from 'src/app/material/material/material.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { TreatmentRoutingModule } from './treatment-routing.module';
   imports: [
     CommonModule,
     CoreModule,
-    TreatmentRoutingModule
+    TreatmentRoutingModule,
+    MaterialModule
   ]
 })
 export class TreatmentModule { }

@@ -1,0 +1,38 @@
+mat-card {
+    // border: none;
+
+    &:hover {
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.180);
+    }
+
+    mat-card-subtitle {
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-weight: 400;
+    }
+}
+
+.status {
+    display: flex;
+    justify-content: end;
+
+    p {
+        margin-left: 5px;
+        padding: 3px 10px;
+        border-radius: 8px;
+        color: #fff;
+        &.completed {
+            background-color: #1cbf1c;
+        }
+
+        &.in-progress {
+            background-color: #3186c2;
+        }
+
+        &.pending {
+            background-color: #f4d839;
+        }
+    }
+}
