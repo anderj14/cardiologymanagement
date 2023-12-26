@@ -6,7 +6,7 @@ namespace Infraestructure.Data
 {
     public class ManagementContext : DbContext
     {
-        public ManagementContext(DbContextOptions options) : base(options)
+        public ManagementContext(DbContextOptions<ManagementContext> options) : base(options)
         {
         }
 

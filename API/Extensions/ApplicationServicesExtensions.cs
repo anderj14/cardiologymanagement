@@ -2,6 +2,8 @@ using API.Errors;
 using Core.Interfaces;
 using Infraestructure.Data;
 using Infraestructure.Data.Repository;
+using Infraestructure.Services;
+
 // using Infraestructure.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +25,7 @@ namespace API.Extensions
             {
                 opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             ////
