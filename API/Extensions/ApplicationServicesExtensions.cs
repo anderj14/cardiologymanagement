@@ -16,9 +16,6 @@ namespace API.Extensions
             this IServiceCollection services, IConfiguration config
         )
         {
-            services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
-
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             // Conection string
             services.AddDbContext<ManagementContext>(opt =>
