@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PaginationModule} from 'ngx-bootstrap/pagination';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { PagingHeaderComponent } from './paging-header/paging-header.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { MaterialModule } from '../material/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 @NgModule({
@@ -14,12 +16,16 @@ import { MaterialModule } from '../material/material/material.module';
   imports: [
     CommonModule,
     MaterialModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    ReactiveFormsModule,
+    BsDropdownModule.forRoot()
   ],
   exports: [
     PaginationModule,
     PagingHeaderComponent,
-    PaginationComponent
+    PaginationComponent,
+    ReactiveFormsModule,
+    BsDropdownModule
   ]
 })
 export class SharedModule { }

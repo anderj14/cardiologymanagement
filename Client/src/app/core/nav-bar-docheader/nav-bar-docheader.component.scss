@@ -10,6 +10,7 @@ mat-toolbar {
     align-items: center;
 
     a {
+        color: #000000;
         text-decoration: none;
         font-size: 16px;
 
@@ -24,6 +25,14 @@ mat-toolbar {
 
     .users {
         margin-left: auto;
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            span{
+                margin-left: 10px;
+            }
+        }
     }
 
 }

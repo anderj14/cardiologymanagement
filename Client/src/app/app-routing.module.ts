@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'appointments', loadChildren: () => import('./appointment/appointment.module').then(m => m.AppointmentModule) },
   { path: 'surgeries', loadChildren: () => import('./surgery/surgery.module').then(m => m.SurgeryModule) },
   { path: 'notes', loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule) },
+  { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule) },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
 

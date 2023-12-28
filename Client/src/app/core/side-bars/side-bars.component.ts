@@ -1,4 +1,5 @@
 import { Component, Input, computed, signal } from '@angular/core';
+import { AccountService } from 'src/app/account/account.service';
 
 export type MenuItem = {
   icon: string;
@@ -16,6 +17,9 @@ export class SideBarsComponent {
   @Input() set collapsed(val: boolean) {
     this.sideNavCollapsed.set(val);
   }
+
+  constructor(public accountService: AccountService) { }
+
 
   menuItems = signal<MenuItem[]>([
     {
