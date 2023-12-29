@@ -6,12 +6,14 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { MaterialModule } from '../material/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TextInputComponent } from './components/text-input/text-input.component';
 
 
 @NgModule({
   declarations: [
     PagingHeaderComponent,
-    PaginationComponent
+    PaginationComponent,
+    TextInputComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     PagingHeaderComponent,
     PaginationComponent,
     ReactiveFormsModule,
-    BsDropdownModule
+    BsDropdownModule,
+    TextInputComponent
   ]
 })
 export class SharedModule { }

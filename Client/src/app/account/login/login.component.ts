@@ -13,14 +13,13 @@ export class LoginComponent {
   passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(8)]);
 
   loginForm = new FormGroup({
-    email: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   })
 
   constructor(private accountService: AccountService, private router: Router) { }
 
   onSubmit() {
-    // console.log(this.loginForm.value);
     this.accountService.login(this.loginForm.value).subscribe({
       next: () => this.router.navigateByUrl('/patients')
     });
