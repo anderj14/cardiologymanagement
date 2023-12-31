@@ -8,13 +8,15 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { PatientRoutingModule } from './patient-routing.module';
 import { SectionsModule } from '../sections/sections.module';
 import { MaterialModule } from '../material/material/material.module';
+import { EditPatientComponent } from './edit-patient/edit-patient.component';
 
 
 @NgModule({
   declarations: [
     PatientComponent,
     PatientItemComponent,
-    PatientDetailsComponent
+    PatientDetailsComponent,
+    EditPatientComponent,
   ],
   imports: [
     CommonModule,

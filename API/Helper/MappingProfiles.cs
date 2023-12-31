@@ -1,5 +1,6 @@
 using AutoMapper;
 using Core.Dtos;
+using Core.Dtos.CreateDto;
 using Core.Entities;
 
 namespace API.Helper
@@ -26,6 +27,7 @@ namespace API.Helper
             CreateMap<Appointment, AppointmentDto>()
             .ForMember(d => d.Patient, o => o.MapFrom(s => s.Patient.PatientName))
             .ForMember(d => d.AppointmentStatus, o => o.MapFrom(s => s.AppointmentStatus.AppointmentStatusName));
+            
             CreateMap<BloodTest, BloodTestDto>();
             CreateMap<CardiacCatheterizationStudy, CardiacCatheterizationStudyDto>();
             CreateMap<Diagnostic, DiagnosticDto>();
@@ -50,6 +52,9 @@ namespace API.Helper
             CreateMap<NoteStatus, NoteStatusDto>();
 
             CreateMap<AppointmentStatus, AppointmentStatusDto>();
+
+            // Create
+            CreateMap<PatientCreateDto, Patient>();
         }
     }
 }

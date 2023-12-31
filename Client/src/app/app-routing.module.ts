@@ -12,15 +12,33 @@ const routes: Routes = [
   { path: 'test-error', component: TestErrorComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
-  { 
-    path: 'patients', 
+  {
+    path: 'patients',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./patient/patient.module').then(m => m.PatientModule) 
+    loadChildren: () => import('./patient/patient.module').then(m => m.PatientModule),
+    data: { breadcrumb: 'Patient' }
   },
-  { path: 'appointments', loadChildren: () => import('./appointment/appointment.module').then(m => m.AppointmentModule) },
-  { path: 'surgeries', loadChildren: () => import('./surgery/surgery.module').then(m => m.SurgeryModule) },
-  { path: 'notes', loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule) },
+  {
+    path: 'appointments',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./appointment/appointment.module').then(m => m.AppointmentModule)
+  },
+  {
+    path: 'surgeries',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./surgery/surgery.module').then(m => m.SurgeryModule)
+  },
+  {
+    path: 'notes',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule)
+  },
   { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule) },
+  // {
+  //   path: 'admin-patient',
+  //   loadChildren: () => import('./admins/admin-patient/admin-patient.module')
+  //     .then(m => m.AdminPatientModule), data: { breadcrumb: 'AdminPatient' }
+  // },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
 

@@ -22,6 +22,9 @@
         <div class="search">
           <input (keyup.enter)="onSearch()" type="text" class="" #search>
           <button class="" (click)="onSearch()">Search</button>
+          <!-- <a class="p-2" routerLink="/admin-patient/create" routerLinkActive="active">Admin</a> -->
+          <button [routerLink]="['/patients/create']">Create</button>
+
           <!-- <button class="btn reset" (click)="onReset()">Reset</button> -->
         </div>
       </div>

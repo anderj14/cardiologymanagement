@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from 'src/app/shared/Models/patient';
+import { IPatient } from 'src/app/shared/Models/patient';
 import { PatientService } from '../patient.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DiseaseHistory } from 'src/app/shared/Models/diseaseHistory';
@@ -14,13 +14,17 @@ import { MedicalHistory } from 'src/app/shared/Models/medicalHistory';
 import { PhysicalExamination } from 'src/app/shared/Models/physicalExamination';
 import { StressTest } from 'src/app/shared/Models/stressTest';
 import { Treatment } from 'src/app/shared/Models/treatment';
+import { PatientParams } from 'src/app/shared/Models/patientParams';
+import { AdminPatientService } from '../admin-patient.service';
+
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
   styleUrls: ['./patient-details.component.scss']
 })
+
 export class PatientDetailsComponent implements OnInit {
-  patient?: Patient;
+  patient!: IPatient;
   appointment!: Appointment[];
   bloodTest!: BloodTest[];
   cardiacCathStudy!: CardiacCathStudy[];
@@ -34,10 +38,13 @@ export class PatientDetailsComponent implements OnInit {
   stressTest!: StressTest[];
   treatment!: Treatment[];
 
+  patientParams!: PatientParams;
+
   constructor(
     private patientService: PatientService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private adminPatientService: AdminPatientService
   ) { }
 
   ngOnInit(): void {
@@ -201,4 +208,14 @@ export class PatientDetailsComponent implements OnInit {
     }
     return undefined;
   }
+  
+  deletePatient() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.adminPatientService.deletePatient(+id).subscribe(() => {
+        this.router.navigate(['/patients']);
+      });
+    }
+  }
+
 }

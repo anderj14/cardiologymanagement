@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Patient } from 'src/app/shared/Models/patient';
+import { IPatient } from 'src/app/shared/Models/patient';
 
 @Component({
   selector: 'app-patient-item',
@@ -7,7 +7,7 @@ import { Patient } from 'src/app/shared/Models/patient';
   styleUrls: ['./patient-item.component.scss']
 })
 export class PatientItemComponent {
-  @Input() patient?: Patient;
+  @Input() patient?: IPatient;
 
   calculateAge(dob: string | undefined): number | undefined {
     if (dob) {

@@ -5,7 +5,7 @@
             <i routerLink="/patients" class="bi bi-arrow-left"></i>
         </div>
         <div class="delete">
-            <button class="">Delete</button>
+            <button (click)="deletePatient()">Delete</button>
         </div>
     </div>
 
@@ -16,7 +16,8 @@
                 <div class="header">
                     <p>{{patient.patientName}}</p>
                     <div class="update">
-                        <button class="">Update</button>
+                        <button [routerLink]="['/patients/edit', patient.id]">Update</button>
+                        <!-- routerLink="/patients/{{patient.id}}" -->
                     </div>
                 </div>
                 <div class="body">

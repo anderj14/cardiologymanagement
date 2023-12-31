@@ -43,19 +43,27 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
 using var scope = app.Services.CreateScope();
+
+
 var services = scope.ServiceProvider;
 var context = services.GetRequiredService<ManagementContext>();
-var identityContext = services.GetRequiredService<AppIdentityDbContext>();
-var userManager = services.GetRequiredService<UserManager<AppUser>>();
 var logger = services.GetRequiredService<ILogger<Program>>();
 
 try
 {
     await context.Database.MigrateAsync();
-    await identityContext.Database.MigrateAsync();
+    // await identityContext.Database.MigrateAsync(); // Identity
     await StoreContextSeed.SeedAsync(context);
-    await AppIdentityDbContextSeed.SeedUserAsync(userManager);
+
+    var userManager = services.GetRequiredService<UserManager<AppUser>>(); // Identity
+    var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
+    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+    await identityContext.Database.MigrateAsync();
+    await AppIdentityDbContextSeed.SeedUsersAsync(userManager, roleManager);
+
+    // await AppIdentityDbContextSeed.SeedUsersAsync(userManager); // Identity
 }
 catch (Exception ex)
 {

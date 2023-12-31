@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pagination } from '../shared/Models/pagination';
-import { Patient } from '../shared/Models/patient';
+import { IPatient } from '../shared/Models/patient';
 import { PatientParams } from '../shared/Models/patientParams';
 import { Appointment } from '../shared/Models/appointment';
 import { BloodTest } from '../shared/Models/bloodTest';
@@ -23,10 +23,11 @@ import { environment } from '../environments/environment';
 })
 export class PatientService {
   baseUrl = environment.apiUrl;
+  patientParams = new PatientParams();
 
   constructor(private http: HttpClient) { }
 
-  getPatients(patientParams: PatientParams): Observable<Pagination<Patient[]>> {
+  getPatients(patientParams: PatientParams): Observable<Pagination<IPatient[]>> {
     let params = new HttpParams();
 
     params = params.append('sort', patientParams.sort);
@@ -34,11 +35,19 @@ export class PatientService {
     params = params.append('pageSize', patientParams.pageSize.toString());
     if (patientParams.search) params = params.append('search', patientParams.search);
 
-    return this.http.get<Pagination<Patient[]>>(this.baseUrl + 'patients', { params });
+    return this.http.get<Pagination<IPatient[]>>(this.baseUrl + 'patients', { params });
   }
 
-  getPatient(id: number): Observable<Patient> {
-    return this.http.get<Patient>(this.baseUrl + 'patients/' + id);
+  setPatientParams(params: PatientParams) {
+    this.patientParams = params;
+  }
+
+  getPatientParams() {
+    return this.patientParams;
+  }
+
+  getPatient(id: number): Observable<IPatient> {
+    return this.http.get<IPatient>(this.baseUrl + 'patients/' + id);
   }
 
   getAppointmentByPatientId(patientId: number): Observable<Appointment[]> {

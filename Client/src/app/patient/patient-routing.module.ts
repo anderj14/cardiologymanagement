@@ -15,9 +15,12 @@ import { MedicalHistoryComponent } from '../sections/medical-history/medical-his
 import { PhysicalExaminationComponent } from '../sections/physical-examination/physical-examination.component';
 import { StressTestComponent } from '../sections/stress-test/stress-test.component';
 import { TreatmentComponent } from '../sections/treatment/treatment.component';
+import { EditPatientComponent } from './edit-patient/edit-patient.component';
 
 const routes: Routes = [
   { path: '', component: PatientComponent },
+  
+  { path: 'create', component: EditPatientComponent, data: { breadcrumb: 'Create' } },
   { path: ':id', component: PatientDetailsComponent },
   { path: ':id/appointments', component: AppointmentComponent },
   { path: ':id/bloodTests', component: BloodTestComponent },
@@ -31,6 +34,8 @@ const routes: Routes = [
   { path: ':id/physicalexaminations', component: PhysicalExaminationComponent },
   { path: ':id/stresstests', component: StressTestComponent },
   { path: ':id/treatments', component: TreatmentComponent },
+  { path: 'edit/:id', component: EditPatientComponent, data: { breadcrumb: 'Edit' } },
+
 ]
 
 @NgModule({

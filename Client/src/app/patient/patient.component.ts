@@ -1,6 +1,6 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Patient } from '../shared/Models/patient';
+import { IPatient } from '../shared/Models/patient';
 import { PatientService } from './patient.service';
 import { PatientParams } from '../shared/Models/patientParams';
 
@@ -12,7 +12,7 @@ import { PatientParams } from '../shared/Models/patientParams';
 
 export class PatientComponent implements OnInit {
   @ViewChild('search') searchTerm?: ElementRef;
-  patients!: Patient[];
+  patients!: IPatient[];
 
   patientParams = new PatientParams();
   sortOptions = [

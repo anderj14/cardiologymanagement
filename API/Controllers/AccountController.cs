@@ -28,10 +28,12 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
+            //finding a user
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
 
             if (user == null) return Unauthorized(new ApiResponse(401));
 
+            // Success or not
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
             if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
@@ -39,10 +41,11 @@ namespace API.Controllers
             return new UserDto()
             {
                 Email = user.Email,
-                Token = _tokenService.CreateToken(user),
+                Token = await _tokenService.CreateToken(user),
                 DisplayName = user.DisplayName
             };
         }
+
 
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
@@ -50,10 +53,13 @@ namespace API.Controllers
             if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
             {
                 return new BadRequestObjectResult(
-                    new ApiValidationErrorResponse { Errors = new[] { "Email address is in use" } }
+                    new ApiValidationErrorResponse
+                    {
+                        Errors = new[] { "Email address is in use" }
+                    }
                 );
             }
-            
+
             var user = new AppUser
             {
                 DisplayName = registerDto.DisplayName,
@@ -64,12 +70,17 @@ namespace API.Controllers
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
+
             if (!result.Succeeded) return BadRequest(new ApiResponse(400));
+
+            var roleAddResult = await _userManager.AddToRoleAsync(user, "Member");
+
+            if (!roleAddResult.Succeeded) return BadRequest("Failed to add to role");
 
             return new UserDto
             {
                 DisplayName = user.DisplayName,
-                Token = _tokenService.CreateToken(user),
+                Token = await _tokenService.CreateToken(user),
                 Email = user.Email
             };
         }
@@ -85,7 +96,7 @@ namespace API.Controllers
             return new UserDto()
             {
                 Email = user.Email,
-                Token = _tokenService.CreateToken(user),
+                Token = await _tokenService.CreateToken(user),
                 DisplayName = user.DisplayName
             };
         }
