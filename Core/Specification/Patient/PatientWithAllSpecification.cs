@@ -65,7 +65,6 @@ namespace Core.Specification
             AddInclude(p => p.StressTests);
             AddInclude(p => p.Treatments);
             AddInclude(p => p.CardiologySurgery);
-
         }
     }
 }

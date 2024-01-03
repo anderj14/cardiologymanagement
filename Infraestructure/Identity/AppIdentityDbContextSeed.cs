@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 
@@ -31,6 +32,14 @@ namespace Infraestructure.Identity
                     },
                     new AppUser
                     {
+                        DisplayName = "Alejandra",
+                        FirstName = "Alejandra",
+                        LastName = "Wolf",
+                        Email = "alewolf@test.com",
+                        UserName = "alewolf@test.com",
+                    },
+                    new AppUser
+                    {
                         DisplayName = "Admin",
                         FirstName = "Andder",
                         LastName = "Frias",
@@ -57,6 +66,7 @@ namespace Infraestructure.Identity
                     await userManager.AddToRoleAsync(user, "User");
                     if (user.Email == "admin@test.com") await userManager.AddToRoleAsync(user, "Admin");
                     if (user.Email == "andder@test.com") await userManager.AddToRoleAsync(user, "Member");
+                    if (user.Email == "alewolf@test.com") await userManager.AddToRoleAsync(user, "Member");
                 }
             }
         }

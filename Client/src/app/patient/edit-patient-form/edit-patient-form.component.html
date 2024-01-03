@@ -1,0 +1,164 @@
+<form  #patientForm="ngForm" (ngSubmit)="onSubmit(patientForm.valid && patientForm.value)">
+    <div class="form-group">
+        <div class="group">
+            <div class="form">
+                <label for="patientName">Patient Full Name</label>
+                <input 
+                required
+                [ngClass]="{'is-invalid': patientName.invalid && (patientName.dirty || patientName.touched)}"
+                type="text" 
+                class="form-control"
+                id="patientName"
+                placeholder="Patient Name"
+                name="patientName"
+                #patientName="ngModel"
+                [(ngModel)]="patient.patientName"
+                >
+                <div *ngIf="patientName.invalid && (patientName.dirty || patientName.touched)" class="invalid-feedback">
+                    <div *ngIf="patientName.errors?.['required']">
+                      Product Name is required
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <label for="carnetIdentification">Carnet Identification</label>
+                <input 
+                [ngClass]="{'is-invalid': carnetIdentification.invalid && (carnetIdentification.dirty || carnetIdentification.touched)}"
+                type="text" 
+                class="form-control"
+                id="carnetIdentification"
+                placeholder="Carnet Identification"
+                name="carnetIdentification"
+                #carnetIdentification="ngModel"
+                [(ngModel)]="patient.carnetIdentification"
+                >
+                <div *ngIf="carnetIdentification.invalid && (carnetIdentification.dirty || carnetIdentification.touched)" class="invalid-feedback">
+                    <div *ngIf="carnetIdentification.errors?.['required']">
+                        Carnet identification is required
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <label for="socialSecurity">Social Security</label>
+                <input 
+                [ngClass]="{'is-invalid': socialSecurity.invalid && (socialSecurity.dirty || socialSecurity.touched)}"
+                type="text" 
+                class="form-control"
+                id="socialSecurity"
+                placeholder="Social Security"
+                name="socialSecurity"
+                #socialSecurity="ngModel"
+                [(ngModel)]="patient.socialSecurity"
+                >
+                <div *ngIf="socialSecurity.invalid && (socialSecurity.dirty || socialSecurity.touched)" class="invalid-feedback">
+                    <div *ngIf="socialSecurity.errors?.['required']">
+                        Social Security is required
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <label for="dob">DOB</label>
+                <input 
+                  required
+                  type="datetime"
+                  name="dob"
+                  id="dob"
+                  required
+                  placeholder="YYYY-MM-DD"
+                  class="form-control"
+                  [ngClass]="{'is-invalid': dob.invalid && (dob.dirty || dob.touched)}"
+                  #dob="ngModel"
+                  [(ngModel)]="patient.dob"        
+                > 
+                <div *ngIf="dob.invalid && (dob.dirty || dob.touched)" class="invalid-feedback">
+                    <div *ngIf="dob.errors?.['required']" >
+                        Dob is required
+                    </div>
+                </div>
+            </div>
+            </div>
+    
+        <div class="group">
+           
+            <div class="form">
+                <label for="gender">Gender</label>
+                <input 
+                required
+                [ngClass]="{'is-invalid': gender.invalid && (gender.dirty || gender.touched)}"
+                type="text" 
+                class="form-control"
+                id="gender"
+                placeholder="Gender"
+                name="gender"
+                #gender="ngModel"
+                [(ngModel)]="patient.gender"
+                >
+                <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="invalid-feedback">
+                    <div *ngIf="gender.errors?.['required']">
+                        Gender is required
+                    </div>
+                </div>
+            </div>  
+            <div class="form">
+                <label for="phone">Phone</label>
+                <input 
+                required
+                [ngClass]="{'is-invalid': phone.invalid && (phone.dirty || phone.touched)}"
+                type="number" 
+                class="form-control"
+                id="phone"
+                placeholder="Phone"
+                name="phone"
+                #phone="ngModel"
+                [(ngModel)]="patient.phone"
+                >
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="invalid-feedback">
+                    <div *ngIf="phone.errors?.['required']">
+                        Phone is required
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <label for="email">Email</label>
+                <input 
+                required
+                [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}"
+                type="text" 
+                class="form-control"
+                id="email"
+                placeholder="Email"
+                name="email"
+                #email="ngModel"
+                [(ngModel)]="patient.email"
+                >
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                    <div *ngIf="email.errors?.['required']">
+                        Email is required
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="group">
+            <div class="form">
+                <label for="address">Address</label>
+                <textarea 
+                  [ngClass]="{'is-invalid': address.invalid && (address.dirty || address.touched)}"
+                  class="form-control"
+                  id="address"
+                  placeholder="Address"
+                  name="address"
+                  #address="ngModel"
+                  [(ngModel)]="patient.address"
+                ></textarea>
+                <div *ngIf="address.invalid && (address.dirty || address.touched)" class="invalid-feedback">
+                  <div *ngIf="address.errors?.['required']">
+                    Address is required
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    <button [disabled]="!patientForm.valid" type="submit" class="submit">Submit</button>
+</form>
+

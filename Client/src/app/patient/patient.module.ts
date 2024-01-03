@@ -9,6 +9,7 @@ import { PatientRoutingModule } from './patient-routing.module';
 import { SectionsModule } from '../sections/sections.module';
 import { MaterialModule } from '../material/material/material.module';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
+import { EditPatientFormComponent } from './edit-patient-form/edit-patient-form.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { EditPatientComponent } from './edit-patient/edit-patient.component';
     PatientItemComponent,
     PatientDetailsComponent,
     EditPatientComponent,
+    EditPatientFormComponent,
   ],
   imports: [
     CommonModule,

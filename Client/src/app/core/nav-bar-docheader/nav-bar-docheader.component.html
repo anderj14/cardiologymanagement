@@ -6,7 +6,7 @@
         <a class="navbar-logo" href="#">
             <img src="/assets/images/Logo.png" alt="logo" style="max-height: 50px;">
         </a>
-        <ul class=" nav-list d-flex me-auto m-2">
+        <!-- <ul class=" nav-list d-flex me-auto m-2">
             <li class="nav-item m-2">
                 <a class="nav-link" routerLink="/" href="#">Home</a>
             </li>
@@ -19,7 +19,7 @@
             <li class="nav-item m-2">
                 <a class="nav-link" routerLink="/test-error" href="#">Error</a>
             </li>
-        </ul>
+        </ul> -->
     </div>
     <div class="users">
         <ng-container *ngIf="(accountService.currentUser$ | async) === null">

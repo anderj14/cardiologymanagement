@@ -23,14 +23,18 @@
           <input (keyup.enter)="onSearch()" type="text" class="" #search>
           <button class="" (click)="onSearch()">Search</button>
           <!-- <a class="p-2" routerLink="/admin-patient/create" routerLinkActive="active">Admin</a> -->
-          <button [routerLink]="['/patients/create']">Create</button>
 
           <!-- <button class="btn reset" (click)="onReset()">Reset</button> -->
         </div>
       </div>
     </div>
   </div>
-
+  <div class="create">
+    <button [routerLink]="['/patients/create']">
+    <mat-icon class="material-icons-outlined">person_add</mat-icon>
+      Create
+    </button>
+  </div>
 
   <div class="cards-box">
     <div class="card-box" *ngFor="let patient of patients">
