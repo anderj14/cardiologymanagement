@@ -55,6 +55,7 @@ namespace API.Helper
 
             // Create
             CreateMap<PatientCreateDto, Patient>();
+            CreateMap<AppointmentCreateDto, Appointment>();
         }
     }
 }

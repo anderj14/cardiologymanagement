@@ -95,7 +95,7 @@ namespace API.Controllers
 
             var result = await _unitOfWork.Complete();
 
-            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem updating patient information"));
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem deleting patient information"));
 
             return Ok();
         }

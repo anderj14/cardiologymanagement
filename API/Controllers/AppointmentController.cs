@@ -3,6 +3,7 @@ using API.Errors;
 using API.Helper;
 using AutoMapper;
 using Core.Dtos;
+using Core.Dtos.CreateDto;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specification;
@@ -51,6 +52,48 @@ namespace API.Controllers
             return Ok(_mapper.Map<AppointmentDto>(appointment));
         }
 
+        // In appointment
+        [HttpPost]
+        public async Task<ActionResult<Appointment>> CreateAppointment(AppointmentCreateDto appointmentCreateDto)
+        {
+            var appointment = _mapper.Map<AppointmentCreateDto, Appointment>(appointmentCreateDto);
+
+            _unitOfWork.Repository<Appointment>().Add(appointment);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem creating Appointment"));
+            return Ok(appointment);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Appointment>> UpdatePatient(int id, AppointmentCreateDto appointmentUpdateDto)
+        {
+            var appointment = await _unitOfWork.Repository<Appointment>().GetByIdAsync(id);
+            _mapper.Map(appointmentUpdateDto, appointment);
+
+            var result = await _unitOfWork.Complete();
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem updating appointment information"));
+
+            return Ok(appointment);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteAppointment(int id)
+        {
+            var appointment = await _unitOfWork.Repository<Appointment>().GetByIdAsync(id);
+
+            _unitOfWork.Repository<Appointment>().Delete(appointment);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem deleting appointment information"));
+
+            return Ok();
+        }
+
+
+        // In Patient
         [HttpGet("patient/{patientId}/appointments")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -74,6 +117,54 @@ namespace API.Controllers
 
             var appointmentDto = _mapper.Map<AppointmentDto>(appointment);
             return Ok(appointmentDto);
+        }
+
+        [HttpPost("patient/{patientId}")]
+        public async Task<ActionResult<AppointmentDto>> CreatePatientAppointment(int patientId, AppointmentCreateDto appointmentCreateDto)
+        {
+            var appointment = _mapper.Map<AppointmentCreateDto, Appointment>(appointmentCreateDto);
+            appointment.PatientId = patientId;
+
+            _unitOfWork.Repository<Appointment>().Add(appointment);
+            await _unitOfWork.Complete();
+
+            var appointmentDto = _mapper.Map<AppointmentDto>(appointment);
+            return Ok(appointmentDto);
+        }
+
+        [HttpPut("patient/{patientId}/appointments/{appointmentId}")]
+        public async Task<ActionResult<AppointmentDto>> UpdatePatientAppointment(int patientId, int appointmentId, [FromBody] AppointmentCreateDto appointmentToUpdateDto)
+        {
+            var appointmentSpec = new AppointmentSpecification(patientId, appointmentId);
+            var appointment = await _unitOfWork.Repository<Appointment>().GetEntityWithSpec(appointmentSpec);
+
+            if (appointment == null)
+            {
+                return NotFound(new ApiResponse(404, "Appointment not found"));
+            }
+
+            _mapper.Map(appointmentToUpdateDto, appointment);
+            _unitOfWork.Repository<Appointment>().Update(appointment);
+            await _unitOfWork.Complete();
+
+            var appointmentDto = _mapper.Map<AppointmentDto>(appointment);
+            return Ok(appointmentDto);
+        }
+
+        [HttpDelete("patient/{patientId}/appointments/{appointmentId}")]
+        public async Task<ActionResult> DeletePatientAppointment(int patientId, int appointmentId)
+        {
+            var appointmentSpec = new AppointmentSpecification(patientId, appointmentId);
+            var appointment = await _unitOfWork.Repository<Appointment>().GetEntityWithSpec(appointmentSpec);
+
+            if (appointment == null)
+            {
+                return NotFound(new ApiResponse(404, "Appointment not found"));
+            }
+
+            _unitOfWork.Repository<Appointment>().Delete(appointment);
+            await _unitOfWork.Complete();
+            return Ok();
         }
     }
 }
